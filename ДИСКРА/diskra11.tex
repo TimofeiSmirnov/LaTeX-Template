@@ -1,0 +1,202 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+ \usepackage{tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по дискретной математике 11 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{Д11.1} Сколько компонент связности в лесу на 6 вершинах с 4 рёбрами? Приведите пример такого леса.
+    \\
+    \\ \textbf{Решение: } Цикломатическое число леса равно 0. Так как количество вершин в нашем графе 6, а ребер 4, то чтобы цикломатрическое число было равно нулю в нем должно быть ровно 2 компоненты связности.
+    \\
+    \\ Пример такого графа:
+    \\\\
+    $\begin{tikzpicture}[node distance={15mm}, thick, main/.style = {draw, circle}] 
+        \node[main] (1) {$1$}; 
+        \node[main] (2) [above right of=1] {$2$}; 
+        \node[main] (3) [above right of=2] {$3$}; 
+        \node[main] (4) [right of=3] {$4$}; 
+        \node[main] (5) [below right of=4] {$5$}; 
+        \node[main] (6) [below right of=5] {$6$}; 
+        \draw[-] (1) -- (2); 
+        \draw[-] (3) -- (4); 
+        \draw[-] (1) -- (5);
+        \draw[-] (2) -- (3);
+      \end{tikzpicture}$
+    \\
+    \\
+    \\ \textbf{Д11.2} Сколько простых путей может быть в дереве на n вершинах? Укажите все возможные варианты.
+    (Ответ, разумеется, должен быть обоснован.)
+    \\
+    \\ \textbf{Решение: } в дереве между любыми двумя вершинами существует единственный простой путь. Следовательно, в дереве столько же простых путей, сколько в нем упорядоченных пар вершин. То есть для дерева на n вершинах существует $n^2$ упорядоченных пар вершин (пары типа $(x, x)$ тоже считаются, так как они тоже образуют путь), а, следовательно, и простых путей.
+    \\
+    \\ \textbf{Ответ: } $n^2$
+    \\
+    \\ \textbf{Д11.3} Найдите наибольшее количество вершин в связном графе, сумма степеней вершин в котором равна 20.
+    \\
+    \\ \textbf{Решение: }
+    \\ Заметим, что при добавлении новой вершины в связный граф, его суммарная степень вершин увеличивается как минимум на 2, так как добавляется 1 к степени новой вершины и 1 к степени вершины, к которой присоединяется новая. Если в графе 1 вершина, то суммарная степень вершин равна 0. Следовательно, чтобы получить суммарную степень вершин 20, мы можем добавить не более 10 ребер. Что в итоге даст 11.
+    \\
+    \\ Тогда приведем пример графа с 11 вершинами:
+    \\
+    \\
+    $\begin{tikzpicture}[node distance={15mm}, thick, main/.style = {draw, circle}] 
+        \node[main] (1) {$1$}; 
+        \node[main] (2) [above right of=1] {$2$}; 
+        \node[main] (3) [above right of=2] {$3$}; 
+        \node[main] (4) [right of=3] {$4$}; 
+        \node[main] (5) [below right of=4] {$5$}; 
+        \node[main] (6) [below right of=5] {$6$}; 
+        \node[main] (7) [below left of=6] {$7$}; 
+        \node[main] (8) [below left of=7] {$8$}; 
+        \node[main] (9) [left of=8] {$9$}; 
+        \node[main] (10) [above left of=9] {$10$};
+        \node[main] (11) [above left of=7] {$11$};
+        \draw[-] (1) -- (2); 
+        \draw[-] (2) -- (3);
+        \draw[-] (3) -- (4);
+        \draw[-] (4) -- (5);
+        \draw[-] (5) -- (6);
+        \draw[-] (6) -- (7);
+        \draw[-] (7) -- (8);
+        \draw[-] (8) -- (9);
+        \draw[-] (10) -- (9);
+        \draw[-] (10) -- (11);
+      \end{tikzpicture}$
+    \\
+    \\
+    \\ \textbf{Д11.4} а) Приведите пример дерева на 14 вершинах, в котором есть ровно две вершины степени 6 и нет
+    ни одной вершины степени 2. б) В дереве на 13 вершинах есть ровно две вершины степени 6. Следует
+    ли из этого, что в этом дереве есть вершина степени 2?
+    \\
+    \\ \textbf{Решение: }
+    \\
+    \\ a).
+    \\
+    \\
+    $\begin{tikzpicture}[node distance={15mm}, thick, main/.style = {draw, circle}] 
+        \node[main] (1) {$1$}; 
+        \node[main] (3) [above of=1] {$3$}; 
+        \node[main] (2) [right of=1] {$2$}; 
+        \node[main] (7) [below  of=1] {$7$}; 
+        \node[main] (6) [below left of=1] {$6$}; 
+        \node[main] (5) [left of=1] {$5$}; 
+        \node[main] (4) [above left of=1] {$4$}; 
+        \node[main] (8) [above of=2] {$8$};
+        \node[main] (9) [above right of=2] {$9$};
+        \node[main] (10) [right of=2] {$10$};
+        \node[main] (11) [below right of=2] {$11$};
+        \node[main] (12) [below of=2] {$12$};
+        \node[main] (13) [above right of=10] {$13$};
+        \node[main] (14) [below right of=10] {$14$};
+        \draw[-] (1) -- (2); 
+        \draw[-] (1) -- (3);
+        \draw[-] (1) -- (4);
+        \draw[-] (1) -- (5);
+        \draw[-] (1) -- (6);
+        \draw[-] (1) -- (7);
+        \draw[-] (2) -- (8);
+        \draw[-] (2) -- (9);
+        \draw[-] (2) -- (10);
+        \draw[-] (2) -- (11);
+        \draw[-] (2) -- (12);
+        \draw[-] (10) -- (13);
+        \draw[-] (10) -- (14);     
+      \end{tikzpicture}$
+    \\
+    \\
+    \\ б). Если в дереве 13 вершин, то в нем 13 - 1 = 12 ребер. Пусть $d_1, ..., d_{13}$ - это степени вершин, тогда:
+    \[ d_1 + ... + d_{13} = 2 \cdot 12 = 24 \]
+    \\ Но мы знаем, что две степени вершин равны 6, пусть это $d_1, d_2$, тогда наше уравнение примет вид $d_3 + ... + d_{13} = 12$
+    \\
+    \\ Так как мы работаем с деревом, то каждая вершина в нем имеет степень не менее 1, следовательно, так как в нашем уравнении осталось 11 слагаемых и все они как минимум 1. То есть минимум их сумма равна 11, чтобы получить 12 нужно прибавть 1 к одному из слагаемых, но в таком случае степень одной из вершин будет равна 2.
+    \\
+    \\ \textbf{Ответ: } да, следует.
+\end{document}

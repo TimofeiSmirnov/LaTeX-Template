@@ -1,0 +1,250 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по линейной алгебре 6 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{№ 1} Найдем матрицу, обратную к $\begin{pmatrix}A & B \\ 0 & C\end{pmatrix}$, A, B, C - невырожденные.
+    \\
+    \\ Пусть $A^{-1} = \begin{pmatrix}X_1 & X_2 \\ X_3 & X_4\end{pmatrix}$, тогда $\begin{pmatrix}A & B \\ 0 & C\end{pmatrix} \cdot \begin{pmatrix}X_1 & X_2 \\ X_3 & X_4\end{pmatrix} = \begin{pmatrix}E & 0 \\ 0 & E\end{pmatrix}$
+    \\
+    \\ $\begin{pmatrix}AX_1 + BX_3 & AX_2 + BX_4 \\ CX_3 & CX_4\end{pmatrix} = \begin{pmatrix}E & 0 \\ 0 & E\end{pmatrix}$
+    \\
+    \\ $CX_3 = 0 \ \Rightarrow \ X_3 = 0 \ \Rightarrow \ BX_3 = 0 \ \Rightarrow \ AX_1 = E \ \Rightarrow \ X_1 = A^{-1}$
+    \\ $CX_4 = E \ \Rightarrow \ X_4 = C^{-1} \ \Rightarrow \ AX_2 + BX_4 = AX_2 + BC^{-1} = 0 \ \Rightarrow \ X_2 = -BC^{-1}A^{-1}$
+    \\
+    \\ \textbf{Ответ: } $\begin{pmatrix}A^{-1} & -BC^{-1}A^{-1} \\ 0 & C^{-1}\end{pmatrix}$
+    \\
+    \\ \textbf{№ 2} $\frac{(5 + i)(7 - 6i)}{3 + i} = \frac{41 - 23i}{3 + i} = (41 - 23i)(\frac{3}{10} - \frac{1}{10}i) = 10 - 11 i$
+    \\
+    \\ \textbf{№ 3}
+    \\
+    \\ 1). $\begin{vmatrix}a + bi & c + di \\ -c + di & a - bi\end{vmatrix} = (a + bi)(a - bi) - (c + di)(-c + di) = (a^2 + b^2) - (-c^2 - d^2) = a^2 + b^2 + c^2 + d^2$
+    \\
+    \\ 2). $\begin{vmatrix}\cos \alpha + i \sin \alpha & 1 \\ 1 & \cos \alpha - i \sin \alpha\end{vmatrix} = (\cos \alpha + i \sin \alpha)(\cos \alpha - i \sin \alpha) - 1 =
+    \\ = (1 + (\sin \alpha \cos \alpha - \cos \alpha \sin \alpha)i) - 1 = 0$
+    \\
+    \\ 3). $\begin{vmatrix}1 & 0 & 1 + i \\ 0 & 1 & i \\ 1 - i & -i & 1\end{vmatrix} = 1 + 0 + 0 - (1 + i)(1 - i) - 0 - (-i^2) = 1 - 2 - 1 = -2$
+    \\
+    \\ \textbf{№ 4} 
+    \[
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 + i & 1 - i & 1 + i & +1(2) \\
+            1 - i & 1 + i & 1 + 3i \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            2 & 2 & 2 + 4i & :2\\
+            1 - i & 1 + i & 1 + 3i \\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 1 & 1 + 2i & \\
+            1 - i & 1 + i & 1 + 3i & -(1 - i)(1)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 1 & 1 + 2i & \\
+            0 & 2i & 4 + 4i & \times \left(-\frac{1}{2}i\right)\\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 1 & 1 + 2i & -1(2)\\
+            0 & 1 & 2 - 2i & \\
+        \end{pNiceArray}
+        \to\begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 0 & -1 & \\
+            0 & 1 & 2 - 2i & \\
+        \end{pNiceArray}
+    \]
+    \\
+    \\ \textbf{Ответ: } Получаем ответ: $\begin{pmatrix}-1 \\ 2 - 2i\end{pmatrix}$
+    \\
+    \\ \textbf{№ 5} Матрица $A = \begin{pmatrix}1 + i & 1 - i \\ 1 - i & 1 + i\end{pmatrix}$
+    \\
+    \\ $\begin{vmatrix}1 + i & 1 - i \\ 1 - i & 1 + i\end{vmatrix} = (1 + i)(1 + i) - (1 - i)(1 - i) = 2i + 2i = 4i \neq 0 \ \Rightarrow \ $ система имеет единственное решение.
+    \\
+    \\ Пусть наша искомое решение симеты будет столбцом $\begin{pmatrix}x_1\\x_2\end{pmatrix}$
+    \\
+    \\ 1). $x_1 = \frac{a_1}{4i}, a_1 = \begin{vmatrix}1 + i & 1 - i \\ 1 + 3i & 1 + i\end{vmatrix} = (1 + i)^2 - (1 - i)(1 + 3i) = 2 - 4 - 2 i = -4 \ \Rightarrow \ x_1 = \frac{-4}{4i} = i$
+    \\
+    \\ 2). $x_2 = \frac{a_2}{4i}, a_2 = \begin{vmatrix}1 + i & 1 + i\\ 1 - i & 1 + 3i\end{vmatrix} = (1 + i)(1 + 3i) - (1 + i)(1 - i) = -2 + 4 i - 2 = -4 + 4i \ \Rightarrow \ x_2 = (-4 + 4i)(0 - \frac{1}{4}i) = 1 + i$
+    \\
+    \\ \textbf{Ответ: } $x_1 = i, x_2 = 1 + i$
+    \\
+    \\ \textbf{№ 6}
+    \\
+    \\ 1). $-3i = -3(0 + 1i) = -3(\cos \alpha + \sin \alpha i), \alpha = \frac{\pi }{2} + 2 \pi n, n \in \mathbb{Z}$
+    \\
+    \\ 2). $1 + i\frac{\sqrt{3}}{\sqrt{3}} = \frac{2}{\sqrt{3}}(\frac{\sqrt{3}}{2} + i\frac{1}{2}) = \frac{2}{\sqrt{3}(\cos \alpha + i \sin \alpha)}, \alpha = \frac{\pi }{6} + 2 \pi n, n \in \mathbb{Z}$
+    \\
+    \\ 3). $\frac{10 - 6\sqrt{3} i}{2\sqrt{3} - i} = (10 - 6\sqrt{3} i)(\frac{2\sqrt{3}}{13} + \frac{i}{13}) = 2 \sqrt{3} - 2 i = 4(\frac{\sqrt{3}}{2} - \frac{1}{2}i) = 4(\cos \alpha + i \sin \alpha), \alpha = -\frac{\pi }{6} + 2\pi n, n \in \mathbb{Z}$
+    \\
+    \\ 4). $\frac{\cos \varphi + i \sin \varphi}{\cos \psi + i \sin \psi} = (\cos \varphi + i \sin \varphi)(\cos \psi - i \sin \psi) = (\cos \varphi \cdot \cos \psi + \sin \varphi \cdot \sin \psi) + i (\sin \varphi \cdot \cos \psi - \cos \varphi \cdot \sin \psi) = \cos (\varphi - \psi) + i \sin (\varphi - \psi)$
+    \\
+    \\
+    \\ \textbf{№ 7} $(\sqrt{3} - i)^{32} = (2(\cos -\frac{\pi}{6} + i \sin -\frac{\pi}{6}))^{32} = 2^{32}(\cos -\frac{32 \pi}{6} + i \sin -\frac{32 \pi}{6}) = 2^{32}(\cos -\frac{16 \pi}{3} + i \sin -\frac{16 \pi}{3})$
+    \\
+    \\ \textbf{№ 8}
+    \\
+    \\ 1). $z^3 = (x + iy)^3 = ((x^2 - y^2) + 2xy i)(x + y i) = (x^3 - 3xy^2) + i (3x^2y - y^3) = 1 + 0 i$
+    \\ Имеем:
+    \begin{equation*}
+        \begin{cases}
+            x^3 - 3xy^2 = 1 \\
+            3x^2y - y^3 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Отсюда либо $y = 0, x = 1 \ \Rightarrow \ z_1 = 1$, либо $x = -\frac{1}{2}, y = (+-) \frac{\sqrt{3}}{2} \ \Rightarrow \ (-\frac{1}{2} (+-) \ i \frac{\sqrt{3}}{2})$
+    \\
+    \\ 2). $z^2 = i = (x + iy)^2 = (x^2 - y^2) + 2xy i = 0 + i$
+    \\ Имеем:
+    \begin{equation*}
+        \begin{cases}
+            x^2 - y^2 = 0 \\
+            2xy = 1 \\
+        \end{cases}
+    \end{equation*}
+    \\ Отсюда $x = y = +-\frac{\sqrt{2}}{2} \ \Rightarrow \ z_1 = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2}i, z_2 = -\frac{\sqrt{2}}{2} - \frac{\sqrt{2}}{2} i$
+    \\
+    \\ \textbf{№ 9} 
+    \\
+    \\ 1). $\sqrt[3]{2 -2i} = \sqrt[3]{\sqrt{8}(\cos -\frac{\pi}{4} + \sin -\frac{\pi}{4} i)} = \sqrt{2} (\cos \frac{-\frac{\pi}{4} + 2\pi n}{3} + \sin  \frac{-\frac{\pi}{4} + 2\pi n}{3} i) = 
+    \\ = \sqrt{2} \left(\cos \left(-\frac{\pi}{12} + \frac{2\pi n}{3}\right) + \sin  \left(-\frac{\pi}{12} + \frac{2\pi n}{3}\right) i \right)$
+    \\
+    \\ $x_1 = \sqrt{2} \left(\cos \left(-\frac{\pi}{12}\right) + \sin  \left(-\frac{\pi}{12}\right) i \right)$
+    \\ $x_2 = \sqrt{2} \left(\cos \left(-\frac{7\pi}{12}\right) + \sin  \left(-\frac{7\pi}{12}\right) i \right)$
+    \\ $x_3 = \sqrt{2} \left(\cos \left(-\frac{5\pi}{4}\right) + \sin  \left(-\frac{5\pi}{4}\right) i \right)$
+    \\
+    \\ 2). $\sqrt[6]{(2 - 2i)^2} = \sqrt[6]{-8i} = \sqrt{2}\sqrt[6]{-i} = \sqrt{2}\sqrt[6]{-i} = \sqrt{2} \sqrt[6]{\left(\cos (\frac{3\pi}{2} + 2\pi n) + i \sin (\frac{3\pi}{2} + 2\pi n) \right)} = 
+    \\ = \sqrt{2} \left(\cos (\frac{3\pi}{12} + \frac{2\pi n}{6}) + i \sin (\frac{3\pi}{12} + \frac{2\pi n}{6}) \right)$
+    \\
+    \\ 1). $x_1 = \sqrt{2} \left(\cos (\frac{3\pi}{12}) + i \sin (\frac{3\pi}{12}) \right) = 1 + i$
+    \\ 2). $x_2 = \sqrt{2} \left(\cos (\frac{7\pi}{12}) + i \sin (\frac{7\pi}{12}) \right) = \frac{1 - \sqrt{3}}{2} + \frac{1 + \sqrt{3}}{2}i$
+    \\ 3). $x_3 = \sqrt{2} \left(\cos (\frac{11\pi}{12}) + i \sin (\frac{11\pi}{12}) \right) = \frac{-1 - \sqrt{3}}{2} + \frac{\sqrt{3} - 1}{2}i$
+    \\ 4). $x_4 = \sqrt{2} \left(\cos (\frac{15\pi}{12}) + i \sin (\frac{15\pi}{12}) \right) = -1 - i$
+    \\ 5). $x_5 = \sqrt{2} \left(\cos (\frac{19\pi}{12}) + i \sin (\frac{19\pi}{12}) \right) = \frac{\sqrt{3} - 1}{2} + \frac{1 - \sqrt{3}}{2}i$
+    \\ 6). $x_6 = \sqrt{2} \left(\cos (\frac{23\pi}{12}) + i \sin (\frac{23\pi}{12}) \right) = \frac{1 + \sqrt{3}}{2} + \frac{1 - \sqrt{3}}{2}i$
+    \\
+    \\ \textbf{№ 10} 
+    \\
+    \\ $\sqrt[4]{\frac{-18}{1 + i \sqrt{3}}} = \sqrt[4]{-18 \cdot \left(\frac{1}{4} - i \frac{\sqrt{3}}{4}\right)} = \sqrt[4]{9 \cdot \left(-\frac{1}{2} + i \frac{\sqrt{3}}{2}\right)} = |\sqrt{3}| \sqrt[4]{\cos \left(\frac{2\pi}{3} + 2\pi n\right)  + i \sin \left(\frac{2\pi}{3} + 2\pi n\right)} = 
+    \\ = |\sqrt{3}| \left(\cos \left(\frac{\pi}{6} + \frac{\pi n}{2}\right)  + i \sin \left(\frac{\pi}{6} + \frac{\pi n}{2}\right) \right)$
+    \\
+    \\ 1). $x_1 = |\sqrt{3}| \left(\cos \left(\frac{\pi}{6}\right)  + i \sin \left(\frac{\pi}{6}\right) \right) = \pm \sqrt{3}(\frac{\sqrt{3}}{2} + \frac{1}{2}i)$
+    \\ 2). $x_2 = |\sqrt{3}| \left(\cos \left(\frac{2\pi}{3}\right)  + i \sin \left(\frac{2\pi}{3}\right) \right) = \pm\sqrt{3}(-\frac{1}{2} + \frac{\sqrt{3}}{2}i)$
+    \\
+    \\ \textbf{№ 11}
+    \\
+    \\ $(2\sqrt{3} - i)z^4 = 10 - 6\sqrt{3}i$
+    \\ $z^4 = (10 - 6\sqrt{3}i)\left(\frac{2\sqrt{3}}{13} + \frac{i}{13}\right) = 2 \sqrt{3} - 2i = 4\left(\frac{\sqrt{3}}{2} - \frac{1}{2}i\right) = 4\left(\cos \left(-\frac{\pi}{6} + 2\pi n\right) + i\sin \left(-\frac{\pi}{6} + 2\pi n\right)\right)$
+    \\
+    \\ $z = \sqrt{2}\left(\cos \left(-\frac{\pi}{24} + \frac{\pi n}{2}\right) + i\sin \left(-\frac{\pi}{24} + \frac{\pi n}{2}\right)\right)$
+    \\
+    \\ \textbf{Ответ: } 
+    \\ 1). $z_1 = \sqrt{2}\left(\cos \left(\frac{71\pi}{24}\right) + i\sin \left(\frac{71\pi}{24}\right)\right)$
+    \\
+    \\ \textbf{№ 12}
+    \\
+    \\ По формуле Муавра $(\cos x  + i \sin x)^3 = (\cos 3x + i \sin 3x)$
+    \\
+    \\ Так же можено просто перемножетить эти числа 3 раза: 
+    \par $(\cos x  + i \sin x)^3 = (\cos x  + i \sin x)^2 \cdot (\cos x  + i \sin x) = ((\cos ^2 x - \sin ^2 x) + i (2\sin x \cos x)) \cdot (\cos x  + i \sin x) = (\cos ^3 x - 3\sin^2 x \cos x) + i(3\cos ^2 x \sin x - \sin ^3 x)$
+    \\
+    \\ Два комплексных числа $a + bi$ и $c + di$ равны, если $a = c$ и $b = d$. Мы посчитали $(\cos x  + i \sin x)^3$ двумя способами, следовательно мы получилис систему
+    \begin{equation*}
+        \begin{cases}
+            \cos 3x =  \cos ^3 x - 3\sin^2 x \cos x \\
+            \sin 3x = 3\cos ^2 x \sin x - \sin ^3 x \\
+        \end{cases}
+    \end{equation*}
+\end{document}

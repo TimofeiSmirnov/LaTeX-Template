@@ -1,0 +1,142 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+\begin{document}
+    {\center \bf \large ДЗ по дискретной математике 6 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{№ 6.1} Найдите количество сюръективных неубывающих функций из $[10]$ в $[7]$. Функция $f$ неубывающая,
+    если $x \leq y$ влечёт $f(x) \leq f(y)$.
+    \\
+    \\ \textbf{Решение: } В сюрьективной функции из [10] в [7] $f: [10] \to [7]$ каждому элементу множества $[7]$ найдется соответствующий элемент из множества [10], по определению сюрьективные функции тотальны, то есть все элементы $[10]$ использованы.
+    \\
+    \\ Упорядочим элементы множеств [10] и [7] по возрастанию и получим последовательности Х = (0, 1, 2, 3, 4, 5, 6, 7, 8, 9) и Y = (0, 1, 2, 3, 4, 5, 6), чтобы функция была неубывающей, первому элементу из Y дложно соответствовать первые 
+    $\alpha_0 > 0$ членов из множества X,  второму элементу из Y должны соответствовать $\alpha_1 > 0$ элементов последовательности Х, начиная с $\alpha_0$-го элемента и тд. При этом, по определению функции, множества прообразовов элементов 
+    из Y не могут пересекаться, следовательно последовательность соотетствующих элементов для i-го элемента из Y начинается именно с $\alpha_0 + ... + \alpha_{i - 1}$.
+    Так как у всех элементов из множества Y должны быть соответствующие элементы в множестве Х, то мы получаем уравнение $\alpha_0 + \alpha_1 + ... + \alpha_6 = 10$ и $\forall i \ \alpha_i > 0$. 
+    \\
+    \\ То есть мы должны найти количество решений уравнения $\alpha_0 + \alpha_1 + \alpha_2 + \alpha_3 + \alpha_4 + \alpha_5 + \alpha_6 = 10$, где $\forall n \in \{0, 1, 2, 3, 4, 5, 6\} \hookrightarrow \alpha_n \geq 1$.
+    \\
+    \\ Количество решений такого уравнения равно $\binom{n - 1}{k - 1} = \binom{9}{6} = 84$, так как количество решений такого уравнения можно сопоставить с задачей по нахождению монотонных путей из 0 в n, с k шагами, которую мы решали на семинаре.
+    \\
+    \\ \textbf{Ответ: } 84
+    \\
+    \\ \textbf{№ 6.2} Докажите, что $\sum_{j=0}^{k} \binom{n + j - 1}{j} = \binom{n + k}{k}$.
+    \\
+    \\ \textbf{Решение: } Заметим, что $\sum_{j=0}^{k} \binom{n + j - 1}{j} = \sum_{j=0}^{k} \left(\binom{n}{j}\right)$ и $\binom{n + k}{k} = \left(\binom{n + 1}{k}\right)$ 
+    То есть нам достаточно доказать, что $\sum_{j=0}^{k} \left(\binom{n}{j}\right) = \left(\binom{n + 1}{k}\right)$.
+    \\
+    \\ Пусть у нас было множество А длины $n$, в которое мы добавили еще один элемент, в итоге получится множество В размера $n + 1$. На каждом шаге суммы $\sum_{j=0}^{k} \left(\binom{n}{j}\right)$ по j (j = 0, 1, ... k) мы выбираем j элементов с повторениями среди множества $A \cap B$, остальные k - j раз мы просто берем не содержащийся в А (n + 1)-й элемент из В. 
+    Итого у нас посчитаются все варианты выбора (n + 1)-го элемента из множества В (0, 1, 2, ... k раз), и при этом посчитаются все варианты перебрать оставшиеся n элементов из $A \cap B$. Получается, что мы просто получили количество сочетаний с повторениями из множества размера $(n + 1)$ по k. ЧТД.
+    \\
+    \\ \textbf{№ 6.3} Сколько различных слов (не обязательно осмысленных) можно получить, переставляя буквы в
+    слове ABRACADABRA так, чтобы никакие две буквы A не стояли рядом? Ответом должно быть число
+    в десятичной записи.
+    \\
+    \\ \textbf{Решение: } Представим задачу в виде шариков и перегородок. Пусть все элементы не равные А будут шариками, а элементы А будут перегородками.
+    Всего элементов не равных А имеется 6, а элементов равных А всего 5. "А" не могут стоять рядом, поэтому между двумя шариками нельзя поставить 2 и более перегородки.
+    Позиций для постановки перегородок всего 6 + 1 = 7, так как места слева и справа от ряда шариков тоже считаются. Тогда просто между 6-ю шариками выберем места для перегородок, это можно сделать $C_{7}^{5} = 21$ способами. Так же, так как почти все эти шарики у нас разные числа (только В и R повторятся по 2 раза), то их мы можем переставить $\frac{6!}{2! \cdot 2! \cdot 1! \cdot 1!} = 180$ способами. В итоге получаем формулу $C_{7}^{5} \cdot 180 = 21 \cdot 180 = 3780$.
+    \\
+    \\ \textbf{№ 6.4} Сравните числа (равны ли; если нет, то какое больше): 
+    \\ \par \quad \quad \quad $\sum_{i=0}^{512} 2^{2i} \cdot \binom{1024}{2i} \ \vee \ \sum_{i=0}^{511} 2^{2i + 1} \cdot \binom{1024}{2i + 1}$
+    \\
+    \\ \textbf{Решение: } $(2 - 1)^{1024} = \sum_{k=0}^{1024} \binom{1024}{k} \cdot 2^{k} \cdot (-1)^{1024 - k} 
+    \\
+    \\ = \sum_{i = 0}^{512} \binom{1024}{2i} \cdot a^{2i} \cdot (-1)^{2i} +  \sum_{i = 0}^{511} \binom{1024}{2i + 1} \cdot a^{2i + 1} \cdot (-1)^{2i + 1} = 
+    \\
+    \\ = \sum_{i = 0}^{512} \binom{1024}{2i} \cdot a^{2i} - \sum_{i = 0}^{511} \binom{1024}{2i + 1} \cdot a^{2i + 1} = (2 - 1)^{1024} = 1^{1024} = 1$. 
+    \\
+    \\ Разность мы получили, так как в правой сумме -1 возводился в нечетную степень.
+    \\
+    \\ Получаем, что $\sum_{i=0}^{512} \left( 2^{2i} \cdot \binom{1024}{2i} \right) \ = \ \sum_{i=0}^{511} \left( 2^{2i + 1} \cdot \binom{1024}{2i + 1} \right) + 1 \ \Rightarrow \ $
+    \\
+    \\ $\sum_{i=0}^{512} \left( 2^{2i} \cdot \binom{1024}{2i} \right) \ > \ \sum_{i=0}^{511} \left( 2^{2i + 1} \cdot \binom{1024}{2i + 1} \right)$.
+    \\
+    \\ \textbf{Ответ: } первое число больше на 1.
+\end{document}

@@ -1,0 +1,301 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,euscript,amssymb,amsfonts}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage[usenames]{color}
+%\usepackage{graphicx}
+%\usepackage{wasysym}
+%\usepackage{phoenician}
+%\usepackage{minipage}
+\newcommand{\circenumi}{\renewcommand{\theenumi}{\arabic{enumi}$^\circ$}}
+\newcommand{\plainenumi}{\renewcommand{\theenumi}{\arabic{enumi}}}
+\newcommand{\starenumi}{\renewcommand{\theenumi}{\arabic{enumi}$^\star$}}
+\newcommand{\circenumii}{\renewcommand{\theenumii}{\arabic{enumi}.\arabic{enumii}$^\circ$}}
+\newcommand{\plainenumii}{\renewcommand{\theenumii}{\arabic{enumi}.\arabic{enumii}}}
+\newcommand{\starenumii}{\renewcommand{\theenumii}{\arabic{enumi}.\arabic{enumii}$^\star$}}
+%\renewcommand{\labelenumii}{\theenumii.+}
+%\renewcommand{\labelenumi}{\theenumi.=}
+\makeatletter
+\renewcommand{\p@enumii}{}%\theenumii.}
+\renewcommand{\p@enumi}{}%\theenumi.5.}
+\makeatother
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\phi}{\varphi}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Mat}{Mat}
+\renewcommand{\Im}{\mathop{\rm Im}}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\id}{id}
+\usepackage{graphicx}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage{gauss}
+\usepackage{tikz}
+
+\newcommand*{\permcomb}[4][0mu]{{\mkern#1#2_{#3}^{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand{\BAR}{%
+  \hspace{-\arraycolsep}%
+  \strut\vrule % the `\vrule` is as high and deep as a strut
+  \hspace{-\arraycolsep}%
+}
+
+%\setlength{\leftmargini}{-10pt}
+\setlength{\rightmargin}{-20pt}
+%\setlength{\leftmarginii}{5pt}
+\setlength{\itemsep}{0pt}
+
+\textheight = 23,5cm
+\textwidth = 16,5cm
+\hoffset = -2cm
+\voffset = -2cm
+
+\DeclareMathOperator*\lowlim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\pagestyle{empty}
+
+\begin{document}
+{\center \bf \large ДЗ по математическому анализу 8 Смирнов Тимофей 236 ПМИ}
+    \\ \\ \\
+    {\large \bf Задача 8.11} Для дифференцируемых функций $y=y(x)$, заданных неявно, вычислите $y^{'}(x_0)$
+    \\
+    \\ а) $x^2 + y^2 - 6x + 10y -2 = 0, y > -5, x_0=0$\\
+    \\
+    \\ \textbf{Решение: } 
+    \par $(x^2 + y^2 - 6x + 10y -2)' = 0 \ \Longleftrightarrow \ 2x + 2yy' - 6 + 10y' = 0$
+    \\
+    \par $y' = \frac{-6 - 2x}{2y + 10} \ \Rightarrow  y'(x_0) = -\frac{6}{2y + 10}$
+    \\
+    \par Найдем $y(0)$, подставив $x = 0$ в изначальную функцию. Имеем: 
+    \[
+      0 + y^2 - 6 \cdot 0 + 10y - 2 = 0
+    \]
+    \[
+      y^2 + 10y - 2 = 0 
+    \]
+    \par $D = 108 \Rightarrow y_1 = -5 + 3\sqrt{3}, \ \ y_2 = -5 - 3\sqrt{3}$
+    \\
+    \par По условию $y > -5 \ \Rightarrow \ $ будем подставлять только $y = -5 + 3\sqrt{3}$
+    \\
+    \par $y'(x_0) = \frac{-6}{2y(x_0) + 10} = \frac{-6}{-10 + 6\sqrt{3} + 10} = -\frac{1}{\sqrt{3}}$
+    \\
+    \\ \textbf{Ответ: } $-\frac{1}{\sqrt{3}}$
+    \\
+    \\
+    \\ б) $e^y + xy = e, y > 0, x_0 = 0$\\
+    \\
+    \\
+    \\ \textbf{Решение: } 
+    \par $(e^y + xy)' = e' \ \Longleftrightarrow \ e^yy' + y + xy' = 0$
+    \\
+    \par $y' = \frac{-y}{e^y + x}$
+    \\
+    \par Найдем $y(0)$, подставив $x = 0$ в изначальную функцию. Имеем:
+    \[
+      e^y = e \ \Rightarrow \ y = 1  
+    \]
+    \\
+    \par Подставим это в $y'$: $\ \ \ y'(x_0) = \frac{-y(x_0)}{e^{y(x_0)} + x_0} = \frac{-1}{1 + 0} = -1$
+    \\
+    \\ \textbf{Ответ: } $y'(x_0) = -1$
+    \\
+    \\ \\ \\
+    {\large \bf Задача 8.12} Найдите $y^{'}(x)$ для функции $y = y(x)$, заданной параметрически:
+    \\
+    \\ а) $x = \sin^2{t}, y = \cos^2{t}, 0 < t < \frac{\pi}{2}$\\
+    \\ \textbf{Решение: }
+    \par Производная параметрически заданной функции $y_x$ равна $\frac{y'}{x'}$.
+    \\
+    \par Следовательно $y_x' = \frac{(\cos^2{t})'}{(\sin^2 t)'} = \frac{-2\cos{t}\sin{t}}{2\sin{t}\cos{t}} = -1$
+    \\
+    \\ \textbf{Ответ: } -1
+    \\ \\ \\
+    \\ б) $x = e^{-t}, y = t^3, -\infty < t < +\infty$\\
+    \\ \textbf{Решение: }
+    \par Производная параметрически заданной функции $y_x$ равна $\frac{y'}{x'}$.
+    \\
+    \par Следовательно $y_x' = \frac{(t^3)'}{(e^{-t})'} = \frac{3t^2}{e^{-t} \cdot (-1)} = -\frac{3t^2}{e^{-t}}$
+    \\
+    \\ \textbf{Ответ: } $y_x' = -\frac{3t^2}{e^{-t}}$
+    \\ \\ \\
+    {\large \bf Задача 8.13} Найдите производную обратной к функции $y = e^x + x$, в точке $y_0 = 1$.
+    \\ \textbf{Решение: }
+    \par $y_0 = e^{x_0} + x_0 \ \Rightarrow \ $ имеем уравнение $e^{x_0} + x_0 = 1 \ \Longleftrightarrow \ e^{x_0} = e^{\ln{1 - x_0}} \ \Longleftrightarrow $ \par $x_0 = \ln{1 - x_0} \ \Rightarrow \ x_0 = 0$
+    \\
+    \par $(y^{-1})' = \frac{1}{y'} = \frac{1}{e^{x} + 1}$ Чтобы найти эту производную в точке $y_0$ достаточно подставить в нее найденный ранее $x_0$:
+    \\
+    \\ \textbf{Ответ: } $\frac{1}{e^{x_0} + x_0} = \frac{1}{1 + 0} = 1$
+    \\ \\ \\
+    {\large \bf Задача 8.14} Для функции $y(x)$, заданной в полярной системе координат уравнением $r(\phi) = e^{\phi}, -\frac{\pi}{6} < \phi < \frac{\pi}{6}$, вычислите $y^{'}(x_0)$ в точке $x_0$ = 1.
+    \\
+    \\ \textbf{Решение: }
+    \begin{equation*}
+      \begin{cases}
+          x = r(\varphi) \cdot \cos{\varphi} \\
+          y = r(\varphi) \cdot \sin{\varphi} \\
+      \end{cases}
+    \end{equation*}
+    \begin{equation*}
+      \begin{cases}
+          x = e^{\varphi} \cdot \cos{\varphi} \\
+          y = e^{\varphi} \cdot \sin{\varphi} \\
+      \end{cases}
+    \end{equation*}
+    \\
+    \\ По сути это просто параметрическая функция, от которой нужно взять производную.
+    \[
+      y_x'(x_0) = \frac{y_{\varphi}'(\varphi)}{x_{\varphi}'(\varphi)} = \frac{(e^{\varphi} \cdot \cos{\varphi})'}{(e^{\varphi} \cdot \sin{\varphi})'} = \frac{e^{\varphi} \cdot \cos{\varphi} - e^{\varphi} \cdot \sin{\varphi}}{e^{\varphi} \cdot \sin{\varphi} + e^{\varphi} \cdot \cos{\varphi}} = \frac{\cos{\varphi} - \sin{\varphi}}{\sin{\varphi} + \cos{\varphi}}
+    \]
+    \\ $x_0 = 1 \ \Rightarrow \ e^{\varphi} \cdot \cos{\varphi} = 1 \ \Rightarrow \ \varphi = 0$, так как $-\frac{\pi}{6} < \phi < \frac{\pi}{6}$ по условию.
+    \\
+    \[
+      y_x'(0) = \frac{\cos{0} - \sin{0}}{\sin{0} + \cos{0}} = \frac{1}{1} = 1
+    \]
+    \\ \textbf{Ответ: } 1
+    \\ \\ \\
+    {\large \bf Задача 8.15} Привидите пример функции, непрерывной на отрезке $[a; b]$, имеющей производную в каждой точке интервала $(a; b)$, но не имеющей производную в точке $a$.
+    \\
+    \\ \textbf{Решение: } $f(x) = \sqrt{\ln{(x - a + 1)}}$ такая функция, она определена на луче $[a; +\infty)$. Проверим, что у нее нет производной в точке $a$:
+    \\
+    \\ $f'(x) = \frac{1}{2\sqrt{\ln{(x - a + 1)}}(x - a + 1)}$ В точке $a$ производная не определена, так как имеет 0 в знаминателе.
+    \\
+    \\ \textbf{Ответ: } $f(x) = \sqrt{\ln{(x - a + 1)}}$
+    \\ \\ \\
+    {\large \bf Задача 8.16} Найдите вторую производную функции:
+    \\
+    \par а) $f(x) = x\sqrt{1 + x^2}$\\
+    \\
+    \\ \textbf{Решение: } 
+    \par $f'(x) = \sqrt{1 + x^2} + \frac{2x^2}{2\sqrt{1 + x^2}}$
+    \par $f''(x) = (f'(x))' = \frac{2x}{2\sqrt{1 + x^2}} + \frac{4x \cdot 2\sqrt{1 + x^2} - 2x^2 \cdot \frac{4x}{2\sqrt{1 + x^2}}}{4(1 + x^2)} = \frac{4x\sqrt{1 + x^2}}{4(1 + x^2)} + \frac{8x\sqrt{1 + x^2} - \frac{8x^3}{2\sqrt{1 + x^2}}}{4(1 + x^2)} = \frac{4x\sqrt{1 + x^2} + 8x\sqrt{1 + x^2} - \frac{8x^3}{2\sqrt{1 + x^2}}}{4(1 + x^2)} =\\ 
+    = \frac{8x(1 + x^2) + 16x(1 + x^2) - 8x^3}{8(1 + x^2)\cdot\sqrt{1 + x^2}} = \frac{24x(1 + x^2) - 8x^3}{8(1 + x^2)\cdot\sqrt{1 + x^2}}$
+    \\
+    \\ \textbf{Ответ: } $f''(x) = \frac{3x(1 + x^2) - x^3}{(1 + x^2)\cdot\sqrt{1 + x^2}}$
+    \\ \\ \\
+    \par б) $f(x) = (1 + x^2)\arctg{x}$\\
+    \\ \textbf{Решение: }
+    \par $f'(x) = 2x \cdot \arctg{x} + \frac{(1 + x^2)}{1 + x^2} = 2x \cdot \arctg{x} + 1$
+    \\
+    \par $f''(x) = (f'(x))' = 2\arctg{x} + \frac{2x}{1 + x^2}$
+    \\
+    \\ \textbf{Ответ: } $f''(x) = 2\arctg{x} + \frac{2x}{1 + x^2}$
+    \\ \\ \\
+    \par в) $f(x) = x[\sin{(\ln{x})} + \cos{(\ln{x})}]$\\
+    \\ \textbf{Решение: }
+    \par $f'(x) = 1 \cdot [\sin{(\ln{x})} + \cos{(\ln{x})}] + x[\frac{\cos{\ln{x}}}{x} - \frac{\sin{\ln{x}}}{x}] = 
+    \\ 
+    $\par $= [\sin{(\ln{x})} + \cos{(\ln{x})}] + [\cos{\ln{x}} - \sin{\ln{x}}] = 2\cos{(\ln{x})}$
+    \\
+    \par $f''(x) = (f'(x))' = 2(\cos{(\ln{x})})' = -\frac{2\sin{(\ln{x})}}{x}$
+    \\
+    \\ \textbf{Ответ: } $f''(x) = 2(\cos{(\ln{x})})' = -\frac{2\sin{(\ln{x})}}{x}$
+    \\ \\
+    \\
+    {\large \bf Задача 8.17} Найдите производные порядка $n$ функции $f$:
+    \\
+    \par а) $f(x) = \frac{1 + 2x}{3x - 1}$\\
+    \\
+    \\ \textbf{Решение: } 
+    \par $f'(x) = \left(\frac{1 + 2x}{3x - 1}\right)' = \frac{2(3x - 1) - 3(1 + 2x)}{(3x - 1)^2} = -5(3x - 1)^{-2}$
+    \\
+    \par $f''(x) = -5 \cdot (-2) \cdot (3x - 1)^{-3} \cdot 3$
+    \\
+    \par Предположим, что $f^{(n)}(x) = 5 \cdot (-1)^{n} \cdot n! \cdot 3^{n - 1}(3x - 1)^{-n - 1}$
+    \\
+    \par Докажем это по индукции: 
+    \\
+    \par \ \ \ \ \ База у нас верна: $f'(x) = -5(3x - 1)^{-2} = 5 \cdot (-1) \cdot 3^0 \cdot (3x - 1)^{-1 - 1}$
+    \\
+    \par \ \ \ \ \ Шаг: пусть для $n - 1$ верно, тогда $f^{(n)}(x) = (f^{(n - 1)}(x))' = 
+    $\par \ \ \ \ \ $ = (5 \cdot (-1)^{n - 1} \cdot (n - 1)! \cdot 3^{n - 2}(3x - 1)^{-n})' =
+    $\par \ \ \ \ \ $ = 5 \cdot (-1)^{n - 1} \cdot (n - 1)! \cdot 3^{n - 2}(3x - 1)^{-n} \cdot 3 \cdot \frac{1}{3x - 1} \cdot (-n) = 5 \cdot (-1)^{n} \cdot n! \cdot 3^{n - 1}(3x - 1)^{-n - 1}$
+    \\
+    \\
+    \\
+    \par б) $f(x) = (x^2 + x + 1)e^{-3x}$\\
+    \\
+    \\ \textbf{Решение: }
+    \par По правилу Лейбцига $f^{(n)}(x) = \sum_{k=0}^{n} C_{n}^{k} (x^2 + x + 1)^{(k)} \cdot (e^{-3x})^{(n - k)}$
+    \\
+    \par $(x^2 + x + 1)' = 2x + 1$
+    \par $(x^2 + x + 1)'' = 2$
+    \par $(x^2 + x + 1)''' = 0 \ \Rightarrow \ $  любая производная данной функции порядка больле 2 равна 0. Следовательно все слагаемые в правиле лейбцига с k > 2 будут равны 0.
+    \\
+    \\ Получаем: 
+    \par $f^{(n)}(x) = 1 \cdot (x^2 + x + 1) \cdot (e^{-3x})^{(n)} + n \cdot (x^2 + x + 1)' \cdot (e^{-3x})^{(n - 1)} + C_n^{2} \cdot (x^2 + x + 1)''' \cdot (e^{-3x})^{(n - 2)} = $
+    \par $ = (x^2 + x + 1) \cdot (e^{-3x})^{(n)} + n \cdot (2x + 1) \cdot (e^{-3x})^{(n - 1)} + n \cdot (n - 1) \cdot (e^{-3x})^{(n - 2)} = $
+    \par $ = (x^2 + x + 1) \cdot (e^{-3x})\cdot(-3)^{n} + n \cdot (2x + 1) \cdot (e^{-3x})\cdot(-3)^{n - 1} + n \cdot (n - 1) \cdot (e^{-3x})\cdot(-3)^{n - 2}$
+    \\
+    \\
+    \\ \textbf{Ответ: } $f^{(n)}(x) = (e^{-3x}) \cdot ((x^2 + x + 1) \cdot(-3)^{n} + n \cdot (2x + 1) \cdot(-3)^{n - 1} + n \cdot (n - 1) \cdot(-3)^{n - 2})$
+    \\
+    \par в) $f(x) = \sin{x}\cdot \cos^2{2x} = \frac{\sin{x}\cdot (\cos{4x} - 1)}{2}$\\\\
+    \\
+    \\ \textbf{Решение: } воспользуемся формулой Лейбница:
+    \\
+    \\ $f^{(n)}(x) = \sum_{k=0}^{n} C_n^k (\sin{x})^{(k)} (\cos{4x})^{(n - k)}$
+    \\
+    \\ На семинаре мы доказывали, что $(\sin{ax})^{(n)} = a^{n} \cdot \sin(ax + \frac{\pi n}{2})$ и что $(\cos{ax})^{(n)} = a^{n} \cdot \cos{\left(ax + \frac{\pi n}{2}\right)}$
+    \\
+    \\ Получаем: $f^{(n)}(x) = \frac{1}{2} \cdot \sum_{k=0}^{n} C_n^k (\sin{x})^{(k)} (\cos{4x} - 1)^{(n - k)} = f^{(n)}(x) = \frac{1}{2} \cdot \sum_{k=0}^{n} C_n^k (\sin{\left(x + \frac{\pi k}{2}\right)}) \cdot (4^{n - k}) \cdot \cos{\left(4x + \frac{\pi (n - k)}{2}\right)}$
+    \\
+    \\ \textbf{Ответ: } $f^{(n)}(x) = \frac{1}{2} \cdot \sum_{k=0}^{n} C_n^k \sin{\left(x + \frac{\pi k}{2}\right)} \cdot (4^{n - k}) \cdot \cos{\left(4x + \frac{\pi (n - k)}{2}\right)}$
+    \\
+    \\
+    {\large \bf Задача 8.18} Применяя правило Лопиталя, вычислите пределы:
+    \\
+    \par а) $\lim_{x\to 0} \limits \frac{\arcsin{2x} - 2\arcsin{x}}{x^3}$\\
+    \\
+    \\ \textbf{Решение: }
+    \\
+    \\ $\lim_{x\to 0} \limits \frac{\arcsin{2x} - 2\arcsin{x}}{x^3} = \lim_{x\to 0} \limits \frac{0 - 0}{0} = \frac{0}{0}$ 
+    \\ Мы имеем неопределенность $\frac{0}{0}$, следовательно, можно воспользоваться правилом Лапиталя:
+    \\
+    \\ $\lim_{x\to 0} \limits \frac{\arcsin{2x} - 2\arcsin{x}}{x^3} = \lim_{x\to 0} \limits \frac{(\arcsin{2x} - 2\arcsin{x})'}{(x^3)'} = \lim_{x\to 0} \limits \frac{\frac{2}{\sqrt{1 - 4x^2}} - \frac{2}{\sqrt{1 - x^2}}}{3x^2}$
+    \\
+    \\ Все равно получаем неопределенность вида $\frac{0}{0}$, поэтому давайте-ка снова используем Лопиталя:
+    \\
+    \\ $\lim_{x\to 0} \limits \frac{(\frac{2}{\sqrt{1 - 4x^2}})' - (\frac{2}{\sqrt{1 - x^2}})'}{(3x^2)'} = \lim_{x\to 0} \limits \frac{8x(1 - 4x^2)^{-\frac{3}{2}} - 2x(1 - x^2)^{-\frac{3}{2}}}{6x} = \lim_{x\to 0} \limits \frac{8(1 - 4x^2)^{-\frac{3}{2}}}{6} - \lim_{x\to 0} \limits \frac{2(1 - x^2)^{-\frac{3}{2}}}{6} = \frac{4}{3} - \frac{1}{3} = 1$
+    \\
+    \\ \textbf{Ответ: } 1
+    \\
+    \\
+    \par б) $\lim_{x\to 1} \limits \frac{x^x - x}{1 - x + \ln{x}}$\\
+    \\
+    \\ \textbf{Решение: }
+    \\
+    \\  $\lim_{x\to 1} \limits \frac{x^x - x}{1 - x + \ln{x}} = \lim_{x\to 1} \limits \frac{1 - 1}{1 - 1 + 0} = \frac{0}{0}$.
+    \\ 
+    \\ Мы имеем неопределенность вида $\frac{0}{0}$, следовательно можено использовать правило Лопиталя:
+    \\
+    \\ $\lim_{x\to 1} \limits \frac{x^x - x}{1 - x + \ln{x}} = \lim_{x\to 1} \limits \frac{(e^{x\ln{x}} - x)'}{(1 - x + \ln{x})'} = \lim_{x\to 1} \limits \frac{e^{x\ln{x}} \cdot (\ln{x} + 1) - 1}{-1 + \frac{1}{x}} = \frac{1 - 1}{-1 + 1} = \frac{0}{0}$ 
+    \\ 
+    \\ Снова используем правило Лопиталя:
+    \\
+    \\  $\lim_{x\to 1} \limits \frac{e^{x\ln{x}} \cdot (\ln{x} + 1) - 1}{-1 + \frac{1}{x}} = \lim_{x\to 1} \limits \frac{(x \cdot e^{x\ln{x}} \cdot (\ln{x} + 1) - x)'}{(1 - x)'} = \lim_{x\to 1} \limits \frac{(x \cdot e^{x\ln{x}} \cdot (\ln{x} + 1) + e^{x\ln{x}})\cdot (\ln{x} + 1) + x \cdot e^{x\ln{x}} \cdot \frac{1}{x} - 1}{-1} = 
+    \\
+    \\ = \lim_{x\to 1} \limits \frac{e^{x\ln{x}} \cdot (\ln{x} + 1) +  x \cdot e^{x\ln{x}} \cdot (\ln{x} + 1)^2 + \cdot e^{x\ln{x}} - 1}{-1} = \lim_{x\to 1} \limits -e^{x\ln{x}} \cdot ((\ln{x} + 1) +   x \cdot (\ln{x} + 1)^2 + 1) + 1 = 
+    \\
+    \\ = \lim_{x\to 1} \limits (-1 \cdot (1 + 1 + 1) + 1) = -2$
+    \\
+    \\
+    \par в) $\lim_{x\to 0} \limits \left(\frac{(1 + x)^{1/x}}{e}\right)^{1/x}$\\
+\end{document}

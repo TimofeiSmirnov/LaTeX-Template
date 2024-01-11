@@ -1,0 +1,156 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+
+\begin{document}
+    {\center \bf \large ДЗ по математическому анализу 9 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{Задача 9.12} Вычислите пределы:
+    \\ а). \textbf{Решение: }
+    \par $\lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \ ?$
+    \\
+    \par $\bullet$ При $x \to 0, e^x = 1 + x + \frac{x^2}{2} + o(x^2)$
+    \\
+    \par $\lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \lim_{x \to 0} \frac{1 + x + \frac{x^2}{2} + o(x^2) - 1 - x}{x^2} = \lim_{x \to 0} \frac{\frac{x^2}{2} + o(x^2)}{x^2} = \lim_{x \to 0} \frac{\frac{1}{2} + o(1)}{1} = \frac{1}{2}$
+    \\
+    \\ б).  \textbf{Решение: }
+    \par $\lim_{x \to 0} \frac{\sqrt{\cos{x}} - \sqrt[4]{e^{-x^2}}}{x^4} = \ ?$
+    \\
+    \par $\bullet$ $\cos{x} = 1 - \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)$
+    \\
+    \par $\bullet$ $e^{-\frac{x^2}{4}} = 1 - \frac{x^2}{4} + \frac{x^4}{32} + o(x^4)$
+    \\
+    \par $\bullet$ $\sqrt{\cos{x}} = \left(1 - \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right)^{\frac{1}{2}} = $\par$ = 1 + \frac{\left(- \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right)}{2} - \frac{\left(- \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right)^2}{8} + o\left(\left(- \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right)^2\right) = $ \par $ = 1 - \frac{x^2}{4} + \frac{x^4}{48} + o(x^4) - \frac{x^4}{32} + o(x^4) + o(x^4) = 1 - \frac{x^2}{2} + \frac{x^4}{48} - \frac{x^4}{32} + o(x^4)$
+    \\
+    \par $\lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \lim_{x \to 0} \frac{1 - \frac{x^2}{4} + \frac{x^4}{48} - \frac{x^4}{32} + o(x^4) - \left(1 - \frac{x^2}{4} + \frac{x^4}{32} + o(x^4)\right)}{x^4} = $\par$= \lim_{x \to 0} \frac{\frac{x^4}{48} - \frac{x^4}{16} + o(x^4)}{x^4} = -\frac{1}{24}$
+    \\
+    \\ в).   \textbf{Решение: }
+    \par $\lim_{x \to 0} \frac{\cos{(\sin{x})} - \sqrt{1 - x^2 + x^4}}{x^4} = \ ?$
+    \\
+    \par $\bullet$ $\sin{x} = x - \frac{x^3}{6} + \frac{x^5}{120} + o(x^5)$
+    \\
+    \par $\bullet$ $\cos{\left(x - \frac{x^3}{6} + \frac{x^5}{120} + o(x^5)\right)} = 1 - \frac{\left(x - \frac{x^3}{6} + \frac{x^5}{120} + o(x^5)\right)^2}{2} + \frac{\left(x - \frac{x^3}{6} + \frac{x^5}{120} + o(x^5)\right)^4}{24} + o(x^4) = $ \par $ = 1 - \frac{x^2 - \frac{x^4}{6} - \frac{x^4}{6} + o(x^4)}{2} + \frac{x^4}{24} + o(x^4) = 1 - \frac{x^2}{2} + \frac{x^4}{6} + \frac{x^4}{24} + o(x^4)$
+    \\
+    \\
+    \par $\bullet$ $\sqrt{1 - x^2 + x4} = (1 - x^2 + x^4)^{\frac{1}{2}} = 1 + \frac{(- x^2 + x^4)}{2} - \frac{(- x^2 + x^4)^2}{8} + o(x^4) = 1 - \frac{x^2}{2} + \frac{x^4}{2} - \frac{x^4}{8} + o(x^4)$
+    \\
+    \par $\lim_{x \to 0} \frac{\cos{(\sin{x})} - \sqrt{1 - x^2 + x^4}}{x^4} = \lim_{x \to 0} \frac{1 - \frac{x^2}{2} + \frac{x^4}{6} + \frac{x^4}{24} + o(x^4) - \left(1 - \frac{x^2}{2} + \frac{x^4}{2} - \frac{x^4}{8} + o(x^4)\right)}{x^4} = $\par$ = \lim_{x \to 0} \frac{1 - \frac{x^2}{2} + \frac{x^4}{6} + \frac{x^4}{24} + o(x^4) - 1 + \frac{x^2}{2} - \frac{x^4}{2} + \frac{x^4}{8} - o(x^4)}{x^4} = \lim_{x \to 0} \frac{-\frac{x^4}{3} + \frac{x^4}{6} + o(x^4)}{x^4} = -\frac{1}{6}$ 
+    \\
+    \\
+    \\ г).   \textbf{Решение: }
+    \par $\lim_{x \to 0} \frac{\ln{(\frac{\sin{x}}{x}) +e^{\frac{x^2}{6}} - 1}}{\ln{(\cos{x})} + \sqrt{1 + x^2} - 1}$
+    \\
+    \par $\bullet$ $\sin{x} = x - \frac{x^3}{6} + \frac{x^5}{120} + o(x^5)$
+    \\
+    \par $\bullet$ $\cos{x} = 1 - \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)$
+    \\
+    \par $\bullet$ $e^{\frac{x^2}{6}} = 1 + \frac{x^2}{6} + \frac{x^4}{72} + o(x^4)$
+    \\
+    \par $\bullet$ $\ln{\left(\frac{\sin{x}}{x}\right)} = \ln{\left(1 - \frac{x^2}{6} + \frac{x^4}{120} + o(x^4)\right)} = - \frac{x^2}{6} + \frac{x^4}{120} + o(x^4) - \frac{\left(- \frac{x^2}{6} + \frac{x^4}{120} + o(x^4)\right)^2}{2} + o(x^4) = $\par$ = -\frac{x^2}{6} + \frac{x^4}{120} - \frac{x^4}{72} + o(x^4)$
+    \\
+    \par $\bullet$ $\ln{(\cos{x})} = \ln{\left(1 - \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right)} = - \frac{x^2}{2} + \frac{x^4}{24} + o(x^4) - \frac{\left(- \frac{x^2}{2} + \frac{x^4}{24} + o(x^4)\right)^2}{2} + o(x^4) = $\par$ = - \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^4}{8} + o(x^4)$
+    \\
+    \par $\bullet$ $\sqrt{1 + x^2} = (1 + x^2)^{\frac{1}{2}} = 1 + \frac{x^2}{2} - \frac{x^4}{8} + o(x^4)$
+    \\
+    \par $\lim_{x \to 0} \frac{\ln{(\frac{\sin{x}}{x}) +e^{\frac{x^2}{6}} - 1}}{\ln{(\cos{x})} + \sqrt{1 + x^2} - 1} = \lim_{x \to 0} \frac{-\frac{x^2}{6} + \frac{x^4}{120} - \frac{x^4}{72} + o(x^4) + 1 + \frac{x^2}{6} + \frac{x^4}{72} + o(x^4) - 1}{- \frac{x^2}{2} + \frac{x^4}{24} - \frac{x^4}{8} + o(x^4) + 1 + \frac{x^2}{2} - \frac{x^4}{8} + o(x^4) - 1} = $\\ \par$ = \lim_{x \to 0} \frac{\frac{x^4}{120} + o(x^4)}{\frac{x^4}{24} - \frac{x^4}{8} - \frac{x^4}{8} + o(x^4)} = \lim_{x \to 0} \frac{\frac{x^4}{120} + o(x^4)}{-\frac{5x^4}{24} + o(x^4)} = \frac{\frac{1}{120}}{-\frac{5}{24}} = \frac{\frac{3}{360}}{-\frac{75}{360}} = -\frac{3}{75} = -\frac{1}{25}$
+    \\
+    \\
+    \\
+    \\
+    \\
+    \\ \textbf{Задание 9.13} Вычислите с помощью формулы Тейлора число e с точностью до $10^{-7}$.
+    \\
+    \\ \textbf{Решение: } 
+    \\ Выпишем первые 11 членов ряд Тейлора для экспоненты: 
+    \par $f(x) = e^{x} = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24} + \frac{x^5}{120} + \frac{x^6}{720} + \frac{x^7}{5040} + \frac{x^8}{40320} + \frac{x^9}{362880} + \frac{x^{10}}{3628800}$
+    \\
+    \\ Подставим туда 1 вместо $x$: 
+    \par $f(1) = 1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120} + \frac{1}{720} + \frac{1}{5040} + \frac{1}{40320} + \frac{1}{362880} + \frac{1}{3628800} = \frac{9864101}{3628800} = 2.7182818$
+\end{document}

@@ -1,0 +1,143 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по дискретной математике 9 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{ДЗ9.1} Рассмотрим бесконечные последовательности из 0, 1 и 2, в которых никакая цифра не встречается два раза подряд. Верно ли, что мощность множества таких последовательностей имеет мощность континуум?
+    \\
+    \\ \textbf{Решение: } Чтобы доказать, что множество имеет мощность континуум, то необходимо построить биекцию между этим множеством континуумом.
+    \\
+    \\ Пусть А - множество бесконечных последовательностей из 0, 1 и 2 без повторяющихся символов. 
+    \\
+    \par 1). Построим инъективную функцию $f: \{0, 1\}^{\mathbb{N}} \to A$. В ней после каждого символа последовательности нулей и единиц мы допишем двойку, если две последовательости 0 и 1 не были равны, то и послучившиеся последовательности не будут равны. Получившиеся \\ последовательности будут принадлежать множеству А. Получаем, что функция $f - $ инъекция.
+    \\
+    \par 2). Построим инъективную функцию $f: A \to \{0, 1\}^{\mathbb{N}}$. В ней каждую 2 можно заменить на 111, каждый 0 на 10 и каждую единицу на 10. Это будет взаимооднозначным соответствием, в таком случае все строки из А войдут в множество $\{0, 1\}^{\mathbb{N}}$, это будет инъекцией.
+    \\
+    \\ Мы доказали, что мы можем построить инъекцию из $A$ в $\{0, 1\}^{\mathbb{N}}$ и наоборотм. То есть по теореме Бернштейна между этими множествами существует биекция. То есть А имеет мощность континуума. ЧТД.
+    \\
+    \\ \textbf{ДЗ9.2} Рассмотрим множество пар различных действительных чисел, то есть 
+    \\ \[D = \{(x, y): x \neq y, x,y \in \mathbb{R} \}\]
+    \\ Является ли множество D континуальным?
+    \\
+    \\ \textbf{Решение: } На лекции мы доказывали, что множество действительных чисел равномощно континууму. Так же на лекции мы доказали, что $|\{0, 1\}^{\mathbb{N}} \times \{0, 1\}^{\mathbb{N}}| = |\{0, 1\}^{\mathbb{N}}|$. 
+    \\ 
+    \\ Рассмотрим множество А - подмножество множества $D$. Пусть $A = \{(x, 1): x \in (\mathbb{R} \setminus 1) \}$. Это множество очевидно равно по мощности множеству действительных чисел (мы просто удалили один элемент из бесконечного множества). То есть А континуально.
+    \\ 
+    \\ $A \subset D$, следовательно, так как множество А имеет мощность континуум, то мы имеем инъекцтивную функцию $f: \{0, 1\}^{\mathbb{N}} \to D$. Аналогично D является подмножеством $\mathbb{R} \times \mathbb{R}$ (что тоже континуум), то есть мы так же имеем инъекцтивную функцию $g: D \to \{0, 1\}^{\mathbb{N}}$.
+    \\
+    \\ Мы построили инъекцию в обе стороны, следовательно, по теореме Бернштейна, мы имеем биекцию между множествами $D$ и $\{0, 1\}^{\mathbb{N}}$. То есть D имеет мощность континуум.
+    \\
+    \\ \textbf{ДЗ9.3} Является ли множество всех тотальных функций $\mathbb{R} \to \mathbb{R}$ континуальным?
+    \\
+    \\ \textbf{Решение: } на лекции мы доказали, что множество подмножеств некоторого множетсва по мощности больше этого множества.
+    \\
+    \\ Из этого мы знаем, что $|\mathbb{R}| < |\{0, 1\}^{\mathbb{R}}|$, так как множество подмножеств действительных чисел можно представить в виде $|\{0, 1\}^{\mathbb{R}}|$
+    \\
+    \\ $|\{0, 1\}^{\mathbb{R}}| < |\mathbb{R}^{\mathbb{R}}|$, так как тут просто на каждой позиции может стоять не 0 или 1, а любое действительное число.
+    \\
+    \\ Так же мы знаем, что $|\{0, 1\}^{\mathbb{N}}| = |\mathbb{R}|$, следовательно, получаем неравенство: 
+    \[|\{0, 1\}^{\mathbb{N}}| = |\mathbb{R}| < |\{0, 1\}^{\mathbb{R}}| < |\mathbb{R}^{\mathbb{R}}|\]
+    \\ Из этого следует, что $|\{0, 1\}^{\mathbb{N}}| < |\mathbb{R}^{\mathbb{R}}|$. То есть тотальных функций из $\mathbb{R}$ в $\mathbb{R}$ больше, чем континуум.
+    \\
+    \\ \textbf{ДЗ9.4} Функция периодическая, если для некоторого числа $T > 0$ (периода) и любого $x$ выполняется
+    $f(x+T) = f(x)$. Счётно ли множество множество периодических функций $f: \mathbb{Q} \to \mathbb{Q}$? Период считайте
+    рациональным.
+    \\
+    \\ \textbf{Решение: } Заметим, что для подсчета количества периодических функций с периодом $T$ нам достаточно посчитать количество функций $f : [0, T] \to \mathbb{Q}$, так как их значения будут повторяться с периодом $T$.
+    \\
+    \\ Из лекции мы знаем, что количество действительных чисел на отрезке $[0, T]$ равно континууму. То есть $|[0, T]| = |\mathbb{Q}|$. То есть для каждого Т нам нужно посчитать количество функций $f: \mathbb{Q} \to \mathbb{Q}$.
+    \\
+    \\ На лекции мы доказали, что $\mathbb{N}^{\mathbb{N}}$ несчетно, но $|\mathbb{N}| = |\mathbb{Q}| \ \Rightarrow \ \mathbb{Q}^{\mathbb{Q}}$ тоже несчетно.
+    \\
+    \\ Количество функций $f: \mathbb{Q} \to \mathbb{Q}$ равно $\mathbb{Q}^{\mathbb{Q}}$ (вообще это количество тотальныъ функций, но, если мы добавим в $\mathbb{Q}$ еще один элемент, то ничего не изменится, так что это количество всех функций). Следовательно, уже для какого-то одного Т мы имеем несчетное (континуальное) множество таких функций, а у нас счетное количество различных Т.
+    \\
+    \\ Получаем, что таких функций у нас несчетное количетсво.
+    \end{document}

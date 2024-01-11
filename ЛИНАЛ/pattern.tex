@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath,euscript,amssymb,amsfonts}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage[usenames]{color}
+%\usepackage{graphicx}
+%\usepackage{wasysym}
+%\usepackage{phoenician}
+%\usepackage{minipage}
+\newcommand{\circenumi}{\renewcommand{\theenumi}{\arabic{enumi}$^\circ$}}
+\newcommand{\plainenumi}{\renewcommand{\theenumi}{\arabic{enumi}}}
+\newcommand{\starenumi}{\renewcommand{\theenumi}{\arabic{enumi}$^\star$}}
+\newcommand{\circenumii}{\renewcommand{\theenumii}{\arabic{enumi}.\arabic{enumii}$^\circ$}}
+\newcommand{\plainenumii}{\renewcommand{\theenumii}{\arabic{enumi}.\arabic{enumii}}}
+\newcommand{\starenumii}{\renewcommand{\theenumii}{\arabic{enumi}.\arabic{enumii}$^\star$}}
+%\renewcommand{\labelenumii}{\theenumii.+}
+%\renewcommand{\labelenumi}{\theenumi.=}
+\makeatletter
+\renewcommand{\p@enumii}{\textnumero}%\theenumii.}
+\renewcommand{\p@enumi}{\textnumero}%\theenumi.5.}
+\makeatother
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\phi}{\varphi}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\VV}{\mathbb{V}}
+\newcommand{\FF}{\mathbb{F}}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Mat}{Mat}
+\renewcommand{\Im}{\mathop{\rm Im}}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\id}{id}
+\usepackage{graphicx}
+
+\newenvironment{multienum}[1]
+{
+\begin{enumerate}[i.] \plainenumii
+\begin{multicols}{#1}
+}{
+\end{multicols}
+\end{enumerate}
+}
+
+%\newtheorem{thm}{Теорема}[theorem]
+%\newtheorem{df}{Определение}[theorem]%[definition]
+
+%\setlength{\leftmargini}{-10pt}
+\setlength{\rightmargin}{-20pt}
+%\setlength{\leftmarginii}{5pt}
+\setlength{\itemsep}{0pt}
+
+\textheight = 23,5cm
+\textwidth = 16,5cm
+\hoffset = -2cm
+\voffset = -2cm
+
+\pagestyle{empty}
+
+\begin{document}
+{\center \bf \large Дз на 18.12 (23:59)}
+
+\begin{enumerate}
+%\item Доказать, что многочлены $1+x+2x^2$, $1-x+x^2$ и $x$ образуют базис векторного пространства $\RR[x]_{\le 2}$ многочленов степени не выше~2.
+%\item \label{basisR3} Выяснить, является ли система векторов $(2,-3,1)^T$, $(3,-1,5)^T$, $(1,-4,3)^T$ базисом~$\RR^3$. 
+\item \label{FS} Найти ФСР следующих однородных СЛУ. 
+\begin{multienum}{2}
+	\item \label{FS1} $\left\{\begin{aligned}
+	x_1 &- 2x_2 - x_3 + 2x_4 = 0 \\ -x_1 &+2x_2 + 2x_3 - 7x_4 = 0
+	\end{aligned}\right.$
+	%\item \label{FS2} $\left\{\begin{aligned} %г (x_4=0, x_1 = -3/4 x_2 - 1/4 x_3)
+	%12x_1 + 9x_2 +3x_3 +10x_4 &= 0 \\ 4x_1 + 3x_2 + x_3 + 2x_4 &= 0 \\ 8x_1 + 6x_2 + 2x_3 + 5x_4 &= 0 
+	%\end{aligned}\right.$
+		\circenumii
+	\item $\left\{\begin{aligned}x_1 - 2x_2 + 4x_3 + 3x_4 + x_6 &= 0 \\ 3x_4 + 2x_5 + 17x_6 &= 0 \\ 2x_1 - 4x_2 + 8x_3 + 2x_5 - 5x_6 &= 0 \\ 3x_4- 2x_5 - x_6 &= 0\end{aligned}\right.$
+		\plainenumii
+%	\item \label{FS4} $\left\{\begin{aligned}x_1 + 2x_2 - 4x_3 &= 0 \\ x_1 - 2x_2 + x_3 &= 0\end{aligned}\right.$
+	\item \label{FS5} $x_1 + 2x_2 + 3x_3 = 0$;
+	\item \label{FS6} $\left\{\begin{aligned}x_2 + 5x_3 + 5x_4 &= 0 \\ 5x_3 + 2x_4 &= 0\end{aligned}\right.$
+	\item \label{FS7} $\left\{\begin{aligned}x_1 + 3x_2 &= 0 \\ 2x_1 + x_2 &= 0 \\ x_1 - x_2 &= 0\end{aligned}\right.$
+\end{multienum}
+\item Найдите базис и размерность подпространства $\{f \in \mathbb{R}[x]_{\le 3} \mid f(1) = f'(1) = 0\}$ \\в пространстве $\mathbb{R}[x]_{\le 3}$ многочленов степени не выше 3.\\
+{\tiny Составить уравнения на коэффициенты $a_0+a_1x+a_2x^2+a_3x^3$. Ответ должен быть в виде многочленов!}
+\item[Д1.] Докажите, что множество матриц $X$ пространства матриц $n\times n$, для которых $\tr(XY)=0$ при некоторой фиксированной матрице $Y$ размера $n\times n$, является подпространством. Найдите его базис и размерность для $n=2$, $Y = \begin{pmatrix} 2 & 3 \\ 5 & 4 \end{pmatrix}$. 
+\item \label{choose_any_basis} Найдите какой-нибудь базис в пространстве $U = \langle v_1, v_2, v_3, v_4\rangle \subseteq \mathbb{R}^5$, где \\ 
+$v_1 = (1, 0, 0, -1, 0)$, $v_2 = (2, 1, 1, 0, 1)$, $v_3=(1, 1, 1, 1, 1)$, $v_4=(0, 1, 1, 3, 4)$.
+	\circenumi
+\item \label{choose_basis_here} Пусть $U = \langle v_1, v_2, v_3, v_4, v_5\rangle \subseteq \mathbb{R}^3$, где $v_1 = (1, 0, -1)^T$, $v_2 = (1, 1, 1)^T$, $v_3 = (0, -1, -2)^T$, $v_4=(3, 3, 3)^T$, $v_5=(5,2,-1)^T$. Выберите из системы векторов $v_1, v_2, v_3, v_4, v_5$ базис $U$ и найдите линейные выражения остальных векторов системы через этот базис. 
+%\item \label{add_basis1} Дополнить линейно независимую систему $v_1 = (2,3,5,-4,1)^T$, $v_2 = (1,-1,2,3,5)^T$ до базиса $\mathbb{R}^5$. 
+\item \label{choose_add_basis2} Пусть $v_1 = (-2,1,-3,2,3)^T$, $v_2 = (-2,3,-5,7,4)^T$, $v_3 = (2,1,1,3,-2)^T$, $v_4 = (9,-2,4,-3,-8)^T$ --- векторы в $\mathbb{R}^5$. Выберите линейно независимую систему из векторов $v_1, v_2, v_3, v_4$ и дополните её до базиса $\mathbb{R}^5$. 
+\item[Д2.] Пусть $U = \left\langle \begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}, \begin{pmatrix}2 & 1\\1 & 0\end{pmatrix}, \begin{pmatrix}1 & 1\\1 & 1\end{pmatrix}, \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}, \begin{pmatrix}0 & 1\\2 & 3\end{pmatrix}\right\rangle$. 
+\begin{enumerate}[i] \plainenumii
+	\item[Д2.1] Найдите какой-нибудь базис в~$U$. 
+	\item[Д2.2] Выберите базис в $U$ из данного множества матриц. 
+\end{enumerate}
+\end{enumerate}
+
+%{\center \bf \large Дополнительные задачи}
+
+%\begin{enumerate}
+%\item[Д1.] 
+%\end{enumerate}
+
+\vspace{1cm}
+
+{\footnotesize 
+Некоторые ответы и комментарии: \\
+%\ref{basisR3}~Да
+\ref{FS} -- напомню, что у одной системы много разных ФСР, здесь написаны получаемые стандартным алгоритмом. \quad
+\ref{FS1} ФСР $(2,1,0,0)^T$, $(3,0,5,1)^T$ \quad 
+%\ref{FS2} $(-3/4, 1, 0, 0)^T$, $(-1/4,0,1,0)^T$ \quad 
+%\ref{FS4} $(3/2, 5/4, 1)^T$ (или, например, $(6,5,4)^T$)\quad 
+\ref{FS5} одна главная, две свободные, не пугаемся, пишем общее решение, поставляем 1,0 и 0,1. \quad 
+\ref{FS6} должно получиться 2 вектора в ФСР (вы же не забыли про переменную $x_1$?) \quad 
+\ref{FS7} Количество векторов в ФСР равно количеству свободных переменных. И не надо писать нулевой вектор, это не ЛНЗ набор! \quad 
+\ref{choose_any_basis} Возможно, получится ответ $(1,0,0,-1,0)^T$, $(0,1,1,2,1)^T$, $(0,0,0,1,3)^T$ (векторов в любом случае будет 3, но они могут быть и другими -- базисов в $U$ много) 
+(написаны ответы, получаемые стандартными алгоритмами -- в целом базисов в подпространствах много)\\
+\ref{choose_basis_here} $v_1, v_2$ --- базис $U$, $v_3 = v_1 - v_2$, $v_4 = 3v_2$, $v_5 = 3v_1+2v_2$ \\
+%\ref{add_basis1} $v_1, v_2, e_3, e_4, e_5$ \\ 
+\ref{choose_add_basis2} $v_1, v_2, v_4, e_4, e_5$ \\ 
+Д2.1 Например, $\begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}, \begin{pmatrix}0 & 1\\1 & 2\end{pmatrix}, \begin{pmatrix}0 & 0\\1 & 1\end{pmatrix}$ \\ Д2.2~$\begin{pmatrix}1 & 0\\0 & -1\end{pmatrix}, \begin{pmatrix}2 & 1\\1 & 0\end{pmatrix}, \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}$
+}
+
+\end{document}

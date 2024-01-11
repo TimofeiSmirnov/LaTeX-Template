@@ -1,0 +1,187 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+ \setcounter{MaxMatrixCols}{15}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+\begin{document}
+    {\center \bf \large ДЗ по линейной алгебре 4 Смирнов Тимофей 236 ПМИ}
+    \\\\ \textbf{№ 1}
+    \\
+    \\ 1). Найдем число инверсий в перестановке $A = \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6\\4 & 2 & 6 & 3 & 5 & 1\end{pmatrix}$
+    \\\\ Рассмотрим каждую пару в перестановке: $(4, 2), (4, 6), (4, 3), (4, 5), (4, 1), (2, 6), (2, 3), (2, 5), (2, 1), (6, 3), \\(6, 5), (6, 1), (3, 5), (3, 1), (5, 1)$.
+    \\ Из этих паринверсиями являются пары $(4, 2), (4, 3), (4, 1), (2, 1), (6, 3), (6, 5), (6, 1), (3, 1), (5, 1)$.
+    \\\\ \textbf{Ответ: } число инверсий: 9, знак перестановки $(-1)^{9} = -1 \ \Rightarrow \ $ перестановка нечетна.
+    \\
+    \\ 2). Найдем число инверсий в перестановке $A = \begin{pmatrix}1 & 2 & ... & n & n + 1 & n + 2 & ... & 2n\\2 & 4 & ... & 2n & 1 & 3 & ... & 2n - 1\end{pmatrix}$
+    \\\\ Инверсиями с первым членом 2 будут пары из 2 и числа {1} их всего 1.
+    \\ Инверсиями с первым членом 4 будут пары из 4 и чисел {1, 3} их всего 2 и тд.
+    \\ \dots
+    \\ Инверский с числом $2n$ уже не будет $n$.
+    \\ В итоге, для нахождения всех инверсий нам необходимо просуммировать все такие пары, получим сумму $S = 1 + 2 + ... + n= \frac{n(n + 1)}{2}$.
+    \\
+    \\ \textbf{Ответ: } Всего инверсий в перестановке $\frac{(n + 1)(n)}{2}$; $sgn(\sigma) = (-1)^{\frac{(n + 1)(n)}{2}}$. Если $sgn(\sigma) = 1$, то перестановка четна, иначе нечетна.
+    \\
+    \\ \textbf{№ 2}
+    \\
+    \par 1). \ \ \ \ $\begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9\\ 5 & 8 & 9 & 2 & 1 & 4 & 3 & 6 & 7\end{pmatrix} = (1 5)(2 \ 8 \ 6 \ 4)(3 \ 9 \ 7) \in S_9$
+    \\
+    \\
+    \par 2). \ \ \ \ $a = (1 5 3)(2 4) = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\5 &4 &1 & 2& 3\end{pmatrix} \in S_5, \ a^{-1} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\ 3 & 4 & 5 & 2 & 1\end{pmatrix}$
+    \\
+    \\
+    \par 3). \ \ \ \ $a = (1 4)(3 6 5) = \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6\\4 &2 &6 &1 & 3&5 \end{pmatrix} \in S_6$; $a^{-1} = \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6\\4 & 2 & 5 & 1 & 6 & 3 \end{pmatrix} = (1 \ 4)(3 \ 5 \ 6)$
+    \\\\\\
+    \\ \textbf{№ 3}
+    \\
+    \par \ \ \ \ $\sigma \tau =  \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 3 & 1 & 5 & 4 \end{pmatrix} \cdot \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 1 & 4 & 3 & 5 \end{pmatrix} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 2 & 5 & 1 & 4 \end{pmatrix} = (1 \ 3 \ 5 \ 4) \in S_5$
+    \\\\
+    \par \ \ \ \ $\tau \sigma =  \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 1 & 4 & 3 & 5 \end{pmatrix} \cdot \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 3 & 1 & 5 & 4 \end{pmatrix} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\1 & 4 & 2 & 5 & 3 \end{pmatrix} = (2 \ 4 \ 5 \ 3) \in S_5$
+    \\
+    \\
+    \\ \textbf{№ 4}
+    \\
+    \par \ \ \ \ $\sigma = \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\8 & 10 & 6 & 7 & 5 & 9 & 3 & 2 & 11 & 1 & 4\end{pmatrix} = (1 \ 8 \ 2 \ 10)(3 \ 6 \ 9 \ 11 \ 4 \ 7) \in S_{11}$
+    \\
+    \\
+    \par \ \ \ \ Наименьшим N таким, что $\sigma^N = id$ будет $N = 12$, так как 12 = НОК длин всех циклов в перестановке.
+    \\
+    \par \ \ \ \ 1). $\sigma^{36} = \sigma^{0}$ (так как 36 нацело делится на НОК длины циклов, из которых состоит перестановка) $\sigma^{0} = id$
+    \par \ \ \ \ \textbf{Ответ: } id
+    \\
+    \par \ \ \ \ 2). $\sigma^{37} = \sigma^{(37 \ mod \ 12)} = \sigma^1 = \sigma$
+    \par \ \ \ \ \textbf{Ответ: } $\sigma$
+    \\
+    \par \ \ \ \ 3). $\sigma^5 = \sigma^{(5 mod 12)} = \sigma^5 = \begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\8 & 10 & 7 & 11 & 5 & 3 & 4 & 2 & 6 & 1 & 9\end{pmatrix}$
+    \\
+    \\
+    \par \ \ \ \ \textbf{Ответ: } $\begin{pmatrix}1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\8 & 10 & 7 & 11 & 5 & 3 & 4 & 2 & 6 & 1 & 9\end{pmatrix}$
+    \\
+    \\\\\\\\\\
+    \\ \textbf{№ 5}
+    \\
+    \par \ \ \ \ $\sigma = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 5 & 1 & 2 & 4 \end{pmatrix}; \ \ \tau = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 4 & 1 & 2 & 5 \end{pmatrix}; \ \ \rho = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 4 & 5 & 1 & 3 \end{pmatrix}$ 
+    \\
+    \par \ \ \ \ $\sigma X \tau = \rho \ \Leftrightarrow \ \sigma^{-1} \sigma X \tau \tau^{-1} = \sigma^{-1} \rho \tau^{-1} \ \Leftrightarrow \ X = \sigma^{-1} \rho \tau^{-1}$
+    \\
+    \par \ \ \ \ $\sigma^{-1} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 4 & 1 & 5 & 2\end{pmatrix}; \ \ \tau^{-1} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 4 & 1 & 2 & 5\end{pmatrix}$
+    \\
+    \par \ \ \ \ $X = \sigma^{-1} \rho \tau^{-1} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 4 & 1 & 5 & 2\end{pmatrix} \cdot \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 4 & 5 & 1 & 3 \end{pmatrix} \cdot \begin{pmatrix}1 & 2 & 3 & 4 & 5\\3 & 4 & 1 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 3 & 4 & 5 & 1\end{pmatrix}$
+    \\
+    \par \ \ \ \ \textbf{Ответ: } $\begin{pmatrix}1 & 2 & 3 & 4 & 5\\2 & 3 & 4 & 5 & 1\end{pmatrix}$
+    \\\\
+    \\ \textbf{№ 6} 
+    \par \ \ \ \ 1). Имеем перестановку $(3 \ 5 \ ... \ 99)(2 \ 4 \ ... \ 98) \in S_n$, 
+    легко понять, что $n = 99$, так как максимальный элемент перестановки 99. 
+    Получаем декремент перестановки, равный $n - 3 = 99 - 3 = 96$, 
+    так как в перестановке всего 3 цикла (2 из них написаны выше и один цикл из длины один: (1)). $96 mod 2 = 0 \ \Rightarrow \ sgn(\sigma) = 1$. Заданная перестановка является четной.
+    \par \ \ \ \ \textbf{Ответ: } перестановка $\sigma$ является четной.
+    \\\par \ \ \ \ 2). Нашу перестановку сигма можно представить в таком виде: 
+    \\\par \ \ \ \ $\sigma = \begin{pmatrix}1 & 2 & 3  & ... & 96 & 97 & 98 & 99\\1 & 4 & 5  & ... & 98 & 99 & 2 & 3 \end{pmatrix}$.
+    \\\par \ \ \ \ Для 1 мы не имеем инверсий. Для 4 у нас 2 инверсии. Для 5 у нс тоже 2 инверсии, получаем всего $96 \cdot 2 = 192$ инверсии. $sgn(\sigma) = (-1)^{192} = 1$.
+    \par \ \ \ \ \textbf{Ответ: } перестановка $\sigma$ является четной.
+    \\\\\\\\\\\\
+    \\ \textbf{№ 7} Найти все $X \in S_5$, что $X^2 = (1 2 3 4 5)$.
+    \\
+    \\ Тогда $X \cdot X $ получается так $\begin{pmatrix}1 & 2 & 3 & 4 & 5\\x_1 & x_2 & x_3 & x_4 & x_5\end{pmatrix} \to \begin{pmatrix}x_1 & x_2 & x_3 & x_4 & x_5\\2 & 3 & 4 & 5 & 1\end{pmatrix}$.
+    \\
+    \\ 1). Пусть $1 \to 1$, тогда получаем $x_1 = 1$, но $x_1 \to 2$, то есть $1 \to 2$, получаем противоречие.
+    \\
+    \\ 2). Пусть $1 \to 2$, тогда $(x_1 = 2) \to 2$, тогда получается, что $2 \to 2$, но у нас уже $1 \to 2$, получаем противоречие.
+    \\
+    \\ 3). Пусть $1 \to 3$, тогда $(x_1 = 3) \to 2$, тогда $(x_3 = 2) \to 4$, тогда $(x_2 = 4) \to 3$, то есть $4 \to 3$, но у нас уже $1 \to 3$, получаем противоречие.
+    \\
+    \\ 4). Пусть $1 \to 4$, тогда $(x_1 = 4) \to 2$, тогда $(x_4 = 2) \to 5$, тогда $(x_2 = 5) \to 3$, тогда $(x_5 = 3) \to 1$, тогда $(x_3 = 1) \to 4$, получаем перестановку $\begin{pmatrix}1 & 2 & 3 & 4 & 5\\4 & 5 & 1 & 2 & 3\end{pmatrix} = X$, которая в квадрате дает $(1 \ 2\ 3\ 4\ 5) \in S_5$.
+    \\
+    \\ 5). Пусть $1 \to 5$, тогда $(x_1 = 5) \to 2)$, тогда $(x_5 = 2) \to 1$, тогда $(x_2 = 1) \to 3$, но у нас $1 \to 5$, получаем противоречие.
+    \\
+    \\ \textbf{Ответ: } $\begin{pmatrix}1 & 2 & 3 & 4 & 5\\4 & 5 & 1 & 2 & 3\end{pmatrix} \in S_5$
+    \\\\
+    \\ \textbf{№ 8} Доказать теорему про декремент.
+    \\
+    \\ Заметим, что, каждый элемент перестановки попадет в свой цикл (циклы длины 1 тоже считаются), то есть суммарная длины всех $m$ циклов перестановки равна $n$. Каждый цикл длины $k$ можно разложить на $k - 1$ транспозицию, следовательно всю перестановку суммарно можно разложить на $n - m$ транспозиций. А мы знаем, что транспозиции меняют четность перестановки, следовательно, если $n - m$ четно, то знак перестановки 1, иначе (-1).
+\end{document}

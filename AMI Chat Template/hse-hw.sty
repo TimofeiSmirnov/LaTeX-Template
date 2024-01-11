@@ -1,0 +1,95 @@
+
+% Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+%--------------------------------------
+
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=20mm,
+    right=20mm,
+    top=20mm,
+    bottom=20mm,
+}
+
+% Ams-math
+%--------------------------------------
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+%--------------------------------------
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{pgfplots}
+\usepackage{epigraph}
+
+% My own math setup
+%----------------------------------------
+\DeclareMathOperator*\flim{\underline{lim}} % нижний предел
+\DeclareMathOperator*\clim{\overline{lim}}  % верхний предел
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Lim}[1]{\lim \limits_{#1 \to \infty}}
+\newcommand{\Seq}[2]{\{ #1_{#2} \}_{#2=1}^{\infty}}
+
+\newcommand{\ceq}{\stackrel{?}{=}}
+\newcommand{\cgeq}{\stackrel{?}{\geq}}
+\newcommand{\cleq}{\stackrel{?}{\leq}}
+\newcommand{\cgneq}{\stackrel{?}{>}}
+\newcommand{\clneq}{\stackrel{?}{<}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand{\eqdef}{\overset{def}{=}}
+\newcommand{\floor}[1]{\left \lfloor #1 \right \rfloor}
+\newcommand{\ceil}[1]{\left \lceil #1 \right \rceil}
+%----------------------------------------
+
+\newtheorem{thm}{Теорема}
+\newtheorem{prob}{Задача}
+\newtheorem{prop}{Предложение}
+\newtheorem{lem}{Лемма}
+\newtheorem{subtask}{Пункт}
+\renewcommand{\thesubtask}{(\Asbuk{subtask})}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Определение}[section]
+
+\newcommand{\FancyHead}{
+    \hrule %\medskip % Upper rule
+    \begin{center}
+    \begin{minipage}{0.2\textwidth}
+        \raggedright
+        \footnotesize
+        Ваш покорный слуга \hfill\\
+        pupkin@yandex.ru
+    \end{minipage}\begin{minipage}{0.6\textwidth}
+        \centering
+        \large\FancyHeadA\\
+        \normalsize\FancyHeadB\\
+    \end{minipage}\begin{minipage}{0.2\textwidth}
+        \raggedleft\today\\
+    \end{minipage}
+    \end{center}
+    %\medskip 
+    \hrule % Lower rule
+    \bigskip
+}
+
+\usepackage[yyyymmdd]{datetime} % Uses YEAR-MONTH-DAY format for dates
+\renewcommand{\dateseparator}{-} % Sets dateseparator to '-'
+
+\newcommand{\Task}[1]{
+    \begin{center}
+        \Large Задача №#1
+    \end{center}
+    \setcounter{subtask}{0}
+}
+\renewcommand*{\proofname}{Доказательство}

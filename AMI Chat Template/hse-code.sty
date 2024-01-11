@@ -1,0 +1,42 @@
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{paratype}
+
+\definecolor{codegray}{rgb}{0.2,0.2,0.2}
+\definecolor{codegreen}{rgb}{0.0,0.5,0.0}
+\definecolor{codered}{rgb}{0.7,0.0,0.0}
+\definecolor{codepurple}{rgb}{0.6,0.0,0.4}
+\definecolor{codegreenblue}{rgb}{0.1,0.585,0.49}
+\definecolor{codeblue}{rgb}{0.1,0.0,0.7}
+
+\lstdefinestyle{mystyle}{
+    basicstyle=\ttfamily\fontfamily{PTMono-TLF}\fontsize{8pt}{8pt}\selectfont,
+    commentstyle=\ttfamily\fontfamily{PTMono-TLF}\fontsize{8pt}{8pt}\selectfont\color{codegreen},
+    backgroundcolor=\color{white},
+    keywordstyle=\color{codeblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codered},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    texcl=true,
+    language=C++
+}
+
+\lstset{
+    style=mystyle,
+    extendedchars=\true,
+    inputencoding=utf8
+}
+
+\lstset{emph={
+    vector, string
+    },emphstyle={\color{codepurple}}
+}

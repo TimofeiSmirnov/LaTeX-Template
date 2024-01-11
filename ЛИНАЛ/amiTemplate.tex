@@ -1,0 +1,357 @@
+ % Всякое, чтобы работало - все библиотеки
+\documentclass[a4paper, 12pt]{article}
+ 
+\usepackage[T2A]{fontenc}
+\usepackage[russian, english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{subfiles}
+\usepackage{ucs}
+\usepackage{textcomp}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{authblk}
+\usepackage{tikz}
+\usepackage{icomma}
+\usepackage{gensymb}
+\usepackage{nicematrix, tikz}
+ 
+% Всякие мат штуки дополнительные
+ 
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\di}{\frac}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\N} {\mathbb{N}}
+\newcommand{\Z} {\mathbb{Z}}
+\newcommand{\R} {\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\ord} {\mathop{\rm ord}}
+\newcommand{\Ima}{\mathop{\rm Im}}
+\newcommand{\Rea}{\mathop{\rm Re}}
+\newcommand{\rk}{\mathop{\rm rk}}
+\newcommand{\arccosh}{\mathop{\rm arccosh}}
+\newcommand{\lker}{\mathop{\rm lker}}
+\newcommand{\rker}{\mathop{\rm rker}}
+\newcommand{\tr}{\mathop{\rm tr}}
+\newcommand{\St}{\mathop{\rm St}}
+\newcommand{\Mat}{\mathop{\rm Mat}}
+\newcommand{\grad}{\mathop{\rm grad}}
+\DeclareMathOperator{\spec}{spec}
+\renewcommand{\baselinestretch}{1.5}
+\everymath{\displaystyle}
+ 
+% Всякое для ускорения
+\renewcommand{\r}{\right}
+\renewcommand{\l}{\left}
+\newcommand{\Lra}{\Leftrightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\la}{\leftarrow}
+\newcommand{\sm}{\setminus}
+\newcommand{\lm}{\lambda}
+\newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+\newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+\newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+ 
+% Заголовки
+\newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+\newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+ 
+% Пространтсва для задач
+\newenvironment{proof}[1][Доказательство]{%
+\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1:}]
+    \item \hspace{15pt}
+    }{
+    $ \hfill\blacksquare $
+\end{trivlist}
+\hfill\break
+}
+\newenvironment{solution}[1][Решение]{%
+\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1:}]
+    \item \hspace{15pt}
+    }{
+\end{trivlist}
+}
+ 
+\newenvironment{answer}[1][Ответ]{%
+\begin{trivlist}
+    \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+    }{
+\end{trivlist}
+\hfill
+}
+\title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+\author{Тимофей Смирнов}
+\date{September 2023}
+
+\begin{document}
+    {\center \bf \large ИДЗ по линейной алгебре 1 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{№ 1}
+    \\
+    \\ $tr(B^TB)AA^TD + tr((6AB^T + 2BA^T)D + D(-2AB^T + 4BA^T)) \cdot (A + B)(A^T - B^T) + 9C^2 + 18CD + 9D^2$
+    \\
+    \\ Разобьем выражение на мелкие части и вычислим их:
+    \\
+    \\
+    \\ $tr(B^TB) = tr(\begin{pmatrix} 2 & 5 \\ -4 & 7 \\ 2 & -5 \end{pmatrix} \cdot \begin{pmatrix} 2 & -4 & 2 \\ 5 & 7 & -5 \end{pmatrix}) = tr(\begin{pmatrix}29 & 27 & -21\\27 & 65 & -43\\-21 & -43 & 29\end{pmatrix}) = 123$
+    \\
+    \\ $AA^TD = \begin{pmatrix} 1 & -2 & 1 \\ 6 & 7 & -3 \end{pmatrix} \cdot \begin{pmatrix} 1 & 6 \\ -2 & 7 \\ 1 & -3 \end{pmatrix} \cdot \begin{pmatrix} 13 & 9 \\ 9 & 9\end{pmatrix} = \begin{pmatrix}6 & -11\\-11 & 94\end{pmatrix} \cdot \begin{pmatrix} 13 & 9 \\ 9 & 9\end{pmatrix} = \begin{pmatrix}-21 & -45\\703 & 747\end{pmatrix}$
+    \\
+    \\ $AB^T = \begin{pmatrix} 1 & -2 & 1 \\ 6 & 7 & -3 \end{pmatrix} \cdot \begin{pmatrix} 2 & 5 \\ -4 & 7 \\ 2 & -5 \end{pmatrix} = \begin{pmatrix}12 & -14\\-22 & 94\end{pmatrix}$
+    \\
+    \\ $BA^T = \begin{pmatrix} 2 & -4 & 2 \\ 5 & 7 & -5 \end{pmatrix} \cdot \begin{pmatrix} 1 & 6 \\ -2 & 7 \\ 1 & -3 \end{pmatrix} = \begin{pmatrix}12 & -22\\-14 & 94\end{pmatrix}$
+    \\
+    \\ $C^2 = \begin{pmatrix}-2 & -2\\-1 & -5\end{pmatrix} \cdot \begin{pmatrix}-2 & -2\\-1 & -5\end{pmatrix} = \begin{pmatrix}6 & 14\\7 & 27\end{pmatrix}$
+    \\
+    \\ $CD = \begin{pmatrix}-2 & -2\\-1 & -5\end{pmatrix} \cdot \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} = \begin{pmatrix}-44 & -36\\-58 & -54\end{pmatrix}$
+    \\
+    \\ $D^2 = \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} \cdot \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} = \begin{pmatrix}250 & 198\\198 & 162\end{pmatrix}$
+    \\
+    \\ Теперь уже разобьем выражение на более крупные части: 
+    \\
+    \\ $tr(B^TB)AA^TD = 123 \cdot \begin{pmatrix}-21 & -45\\703 & 747\end{pmatrix} = \begin{pmatrix}-2583 & -5535\\86469 & 91881\end{pmatrix}$
+    \\
+    \\ $(6AB^T + 2BA^T)D = (6 \cdot \begin{pmatrix}12 & -14\\-22 & 94\end{pmatrix} + 2 \cdot \begin{pmatrix}12 & -22\\-14 & 94\end{pmatrix}) \cdot \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} = \begin{pmatrix}96 & -128\\-160 & 752\end{pmatrix} \cdot \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} = \begin{pmatrix}96 & -288\\4688 & 5328\end{pmatrix}$
+    \\
+    \\ $D(-2AB^T + 4BA^T) = \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} \cdot (-2 \cdot \begin{pmatrix}12 & -14\\-22 & 94\end{pmatrix} + 4 \cdot \begin{pmatrix}12 & -22\\-14 & 94\end{pmatrix}) = \begin{pmatrix}13 & 9\\9 & 9\end{pmatrix} \cdot \begin{pmatrix}24 & -60\\-12 & 188\end{pmatrix} = \begin{pmatrix}204 & 912\\108 & 1152\end{pmatrix}$
+    \\
+    \\ $A + B = \begin{pmatrix} 1 & -2 & 1 \\ 6 & 7 & -3 \end{pmatrix} + \begin{pmatrix} 2 & -4 & 2 \\ 5 & 7 & -5 \end{pmatrix} = \begin{pmatrix}3 & -6 & 3\\11 & 14 & -8\end{pmatrix}$
+    \\
+    \\ $A^T - B^T = \begin{pmatrix} 1 & 6 \\ -2 & 7 \\ 1 & -3 \end{pmatrix} - \begin{pmatrix} 2 & 5 \\ -4 & 7 \\ 2 & -5 \end{pmatrix} = \begin{pmatrix}-1 & 1\\2 & 0\\-1 & 2\end{pmatrix}$
+    \\
+    \\ $9C^2 = 9 \cdot \begin{pmatrix}6 & 14\\7 & 27\end{pmatrix} = \begin{pmatrix}54 & 126\\63 & 243\end{pmatrix}$
+    \\
+    \\ $18CD = 18 \cdot \begin{pmatrix}-44 & -36\\-58 & -54\end{pmatrix} = \begin{pmatrix}-792 & -648\\-1044 & -972\end{pmatrix}$
+    \\
+    \\ $9D^2 = 9 \cdot \begin{pmatrix}250 & 198\\198 & 162\end{pmatrix} = \begin{pmatrix}2250 & 1782\\1782 & 1458\end{pmatrix}$
+    \\
+    \\ Самое время все соединить:
+    \\
+    \\ $tr(B^TB)AA^TD + tr((6AB^T + 2BA^T)D + D(-2AB^T + 4BA^T)) \cdot (A + B)(A^T - B^T) + 9C^2 + 18CD + 9D^2 =
+    \begin{pmatrix}-2583 & -5535\\86469 & 91881\end{pmatrix} + tr(\begin{pmatrix}96 & -288\\4688 & 5328\end{pmatrix} + \begin{pmatrix}204 & 912\\108 & 1152\end{pmatrix}) \cdot \begin{pmatrix}3 & -6 & 3\\11 & 14 & -8\end{pmatrix} \cdot \begin{pmatrix}-1 & 1\\2 & 0\\-1 & 2\end{pmatrix} + \begin{pmatrix}54 & 126\\63 & 243\end{pmatrix} + \begin{pmatrix}-792 & -648\\-1044 & -972\end{pmatrix} + \begin{pmatrix}2250 & 1782\\1782 & 1458\end{pmatrix}$
+    \\
+    \\ И снова считаем по частям:
+    \\
+    \\ $tr(\begin{pmatrix}96 & -288\\4688 & 5328\end{pmatrix} + \begin{pmatrix}204 & 912\\108 & 1152\end{pmatrix}) = 96 + 5328 + 204 + 1152 = 6780$
+    \\
+    \\ $\begin{pmatrix}3 & -6 & 3\\11 & 14 & -8\end{pmatrix} \cdot \begin{pmatrix}-1 & 1\\2 & 0\\-1 & 2\end{pmatrix} = \begin{pmatrix}-18 & 9\\25 & -5\end{pmatrix}$
+    \\
+    \\ Ура, соединяем все:
+    \\
+    \\ $\begin{pmatrix}-2583 & -5535\\86469 & 91881\end{pmatrix}  + 6780 \cdot \begin{pmatrix}-18 & 9\\25 & -5\end{pmatrix} + \begin{pmatrix}54 & 126\\63 & 243\end{pmatrix} + \begin{pmatrix}-792 & -648\\-1044 & -972\end{pmatrix} + \begin{pmatrix}2250 & 1782\\1782 & 1458\end{pmatrix} = \begin{pmatrix}-123111 & 56745\\256770 & 58710\end{pmatrix}$
+    \\
+    \\ \textbf{УРА, УРА, ОТВЕТ: } $\begin{pmatrix}-123111 & 56745\\256770 & 58710\end{pmatrix}$
+    \\\\
+    \\ \textbf{№ 2}
+    \\ 
+    \\ Так как матрица А симетрическая, а матрица В кососимметрическая, то $(A + B)^T = A^T + B^T = A - B$.
+    \\
+    \\ Тогда $A + B + (A + B)^T = A + B + A - B = 2A$, $B = A + B - A$.
+    \\
+    \\ Считаем:
+    \\
+    \par $A - B = (A + B)^T = \begin{pmatrix}46 & -4 & -38 & -34\\ -14 & -16 & -4 & 50\\ 4 & -50 & 24 & -38 \\ -6 & 56 & 10 & 10\end{pmatrix}^T = \begin{pmatrix}46 & -14 & 4 & -6\\-4 & -16 & -50 & 56\\-38 & -4 & 24 & 10\\-34 & 50 & -38 & 10\end{pmatrix}$
+    \\
+    \\
+    \par $A = 0.5 \cdot (\begin{pmatrix}46 & -4 & -38 & -34\\ -14 & -16 & -4 & 50\\ 4 & -50 & 24 & -38 \\ -6 & 56 & 10 & 10\end{pmatrix} + \begin{pmatrix}46 & -14 & 4 & -6\\-4 & -16 & -50 & 56\\-38 & -4 & 24 & 10\\-34 & 50 & -38 & 10\end{pmatrix}) = \begin{pmatrix}46 & -9 & -17 & -20\\-9 & -16 & -27 & 53\\-17 & -27 & 24 & -14\\-20 & 53 & -14 & 10\end{pmatrix}$
+    \\
+    \\
+    \par $B = \begin{pmatrix}46 & -4 & -38 & -34\\ -14 & -16 & -4 & 50\\ 4 & -50 & 24 & -38 \\ -6 & 56 & 10 & 10\end{pmatrix} - \begin{pmatrix}46 & -9 & -17 & -20\\-9 & -16 & -27 & 53\\-17 & -27 & 24 & -14\\-20 & 53 & -14 & 10\end{pmatrix} = \begin{pmatrix}0 & 5 & -21 & -14\\-5 & 0 & 23 & -3\\21 & -23 & 0 & -24\\14 & 3 & 24 & 0\end{pmatrix}$
+    \\
+    \\
+    \par $AB = \begin{pmatrix}46 & -9 & -17 & -20\\-9 & -16 & -27 & 53\\-17 & -27 & 24 & -14\\-20 & 53 & -14 & 10\end{pmatrix} \cdot \begin{pmatrix}0 & 5 & -21 & -14\\-5 & 0 & 23 & -3\\21 & -23 & 0 & -24\\14 & 3 & 24 & 0\end{pmatrix} = \begin{pmatrix}-592 & 561 & -1653 & -209\\255 & 735 & 1093 & 822\\443 & -679 & -600 & -257\\-419 & 252 & 1879 & 457\end{pmatrix}$
+    \\
+    \\
+    \par \textbf{Ответ: } $AB = \begin{pmatrix}-592 & 561 & -1653 & -209\\255 & 735 & 1093 & 822\\443 & -679 & -600 & -257\\-419 & 252 & 1879 & 457\end{pmatrix}$
+    \\\\
+    \\ \textbf{№ 3}
+    \\
+    \\ $DC = \begin{pmatrix}1 & -9 & -43 \\0 & 1 & 4 \\0 & 0 & 1 \end{pmatrix} \cdot \begin{pmatrix}1 & 9 & 7 \\0 & 1 & -4 \\0 & 0 & 1 \end{pmatrix} = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix} = E$
+    \\
+    \\
+    \\ $A^n = CJDCJDCJDCJDCJDCJD...CJD$, где $CJD$ повторяется $n$ раз. Но мы знаем, что $DC = E$, значит все пары $DC$ можно убрать из произведения, они ничего не изменят. Получаем $A^n = C \cdot J^n \cdot D$.
+    \\
+    \\ Зная, что $A^n = C \cdot J^n \cdot D$, имеем: $S = E + A^1 + A^2 + ... + A^{2021} = E + C \cdot (J^1 + J^2 + ... + J^{2021}) \cdot D$
+    \\
+    \\ $J^2 = \begin{pmatrix}-1 & 1 & 0 \\0 & -1 & 1 \\0 & 0 & -1 \end{pmatrix} \cdot \begin{pmatrix}-1 & 1 & 0 \\0 & -1 & 1 \\0 & 0 & -1 \end{pmatrix} = \begin{pmatrix}1 & -2 & 1\\0 & 1 & -2\\0 & 0 & 1\end{pmatrix}$
+    \\
+    \\
+    \\ $J^3 = \begin{pmatrix}1 & -2 & 1\\0 & 1 & -2\\0 & 0 & 1\end{pmatrix} \cdot \begin{pmatrix}-1 & 1 & 0 \\0 & -1 & 1 \\0 & 0 & -1 \end{pmatrix} = \begin{pmatrix}-1 & 3 & -3\\0 & -1 & 3\\0 & 0 & -1\end{pmatrix}$
+    \\
+    \\
+    \\ $J^4 = \begin{pmatrix}-1 & 3 & -3\\0 & -1 & 3\\0 & 0 & -1\end{pmatrix} \cdot \begin{pmatrix}-1 & 1 & 0 \\0 & -1 & 1 \\0 & 0 & -1 \end{pmatrix} = \begin{pmatrix}1 & -4 & 6\\0 & 1 & -4\\0 & 0 & 1\end{pmatrix}$
+    \\
+    \\
+    \\ $J^5 = \begin{pmatrix}1 & -4 & 6\\0 & 1 & -4\\0 & 0 & 1\end{pmatrix} \cdot \begin{pmatrix}-1 & 1 & 0 \\0 & -1 & 1 \\0 & 0 & -1 \end{pmatrix} = \begin{pmatrix}-1 & 5 & -10\\0 & -1 & 5\\0 & 0 & -1\end{pmatrix}$
+    \\
+    \\ Заметим, что $J^n = \begin{pmatrix}(-1)^{n} & (-1)^{n}(-n) & (-1)^n\frac{n(n - 1)}{2}\\0 & (-1)^{n} & (-1)^{n}(-n)\\0 & 0 & (-1)^{n}\end{pmatrix}$.
+    \\\\ Докажем, что это выражение верно по индукции:
+    \par \textbf{БАЗА: } Для $n = 2$ плучаем $J^2 = \begin{pmatrix}(-1)^{2} & (-1)^{2}(-2) & (-1)^2\frac{2}{2}\\0 & (-1)^{2} & (-1)^{2}(-2)\\0 & 0 & (-1)^{2}\end{pmatrix} = \begin{pmatrix}1 & -2 & 1\\0 & 1 & -2\\0 & 0 & 1\end{pmatrix}$
+    \\
+    \par \textbf{ШАГ: } Пусть для $n$ выполняется $J^n = \begin{pmatrix}(-1)^{n} & (-1)^{n}(-n) & (-1)^n\frac{n(n - 1)}{2}\\0 & (-1)^{n} & (-1)^{n}(-n)\\0 & 0 & (-1)^{n}\end{pmatrix}$
+    \\
+    \par Проверим для $n + 1$: $J^{n + 1} = J^n \cdot J = \begin{pmatrix}(-1)^{n} & (-1)^{n}(-n) & (-1)^n\frac{n(n - 1)}{2}\\0 & (-1)^{n} & (-1)^{n}(-n)\\0 & 0 & (-1)^{n}\end{pmatrix} \cdot \begin{pmatrix}-1 & 1 & 0 \\0 & -1 & 1 \\0 & 0 & -1 \end{pmatrix} 
+    = $
+    \\ $\begin{pmatrix}(-1)^n \cdot (-1) & (-1)^n \cdot 1 + (-1)^{n}(-n) \cdot (-1) & (-1)^{n}(-n)\cdot 1 + (-1)^n\frac{n(n - 1)}{2} \cdot (-1) \\0 & (-1)^n \cdot (-1) & (-1)^n \cdot 1 + (-1)^{n}(-n) \cdot (-1) \\0 & 0 & (-1)^n \cdot (-1) \end{pmatrix} = 
+    \\ \begin{pmatrix}(-1)^{n + 1} & (-1)^{n + 1}(-(n + 1)) & (-1)^{n + 1}\frac{n(n + 1)}{2} \\0 & (-1)^{n + 1}  & (-1)^{n + 1}(-(n + 1))  \\0 & 0 & (-1)^{n + 1}  \end{pmatrix}$
+    \\
+    \\ Мы доказали наше выражение по индукции, \textbf{УРА}.
+    \\
+    \\ Вернемся к $S = E + A^1 + A^2 + ... + A^{2021} = E + C \cdot (J^1 + J^2 + ... + J^{2021}) \cdot D$.
+    \\
+    \\ $J^n + J^{n + 1} = \begin{pmatrix}(-1)^{n} & (-1)^{n}(-n) & (-1)^n\frac{n(n - 1)}{2}\\0 & (-1)^{n} & (-1)^{n}(-n)\\0 & 0 & (-1)^{n}\end{pmatrix} + \begin{pmatrix}(-1)^{n + 1} & (-1)^{n + 1}(-(n + 1)) & (-1)^{n + 1}\frac{n(n + 1)}{2} \\0 & (-1)^{n + 1}  & (-1)^{n + 1}(-(n + 1))  \\0 & 0 & (-1)^{n + 1}  \end{pmatrix} = $
+    \\ $ = \begin{pmatrix}0 & (-1)^{n} & (-1)^{n + 1}n\\0 & 0 & (-1)^{n}\\0 & 0 & 0\end{pmatrix}$
+    \\
+    \\
+    \\ $S = E + C \cdot ((J^1 + J^2) + (J^3 + J^4) + ... + (J^{2019} + J^{2020})  + J^{2021}) \cdot D = $
+    \\
+    \\
+    \\ $ = E + C \cdot (\begin{pmatrix}0 & -1 & 1\\0 & 0 & -1\\0 & 0 & 0\end{pmatrix} + \begin{pmatrix}0 & -1 & 3\\0 & 0 & -1\\0 & 0 & 0\end{pmatrix} + ... + \begin{pmatrix}0 & -1 & 2019\\0 & 0 & -1\\0 & 0 & 0\end{pmatrix} + J^{2021}) \cdot D = $
+    \\
+    \\
+    \\ $ = E + C \cdot (\begin{pmatrix}0 & -1010 & \frac{1 + 2019}{2} \cdot 1010\\0 & 0 & -1010\\0 & 0 & 0\end{pmatrix} + J^{2021}) \cdot D = $
+    \\
+    \\
+    \\ $ = \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{pmatrix} + C \cdot (\begin{pmatrix}0 & -1010 & \frac{1 + 2019}{2} \cdot 1010\\0 & 0 & -1010\\0 & 0 & 0\end{pmatrix} + \begin{pmatrix}-1 & 2021 & (-1) \cdot \frac{2021 \cdot 2020}{2}\\0 & -1 & 2021\\0 & 0 & -1\end{pmatrix}) \cdot D = $
+    \\
+    \\
+    \\ $ = \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{pmatrix} + C \cdot (\begin{pmatrix}0 & -1010 & 1020100\\0 & 0 & -1010\\0 & 0 & 0\end{pmatrix} + \begin{pmatrix}-1 & 2021 & -2041210\\0 & -1 & 2021\\0 & 0 & -1\end{pmatrix}) \cdot D = $
+    \\
+    \\
+    \\ $ = \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\0 & 0 & 1\end{pmatrix} + \begin{pmatrix}1 & -9 & -43 \\0 & 1 & 4 \\0 & 0 & 1 \end{pmatrix} \cdot \begin{pmatrix}-1 & 1011 & -1021110\\0 & -1 & 1011\\0 & 0 & -1\end{pmatrix} \cdot \begin{pmatrix}1 & 9 & 7 \\0 & 1 & -4 \\0 & 0 & 1 \end{pmatrix} = $
+    \\
+    \\
+    \\$ = \begin{pmatrix}0 & 1011 & -1034253\\0 & 0 & 1011\\0 & 0 & 0\end{pmatrix}$
+    \\
+    \\ \textbf{Ответ: } $S = \begin{pmatrix}0 & 1011 & -1034253\\0 & 0 & 1011\\0 & 0 & 0\end{pmatrix}$
+    \\
+    \\ \textbf{№ 4}
+    \\ Заметим, что $S = \begin{pmatrix}-2 \\ 6 \\-4 \end{pmatrix} \cdot \begin{pmatrix}2 & 6 & 7 \end{pmatrix} = \begin{pmatrix}-4 & -12 & -14\\12 & 36 & 42\\-8 & -24 & -28\end{pmatrix}$
+    \\
+    \\ $tr(S^{10}) = tr(uv^T \cdot uv^T \cdot uv^T \cdot uv^T \cdot uv^T \cdot uv^T \cdot uv^T \cdot uv^T \cdot uv^T \cdot uv^T) =$ 
+    \\ $ tr(v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu \cdot v^Tu)$ по свойству следа.
+    \\
+    \\ $v^Tu = \begin{pmatrix}2 & 6 & 7 \end{pmatrix} \cdot \begin{pmatrix}-2 \\ 6 \\-4 \end{pmatrix} = 4$
+    \\
+    \\ Тогда $tr(S^{10}) = 4^10 = 1048576$
+    \\
+    \par \textbf{Ответ: } 1048576
+    \\
+    \\
+    \\ \textbf{№ 5}
+    \\
+    \\ a). 
+    \\
+    \begin{equation*} 
+        \begin{cases}
+        6x_1 - 4x_2 - 18x_3 + 8x_4 = 7 \\
+        x_1 - 2x_2 - 7x_3 = -8 \\
+        -9x_1 + 6x_2 + 27x_3 - 12x_4 = -4 \\
+        -6x_1 - 9x_2 - 21x_3 - 21x_4 = 5 \\
+        \end{cases}
+    \end{equation*}
+    \\
+    \\ В виде расширенной матрицы это будет выглядеть так:
+    \\
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            6 & -4 & -18 & 8 & 7 & :6\\
+            1 & -2 & -7 & 0 & -8 & \\
+            -9 & 6 & 27 & -12 &  -4 & \\
+            -6 & -9 & -21 & -21 &  5 & \\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & -\frac{2}{3} & -3 & \frac{4}{3} & \frac{7}{6} & \\
+            1 & -2 & -7 & 0 & -8 & -1(1)\\
+            -9 & 6 & 27 & -12 &  -4 & +9(1)\\
+            -6 & -9 & -21 & -21 &  5 & \\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+    \]
+    \[
+        \\\\ \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & -\frac{2}{3} & -3 & \frac{4}{3} & \frac{7}{6} & \\
+            0 & -\frac{4}{3} & -4 & -\frac{4}{3} & -\frac{55}{6} & \\
+            0 & 0 & 0 & 0 &  \frac{39}{6} & \\
+            -6 & -9 & -21 & -21 &  5 & \\
+        \end{pNiceArray}    
+    \]
+    \\ Мы получаем нулевую строку, которой соответствует ненулеваое значение, следовательно данная система не имеет решений:
+    \par \textbf{Ответ: } у данной системы решений нет.
+    \\\\\\\\
+    \\ б).
+    \\
+    \begin{equation*} 
+        \begin{cases}
+        6x_1 - 4x_2 - 18x_3 + 8x_4 = -8 \\
+        x_1 - 2x_2 - 7x_3 = 0 \\
+        -9x_1 + 6x_2 + 27x_3 - 12x_4 = 12 \\
+        -6x_1 - 9x_2 - 21x_3 - 21x_4 = 21 \\
+        \end{cases}
+    \end{equation*}
+    \\
+    \\ В виде расширенной матрицы это будет выглядеть так:
+    \\
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            6 & -4 & -18 & 8 & -8 & :6\\
+            1 & -2 & -7 & 0 & 0 & \\
+            -9 & 6 & 27 & -12 &  12 & \\
+            -6 & -9 & -21 & -21 &  21 & \\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & -\frac{2}{3} & -3 & \frac{4}{3} & -\frac{4}{3} & \\
+            1 & -2 & -7 & 0 & 0 & -1(1)\\
+            -9 & 6 & 27 & -12 &  12 & +9(1)\\
+            -6 & -9 & -21 & -21 &  21 & +6(1)\\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+    \]
+    \[
+        \\\\ \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & -\frac{2}{3} & -3 & \frac{4}{3} & -\frac{4}{3} & \\
+            0 & -\frac{4}{3} & -4 & -\frac{4}{3} & \frac{4}{3} & :(-\frac{4}{3})\\
+            0 & 0 & 0 & 0 &  0 & \\
+            0 & -13 & -39 & -13 &  13 & \\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & -\frac{2}{3} & -3 & \frac{4}{3} & -\frac{4}{3} & \\
+            0 & 1 & 3 & 1 & -1 & \\
+            0 & 0 & 0 & 0 &  0 & \\
+            0 & -13 & -39 & -13 &  13 & +13(2)\\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+    \]
+    \[
+        \\\\ \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & -\frac{2}{3} & -3 & \frac{4}{3} & -\frac{4}{3} & +\frac{2}{3}(2)\\
+            0 & 1 & 3 & 1 & -1 & \\
+            0 & 0 & 0 & 0 &  0 & \\
+            0 & 0 & 0 & 0 &  0 & \\
+        \end{pNiceArray}
+        \xrightarrow[]{}
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & 0 & -1 & 2 & -2& \\
+            0 & 1 & 3 & 1 & -1 & \\
+            0 & 0 & 0 & 0 &  0 & \\
+            0 & 0 & 0 & 0 &  0 & \\
+        \end{pNiceArray}
+    \]
+    \\
+    \\ Получаем столбец решений:
+    \[
+        \begin{pmatrix}-2 + x_{3} - 2x_{4} \\ -1 -3x_{3} - x_{4} \\ x_{3} \\ x_{4} \end{pmatrix}
+    \]
+    \\ \textbf{Ответ: } $x_1 = -2 + x_{3} - 2x_{4}, x_2 = -1 -3x_{3} - x_{4}$ и $x_3, x_4$ - любые числа.
+    \end{document}

@@ -1,0 +1,308 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по математическому анализу 7 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{Задача 7.7} Найдите точки разрыва, установите их род и доопределите функцию по непрерывности в точках устранимого разрыва:
+    \\
+    \par a). $y = \frac{\frac{1}{x} - \frac{1}{x + 1}}{\frac{1}{x - 1} - \frac{1}{x}} = \frac{x(x - 1)}{x(x + 1)}$
+    \begin{equation*}
+        \begin{cases}
+            y = \frac{x - 1}{x + 1} \\
+            x \neq -1, 1, 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Посчитаем левый и правый пределы в каждой точке:
+    \\
+    \par $\bullet$ Рассмотрим левый и правый пределы при $x \to -1$:
+    \\ 1.1 $\lim_{x \to -1 - 0} \frac{x - 1}{x + 1} = \lim_{x \to -1 - 0} 1 - \frac{2}{x + 1} = 1 + \infty = \infty$
+    \\ 1.2 $\lim_{x \to -1 + 0} 1 - \frac{2}{x + 1} = 1 - \infty = -\infty$
+    \par В точке $x = -1$ мы имеем разрыв второго рода, так как нет левого и правого предела (они равны $+\infty$ и $-\infty$).
+    \\
+    \par $\bullet$ Рассмотрим левый и правый пределы при $x \to 0$:
+    \\
+    \\ 2.1 $\lim_{x \to 0 - 0} \frac{x - 1}{x + 1} = \lim_{x \to 0 - 0} 1 - \frac{2}{x + 1} = 1 - 2 = -1$
+    \\ 2.2 $\lim_{x \to 0 + 0} \frac{x - 1}{x + 1} = \lim_{x \to 0 + 0} 1 - \frac{2}{x + 1} = 1 - 2 = -1$
+    \par В точке $x = 0$ мы имеем устранимый разрыв, так как и левый и правый пределы в ней равны -1, то есть для устранения разрыва необходимо доопределить $y = -1$ при $x = 0$.
+    \\
+    \par $\bullet$ Рассмотрим левый и правый пределы при $x \to 1$:
+    \\ 3.1 $\lim_{x \to 1 - 0} \frac{x - 1}{x + 1} = \lim_{x \to 1 - 0} 1 - \frac{2}{x + 1} = 1 - 1 = 0$
+    \\ 3.2 $\lim_{x \to 1 + 0} \frac{x - 1}{x + 1} = \lim_{x \to 1 + 0} 1 - \frac{2}{x + 1} = 1 - 1 = 0$
+    \par В точке $x = 1$ мы имеем устранимый разрыв, так как и левый и правый пределы в ней равны 0, следовательно для устранения разрыва необходимо доопределить $y = 0$ при $x = 1$.
+    \\
+    \\ Имеем:
+    \begin{equation*}
+        \begin{cases}
+            y = \frac{x - 1}{x + 1} \text{, если } x \neq -1, 1, 0\\
+            x \neq -1, \text{ (разрыв второго рода) }\\
+            y = -1, \text{ если } x = 0 \\
+            y = 0, \text{ если } x = 1 \\
+        \end{cases}
+    \end{equation*}
+    \\
+    \par б). $y = \frac{\sin 3x}{\sin 2x}$
+    \begin{equation*}
+        \begin{cases}
+            y = \frac{\sin 3x}{\sin 2x} \\
+            x \neq \frac{\pi n}{2}, n \in \mathbb{Z}
+        \end{cases}
+    \end{equation*}
+    \\ Наша функция является периодической, поэтому будет достаточно рассмотрим левый и правый пределы при $x = 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}$, то есть $x = \frac{\pi n}{2}, n = 0, 1, 2, 3$:
+    \\
+    \par $\bullet$ Рассотрим левый и правый пределы при $x = 0$:
+    \\ 1.1 $\lim_{x \to 0 - 0} \frac{\sin 3x}{\sin 2x} = \lim_{x \to 0 - 0} \frac{2x \cdot 3x \cdot \sin 3x}{3x \cdot 2x \cdot \sin 2x} = \frac{3}{2}$
+    \\
+    \\ 1.2 $\lim_{x \to 0 + 0} \frac{\sin 3x}{\sin 2x} = \lim_{x \to 0 + 0} \frac{2x \cdot 3x \cdot \sin 3x}{3x \cdot 2x \cdot \sin 2x} = \frac{3}{2}$
+    \par В точке $x = 0$ мы имеем устранимый разрыв, так как и левый и правый пределы в ней равны $\frac{3}{2}$.
+    \\
+    \par $\bullet$ Рассмотрим левый и правый пределы при $x = \frac{\pi}{2}$:
+    \\ Пусть $y = x - \frac{\pi}{2}$, тогда получаем пределы: 
+    \\ 2.1 $\lim_{y \to - 0} \frac{\sin (3y + \frac{3\pi}{2})}{\sin (2y + \pi)} = \lim_{y \to - 0} \frac{-\cos 3y}{-\sin 2y} = \lim_{y \to - 0} \frac{\cos 3y}{\sin 2y} = -\infty$
+    \\
+    \\ 2.1 $\lim_{y \to + 0} \frac{\sin (3y + \frac{3\pi}{2})}{\sin (2y + \pi)} = \lim_{y \to + 0} \frac{-\cos 3y}{-\sin 2y} = \lim_{y \to + 0} \frac{\cos 3y}{\sin 2y} = \infty$
+    \par В точке $x = \frac{\pi}{2}$ мы имеем разрыв второго рода, так как нет ни левого ни правого предела.
+    \\
+    \par $\bullet$ Рассмотрим левый и правый пределы при $x = \pi$:
+    \\ 3.1 $\lim_{x \to \pi - 0} \frac{\sin 3x}{\sin 2x} = \lim_{x \to \pi - 0} \frac{2x \cdot 3x \cdot \sin 3x}{3x \cdot 2x \cdot \sin 2x} = \frac{3}{2}$
+    \\
+    \\ 3.2 $\lim_{x \to \pi + 0} \frac{\sin 3x}{\sin 2x} = \lim_{x \to \pi + 0} \frac{2x \cdot 3x \cdot \sin 3x}{3x \cdot 2x \cdot \sin 2x} = \frac{3}{2}$
+    \par В точке $x = \pi$ мы имеем устранимый разрыв, так как и левый и правый пределы в ней равны $\frac{3}{2}$.
+    \\
+    \par $\bullet$ Рассмотрим левый и правый пределы при $x = \frac{3 \pi}{2}$:
+    \\ Пусть $y = x - \frac{3\pi}{2}$, тогда получаем пределы: 
+    \\ 4.1 $\lim_{y \to - 0} \frac{\sin (3y + \frac{9\pi}{2})}{\sin (2y + \frac{6\pi}{2})} = \lim_{y \to - 0} \frac{\sin (3y + \frac{\pi}{2})}{\sin (2y + \pi)} = \lim_{y \to - 0} \frac{\sin (3y + \frac{\pi}{2})}{\sin (2y + \pi)} = \lim_{y \to - 0} \frac{\cos 3y}{-\sin 2y} = \infty$
+    \\ 4.2 $\lim_{y \to + 0} \frac{\sin (3y + \frac{9\pi}{2})}{\sin (2y + \frac{6\pi}{2})} = \lim_{y \to + 0} \frac{\sin (3y + \frac{\pi}{2})}{\sin (2y + \pi)} = \lim_{y \to + 0} \frac{\sin (3y + \frac{\pi}{2})}{\sin (2y + \pi)} = \lim_{y \to + 0} \frac{\cos 3y}{-\sin 2y} = -\infty$
+    \par В точке $x = \frac{3\pi}{2}$ мы имеем разрыв второго рода, так как нет ни левого ни правого предела.
+    \\
+    \\ Имеем:
+    \begin{equation*}
+        \begin{cases}
+            y = \frac{\sin 3x}{\sin 2x} \textbf{, если } x \neq \frac{\pi n}{2}, n \in \mathbb{Z} \\
+            y = \frac{3}{2} \text{, если } x = \pi n, n \in \mathbb{Z} \\
+            y \neq \frac{\pi}{2} + \pi n, n \in \mathbb{Z} \\ 
+        \end{cases}
+    \end{equation*}
+    \\
+    \\
+    \\ \textbf{Задача 7.8} Найдите значение $a$, при котором функция $f(x)$ будет непрерывна, если:
+    \\
+    \\ a).
+    \begin{equation*}
+        \begin{cases}
+            \frac{e^x - 1}{x},\ x \neq 0 \\
+            a,\ x = 0\\
+        \end{cases}
+    \end{equation*}
+    \\ Посчитаем левый и правый пределы нашей функции при $x \to 0$:
+    \\ 1.1 $\lim_{x \to -0} \frac{e^x - 1}{x} = \lim_{x \to - 0} \frac{x + o(x)}{x} = \frac{1 + o(1)}{1} = 1$
+    \\ 1.2 $\lim_{x \to +0} \frac{e^x - 1}{x} = \lim_{x \to + 0} \frac{x + o(x)}{x} = \frac{1 + o(1)}{1} = 1$
+    \\
+    \\ Мы получили, что в этой точке левый предел равен правому, следовательно это устранимый разрыв, следовательно, чтобы его устранить $a$ должно быть равно значению левого и правого пределов, то есть 1.
+    \par \textbf{Ответ: }1
+    \\
+    \\ б).
+    \begin{equation*}
+        \begin{cases}
+            (\arcsin x) \ctg x, \ x \neq 0 \\
+            a, \ x = 0
+        \end{cases}
+    \end{equation*}
+    \\ Посчитаем левый и правый предел функции в точке $x = 0$:
+    \\ 1.1 $\lim_{x \to -0} (\arcsin x) \ctg x = \lim_{x \to -0} \frac{x \cdot \cos x}{\sin x} = \lim_{x \to -0} \frac{x \cdot 1}{\sin x} = 1$
+    \\ 1.2 $\lim_{x \to +0} (\arcsin x) \ctg x = \lim_{x \to +0} \frac{x \cdot \cos x}{\sin x} = \lim_{x \to +0} \frac{x \cdot 1}{\sin x} = 1$
+    \\
+    \\ Мы получили, что в этой точке левый предел равен правому, следовательно это устранимый разрыв, следовательно, чтобы его устранить $a$ должно быть равно значению левого и правого пределов, то есть 1.
+    \\ \textbf{Ответ: }1
+    \\
+    \\ \textbf{Задача 7.9} Найдите производные и дифференциалы функций:
+    \\
+    \\ a). $f(x) = \frac{2 + x^2}{\sqrt{1 + x^4}}$
+    \\ $f'(x) = \frac{(2 + x^2)' \cdot \sqrt{1 + x^4} - (\sqrt{1 + x^4})' \cdot (2 + x^2)}{1 + x^4} = \frac{2x \cdot \sqrt{1 + x^4} - \frac{4x^3}{2\sqrt{1 + x^4}} \cdot (2 + x^2)}{1 + x^4} = 
+    \\ = \frac{4x \cdot (1 + x^4) - 4x^3 \cdot (2 + x^2)}{2(1 + x^4)\sqrt{1 + x^4}} = \frac{4x - 8x^3}{2(1 + x^4)\sqrt{1 + x^4}} = \frac{2x - 4x^3}{(1 + x^4)\sqrt{1 + x^4}}$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = \frac{2x - 4x^3}{(1 + x^4)\sqrt{1 + x^4}}$
+    \par $df = f'(x)dx = \frac{(2x - 4x^3) dx}{(1 + x^4)\sqrt{1 + x^4}}$
+    \\
+    \\
+    \\ б). $f(x) = e^{3x}(x + 3)$
+    \\ $f'(x) = (e^{3x})'(x + 3) + (x + 3)'(e^{3x}) = 3e^{3x}(x + 3) + e^{3x} = e^{3x}(3x + 10)$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = e^{3x}(3x + 10)$
+    \par $df = f'(x)dx = e^{3x}(3x + 10)dx$
+    \\
+    \\
+    \\ в). $f(x) = x^22^x + x^33^x$
+    \\ $f'(x) = (x^2)'2^x + (2^x)'x^2 + (x^3)'3^x + (3^x)'x^3 = 2x2^x + 3x^23^x + x^2 \cdot 2^x \cdot \ln 2 + x^3 \cdot 3^x \cdot \ln 3 = \\ = 2^x(2x + x^2\ln 2) + 3^x(3x^2 + x^3 \ln 3)$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = 2^x(2x + x^2\ln 2) + 3^x(3x^2 + x^3 \ln 3)$
+    \par $df = f'(x)dx = (2^x(2x + x^2\ln 2) + 3^x(3x^2 + x^3 \ln 3))dx$
+    \\
+    \\
+    \\ г). $f(x) = \sin x \cdot \cos ^2 3x$
+    \\ $f'(x) = (\sin x)' \cdot \cos ^2 3x + (\sin x) \cdot (\cos ^2 3x)' = \cos x \cdot \cos ^2 3x + \sin x \cdot (2\cos 3x \cdot (-\sin 3x) \cdot 3) =
+    \\ = \cos 3x (\cos x \cdot \cos 3x - 6\sin x \cdot \sin 3x)$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = \cos 3x (\cos x \cdot \cos 3x - 6\sin x \cdot \sin 3x)$
+    \par $df = f'(x)dx = \cos 3x (\cos x \cdot \cos 3x - 6\sin x \cdot \sin 3x)dx$
+    \\
+    \\
+    \\ д). $f(x) = e^{2x}(3\cos 3x - 2\sin 3x)$
+    \\
+    \\ $f'(x) = (e^{2x})'(3\cos 3x - 2\sin 3x) + (3\cos 3x - 2\sin 3x)'(e^{2x}) = 
+    \\ = 2e^{2x}(3\cos 3x - 2\sin 3x) + e^{2x}(-9\sin 3x - 6 \cos 3x) = e^{2x}(6\cos 3x - 4\sin 3x -9\sin 3x - 6 \cos 3x) = 
+    \\ = -13e^{2x}\sin 3x$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = -13e^{2x}\sin 3x$
+    \par $df = f'(x)dx = -13e^{2x}(\sin 3x)dx$
+    \\
+    \\
+    \\ е). $f(x) = x^{a^a} + a^{x^a} + a^{a^x}$
+    \\
+    \\ $f'(x) = (x^{a^a})' + (a^{x^a})' + (a^{a^x})' = (a^a)x^{a^a - 1} + a^{x^a} \cdot \ln (a) \cdot a \cdot x^{a - 1} + a^{a^x} \cdot \ln (a) \cdot a^x \cdot \ln a$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = (a^a)x^{a^a - 1} + a^{x^a} \cdot \ln (a) \cdot a \cdot x^{a - 1} + a^{a^x} \cdot \ln (a) \cdot a^x \cdot \ln a$
+    \par $df = f'(x)dx = ((a^a)x^{a^a - 1} + a^{x^a} \cdot \ln (a) \cdot a \cdot x^{a - 1} + a^{a^x} \cdot \ln (a) \cdot a^x \cdot \ln a)dx$
+    \\
+    \\
+    \\ ж). $f(x) = \arccos \frac{1 - x^3}{1 + x^3}$
+    \\
+    \\ $f'(x) = (\arccos \frac{1 - x^3}{1 + x^3})' = -\frac{1}{\sqrt{1 - (\frac{1 - x^3}{1 + x^3})^2}} \cdot \left(\frac{(1 - x^3)'(1 + x^3) - (1 + x^3)'(1 - x^3)}{(1 + x^3)^2}\right) = 
+    \\ = -\frac{1}{\sqrt{1 - (\frac{1 - x^3}{1 + x^3})^2}} \cdot \left(\frac{-3x^2(1 + x^3) -3x^2(1 - x^3)}{(1 + x^3)^2}\right) = -\frac{1}{\sqrt{1 - (\frac{1 - x^3}{1 + x^3})^2}} \cdot \left(\frac{-6x^2}{(1 + x^3)^2}\right) = 
+    \\ = -\frac{1}{\sqrt{1 - (\frac{1 - 2x^3 + x^6}{1 + 2x^3 + x^6})}} \cdot \left(\frac{-6x^2}{(1 + x^3)^2}\right) = \frac{3x^2}{(1 + x^3)^2\sqrt{\frac{x^3}{(1 + x^3)^2}}} = \frac{3x^2}{(1 + x^3)\sqrt{x^3}}$
+    \\ 
+    \\ 
+    \\ \textbf{Ответ: }
+    \par $f'(x) = \frac{3x^2}{(1 + x^3)\sqrt{x^3}}$
+    \par $df = f'(x)dx = \frac{3x^2}{(1 + x^3)\sqrt{x^3}}dx$
+    \\
+    \\
+    \\ з). $f(x) = 2^{arctg \sqrt{1 + x^2}}$
+    \\
+    \\ $f'(x) = (2^{arctg \sqrt{1 + x^2}})' = 2^{arctg \sqrt{1 + x^2}} \cdot \ln (2) \cdot \frac{1}{2\sqrt{1 + x^2}} \cdot \frac{1}{1 + 1 + x^2} \cdot 2x = 
+    \\ = \frac{2^{arctg \sqrt{1 + x^2}} \cdot \ln (2)}{2\sqrt{1 + x^2}(2 + x^2)} \cdot 2x = \frac{x \cdot 2^{arctg \sqrt{1 + x^2}} \cdot \ln (2)}{\sqrt{1 + x^2}(2 + x^2)}$
+    \\
+    \\ \textbf{Ответ: }
+    \par $f'(x) = \frac{x \cdot 2^{arctg \sqrt{1 + x^2}} \cdot \ln (2)}{\sqrt{1 + x^2}(2 + x^2)}$
+    \par $df = f'(x)dx = \frac{x \cdot 2^{arctg \sqrt{1 + x^2}} \cdot \ln (2)}{\sqrt{1 + x^2}(2 + x^2)}dx$
+    \\
+    \\
+    \\ и). $f(x) = (1 + x)^{\frac{1}{x}}$
+    \\
+    \\ $f'(x) = \left(e^{\frac{1}{x}\ln(1 + x)}\right)' = \left(e^{\frac{1}{x}\ln(1 + x)}\right) \cdot \left(\frac{1}{x}\ln(1 + x)\right)' = \left(e^{\frac{1}{x}\ln(1 + x)}\right)\left(-\frac{\ln (1 + x)}{x^2} + \frac{1}{x(1 + x)}\right) = 
+    \\ = ((1 + x)^{\frac{1}{x}})\left(\frac{1}{x(1 + x)} - \frac{\ln (1 + x)}{x^2}\right)$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = ((1 + x)^{\frac{1}{x}})\left(\frac{1}{x(1 + x)} - \frac{\ln (1 + x)}{x^2}\right)$
+    \par $df = f'(x)dx = ((1 + x)^{\frac{1}{x}})\left(\frac{1}{x(1 + x)} - \frac{\ln (1 + x)}{x^2}\right)dx$
+    \\
+    \\
+    \\ к). $f(x) = (\arccos x)^2\left[\ln ^2 (\arccos x) - \ln (\arccos x) + \frac{1}{2}\right]$
+    \\
+    \\ $f'(x) = \left((\arccos x)^2\right)' \cdot \left[\ln ^2 (\arccos x) - \ln (\arccos x) + \frac{1}{2}\right] + (\arccos x)^2 \cdot \left[\ln ^2 (\arccos x) - \ln (\arccos x) + \frac{1}{2}\right]' =
+    \\ = -\frac{2\arccos x}{\sqrt{1 - x^2}} \cdot \left[\ln ^2 (\arccos x) - \ln (\arccos x) + \frac{1}{2}\right] + (\arccos x)^2 \cdot \left[-\frac{2\ln (\arccos x)}{(\arccos x)\sqrt{1 - x^2}} + \frac{1}{(\arccos x)\sqrt{1 - x^2}}\right] = 
+    \\ = -\frac{2\arccos x}{\sqrt{1 - x^2}} \cdot \left[\ln ^2 (\arccos x) - \ln (\arccos x) + \frac{1}{2}\right] + (\arccos x) \cdot \left[\frac{1 - 2\ln (\arccos x)}{\sqrt{1 - x^2}}\right] = 
+    \\ = \frac{\arccos x(-2\ln ^2 (\arccos x) + 2\ln (\arccos x) - 1 - 2\ln (\arccos x) + 1)}{\sqrt{1 - x^2}} = 
+    \\ = - \frac{2\arccos x(\ln ^2 (\arccos x))}{\sqrt{1 - x^2}}$
+    \\ \textbf{Ответ: }
+    \par $f'(x) = - \frac{2\arccos x(\ln ^2 (\arccos x))}{\sqrt{1 - x^2}}$
+    \par $df = f'(x)dx = \left(- \frac{2\arccos x(\ln ^2 (\arccos x))}{\sqrt{1 - x^2}}\right)dx$
+    \\
+    \\
+    \\ \textbf{Задание 7.10}
+    \\
+    \\ а). $f = \frac{u}{v^2}$
+    \par $df = d\frac{u}{v^2} = \frac{v^2du - udv^2}{v^4} = \frac{v^2du - 2uvdv}{v^4}$
+    \\
+    \\ б). $f = arctg \frac{u}{v}$
+    \par $df = d (arctg \frac{u}{v}) = \frac{d \left(\frac{u}{v}\right)}{1 + \left(\frac{u}{v}\right)^2} = \frac{vdu - udv}{(1 + \left(\frac{u}{v}\right)^2)v^2} = \frac{vdu - udv}{v^2 + u^2}$
+    \\
+    \\ в). $f = \frac{1}{\sqrt{u^2 + v^2}}$
+    \par $df = d \frac{1}{\sqrt{u^2 + v^2}} = -\frac{du^2 + dv^2}{2\sqrt{(u^2 + v^2)^3}} = -\frac{2udu + 2vdv}{2\sqrt{(u^2 + v^2)^3}} = -\frac{udu + vdv}{\sqrt{(u^2 + v^2)^3}} $
+\end{document}

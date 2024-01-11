@@ -1,0 +1,151 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по матанализу 6 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{ДЗ 6.6} Какие из следующих утверждений справедливы при $x \to 0$:
+    \\
+    \\ a). $o(x^2) + o(x) = o(x)$
+    \par $o(x^2) = o(x) \ \Rightarrow \ $ получаем $o(x^2) + o(x) = o(x) + o(x) = o(x)$ ЧТД
+    \\
+    \\ б). $o(x) + x^2 = o(x)$
+    \par $x^2 = o(x) \ \Rightarrow \ $ имеем $o(x) + x^2 = o(x) + o(x) = o(x)$ ЧТД
+    \\
+    \\ в). $(x + o(x))(2x^2 + o(x^2)) = 2x^3 + o(x^3)$
+    \par $x(1 + o(1))x^2(2 + o(1)) = x^3(1 + o(1))(2 + o(1)) = x^3(2 + 3o(1) + o(1)) = x^3(2 + o(1)) = 2x^3 + o(x^3)$
+    \\
+    \\ г). $o(1) - o(1) = 0$
+    \\ По свойству о-малого $o(1) - o(1) = o(1)$
+    \\ Но $o(1) \neq 0$ при $x \to x_0 \ \Rightarrow \ $ мы не можем сказать, что $o(1) - o(1) = o(1)$
+    \\
+    \\ \textbf{ДЗ 6.7}
+    \\
+    \\ а). $\lim_{x \to 0} \frac{\arcsin ^2 (\tg x)}{(\cos (2 \sin 2x) - 1)} = \lim_{x \to 0} \frac{\arcsin ^2 (x + o(x))}{\cos (4x + o(x)) - 1} = \lim_{x \to 0} \frac{(x + o(x) + o(x + o(x)))^2}{1 - \frac{(4x + o(x))^2}{2} - 1 + o((4x + o(x))^2)} =
+    \\ = \lim_{x \to 0} \frac{(x + o(x)))^2}{1 - \frac{16x^2 + o(x^2)}{2} - 1 + o(x^2)} = \lim_{x \to 0} \frac{x^2 + o(x^2)}{-8x^2 + o(x^2)} = \lim_{x \to 0} \frac{1 + o(1)}{-8 + o(1)} = -\frac{1}{8}$
+    \\
+    \\ б). $\lim_{x \to 1} \frac{(1 - \cos (x - 1))(4x^2 - 4)}{\ln (x) (x^{\frac{2}{5}} - 1)^2} = \lim_{y \to 0} \frac{(1 - \cos (y))(4(y + 1)^2 - 4)}{\ln (y + 1) ((y + 1)^{\frac{2}{5}} - 1)^2} =
+    \\ =  \lim_{y \to 0} \frac{(\frac{y^2}{2} + o(y^2))(4y^2 + 8y)}{(y + o(y))(1 + \frac{2}{5}y + o(y) - 1)^2} = \lim_{y \to 0} \frac{2y^4 + 4y^3 + o(y^4) + o(y^3)}{\frac{4}{25}y^3 + o(y^3)} = \lim_{y \to 0} \frac{o(y^3) + 4y^3 + o(y^3) + o(y^3)}{\frac{4}{25}y^3 + o(y^3)} = \lim_{y \to 0} \frac{4y^3 + o(y^3)}{\frac{4}{25}y^3 + o(y^3)} = \lim_{y \to 0} \frac{4 + o(1)}{\frac{4}{25}+ o(1)} = 4$
+    \\
+    \\ \textbf{ДЗ 6.8}
+    \\
+    \\ a). $\lim_{x \to 0} \frac{\cos x - \cos 3x}{x^2} = \lim_{x \to 0} \frac{1 - \frac{x^2}{2} + o(x^2) - (1 - \frac{9x^2}{2} + o(x^2))}{x^2} = \lim_{x \to 0} \frac{4x^2 + o(x^2)}{x^2} = \lim_{x \to 0} \frac{4 + o(1)}{1} = \lim_{x \to 0} 4 + o(1) = 4$
+    \\
+    \\ б). $\lim_{x \to 0} \frac{\cos (a + 2x) - 2 \cos (a + x) + \cos a}{x^2} =
+    \\ = \lim_{x\to 0} \frac{\cos a \cos 2x - \sin a \sin 2x - 2 (\cos a \cos x - \sin a \sin x) + \cos a}{x^2} =
+    \\ = \lim_{x \to 0} \frac{\cos a (\cos 2x - 2 \cos x + 1) + \sin a (2 \sin x - \sin 2x)}{x^2} = 
+    \\ = \lim_{x \to 0} \frac{\cos a (1 - 2x^2 + o(x^2) - 2(1 - \frac{x^2}{2} + o(x^2)) + 1) + \sin a \sin x (2 - 2 \cos x)}{x^2}
+    \\ = \lim_{x \to 0} \frac{\cos a (-x^2 + o(x^2)) + \sin x (x + o(x))(2 - 2(1 - \frac{x^2}{2} + o(x^2)))}{x^2} = 
+    \\ = \lim_{x \to 0} \frac{- \cos a (x^2 + o(x^2)) + \sin a (x^3 + o(x^3))}{x^2} = \lim_{x \to 0} \frac{-\cos a (x^2 + o(x^2)) + \sin a (o(x^2))}{x^2} = 
+    \\ = \lim_{x \to 0} \left(-\cos a + \sin a o(1)\right) = -\cos a$
+    \\
+    \\ в). $\lim_{x \to \infty} (\sqrt[3]{x^3 + 3x^2} - \sqrt{x^2 - 2x}) = \lim_{x \to \infty} \left(x\sqrt[3]{1 + \frac{3}{x}} - x\sqrt{1 + \frac{2}{x}}\right) = 
+    \\ = \lim_{x \to \infty} \left(x (1 + \frac{1}{x} + o(\frac{1}{x})) - x(1 + \frac{1}{x} + o(\frac{1}{x}))\right) = \lim_{x \to \infty} x \cdot o(\frac{1}{x}) = \lim_{y \to 0} \frac{o(y)}{y} = 0$
+    \\
+    \\ г). $\lim_{x \to a} \frac{a^x - x^a}{x - a} = \lim_{y \to 0} \frac{a^{y + a} - (y + a)^a}{y} = \lim_{y \to 0} \frac{a^a \cdot a^y - a^a (\frac{y}{a} + 1)^a}{y} = \lim_{y \to 0} \frac{a^a (a^y - 1 - y + o(y))}{y} = 
+    \\ = \lim_{y \to 0} \frac{a^a (y \ln a - y + o(y))}{y} = \lim_{y \to 0} a^a (\ln a - 1 + o(1)) = a^a \ln a - a^a$
+    \\
+    \\ д). $\lim_{x \to a} \frac{\ln x - \ln a}{x - a} = \lim_{y \to 0} \frac{\ln (y + a) - \ln a}{y} \lim_{y \to 0} \frac{\ln \left(1 + \frac{y}{a}\right)}{y} = \lim_{y \to 0} \frac{\frac{y}{a} + o(y)}{y} = \lim_{y \to o} \left(\frac{1}{a} + o(1)\right) = \frac{1}{a}$
+    \\
+    \\ е). $\lim_{x \to 0} \frac{\ln (x^2 + e^x)}{\ln (x^4 + e^{2x})} = \lim_{x \to 0} \frac{\ln (x^2 + 1 + x + o(x))}{\ln (x^4 + 1 + 2x + o(x))} = \lim_{x \to 0} \frac{x^2 + x + o(x) + o(x^2 + x + o(x))}{x^4 + 2x + o(x) + o(x^4 + 2x + o(x))} = 
+    \\ = \lim_{x \to 0} \frac{x^2 + x + o(x)}{x^4 + 2x + o(x)} = \lim_{x \to 0} \frac{x + o(x)}{2x + o(x)} = \frac{1}{2}$
+    \\
+    \\ ж). $\lim_{x \to 0} (1 + \tg ^2 x)^{\frac{1}{\ln \cos x}} = \lim_{x \to 0} e^{\frac{\ln (1 + \tg ^2 x)}{\ln \cos x}} = \lim_{x \to 0} e^{\frac{\ln(1 + (x + o(x))^2)}{\ln (1 - \frac{x^2}{2} + o(x^2))}} = \lim_{x \to 0} e^{\frac{(x + o(x))^2 + o((x + o(x))^2)}{(- \frac{x^2}{2} + o(x^2)) + o(- \frac{x^2}{2} + o(x^2))}} =
+    \\ = \lim_{x \to 0} e^{\frac{x^2 + o(x^2)}{-\frac{x^2}{2} + o(x^2)}} = \lim_{x \to 0} e^{\frac{1 + o(1)}{-\frac{1}{2}} + o(1)} = e^{-2}$
+    \\
+    \\ з). $\lim_{x \to 1} (x^2 + \sin ^2 (\pi x))^{\frac{1}{\ln x}} = \lim_{y \to 0} e^{\frac{\ln ((y + 1)^2 + \sin ^2 (\pi y + \pi))}{\ln (y + 1)}} = \lim_{y \to 0} e^{\frac{\ln (y^2 + 2y + 1 + \sin ^2 (\pi y))}{y + o(y)}} = \lim_{y \to 0} e^{\frac{\ln (y^2 + 2y + 1 + (\pi y + o(y))^2)}{y + o(y)}} = 
+    \\ = \lim_{y \to 0} e^{\frac{y^2 + 2y + (\pi y + o(y))^2 + o(y^2 + 2y + (\pi y + o(y))^2)}{y + o(y)}} = \lim_{y \to 0} e^{\frac{y^2 + 2y + \pi ^2 y^2 + o(y^2) + o(y)}{y + o(y)}} = \lim_{y \to 0} e^{\frac{o(y + 2y + o(y) + o(y) + o(y))}{y + o(y)}} = \lim_{y \to 0} e^{\frac{2y + o(y)}{y + o(2)}} = \lim_{y \to 0} e^{\frac{2 + o(1)}{1 + o(1)}} = e^2$
+    \\
+    \\ и). $\lim_{x \to \pi} \left(\frac{\cos x}{\cos 3x}\right)^{\frac{1}{(\sqrt{\pi x} - \pi)^2}} = \lim_{y \to 0} \left(\frac{\cos (y + \pi)}{\cos (3y + 3\pi)}\right)^{\frac{1}{(\sqrt{\pi y + \pi ^2} - \pi)^2}} = \lim_{y \to 0} \left(\frac{\cos y}{\cos 3y}\right)^{\frac{1}{\pi (\sqrt{y + \pi} - \sqrt{\pi})^2}} =
+    \\ =  \lim_{y \to 0} \left(\frac{\cos y}{\cos 3y}\right)^{\frac{1}{\pi ^2 (1 + \frac{y}{2\pi} o(y) - 1)^2}} = \lim_{y \to 0} e^{\frac{\ln (\cos y) - \ln (\cos 3y)}{\pi ^2 (\frac{y}{2\pi} o(y))^2}} = \lim_{y \to 0} e^{\frac{\ln (1 - \frac{y^2}{2} + o(y^2)) - \ln (1 - \frac{9y^2}{2} + o(y^2))}{\pi ^2 (\frac{y^2}{4\pi ^2} + o(y^2))}} =
+    \\ = \lim_{y \to 0} e^{\frac{-\frac{y^2}{2} + o(y^2) + o(\frac{y^2}{2} + o(y^2)) - (-\frac{9y^2}{2} + o(y^2) + o(\frac{9y^2}{2} + o(y^2)))}{\frac{y^2}{4} + o(y^2)}} = \lim_{y \to 0} e^{\frac{\frac{8y^2}{2} + o(y^2)}{\frac{y^2}{4} + o(y^2)}} = \lim_{y \to 0} e^{\frac{4 + o(1)}{\frac{1}{4} + o(1)}} = e^{16}$
+    \\
+    \\ к). $\lim_{x \to 1} x^{\tg \left(\frac{\pi x}{2}\right)} = \lim_{y \to 0} (y + 1)^{\tg \left( \frac{\pi y}{2} + \frac{\pi}{2}\right)} = \lim_{y \to 0} (y + 1)^{-ctg \left(\frac{\pi y}{2}\right)} = \lim_{y \to 0} e^{-\frac{\ln (y + 1)}{\tg \left(\frac{\pi y}{2}\right)}} = \lim_{y \to 0} e^{-\frac{y + o(y)}{\frac{\pi y}{2} + o(y)}} = \lim_{y \to 0} e^{\frac{1 + o(1)}{\frac{\pi}{2} + o(1)}} = e^{-\frac{2}{\pi}}$
+    \end{document}

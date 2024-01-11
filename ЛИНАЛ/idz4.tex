@@ -1,0 +1,852 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ИДЗ по линейной алгебре 4 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{1.} Для матрицы
+    \[
+        A = \begin{pmatrix}10 + 5i & 4 + 3i \\ -24 - 18i & -10 - 10i\end{pmatrix} \in Mat_{2 \times 2} (\mathbb{C})
+    \]
+    \\ найдите все значения $x \in \mathbb{C}$, при которых матрица $A - xE$ необратима.
+    \\
+    \\ \textbf{Решение: } чтобы матрица была необратима, ее определитель должен быть равен 0. То есть $\det (A - xE) = 0$
+    \\
+    \\ Пусть $x = a + bi, a, b \in \mathbb{R}$. Тогда $A - xE = \begin{pmatrix}10 + 5i & 4 + 3i \\ -24 - 18i & -10 - 10i\end{pmatrix} - \begin{pmatrix}a + bi & 0 \\ 0 & a + bi\end{pmatrix} = 
+    \\ = \begin{pmatrix}10 + 5i - (a + bi) & 4 + 3i \\ -24 - 18i & -10 - 10i - (a + bi)\end{pmatrix}$
+    \\
+    \\ Решим уравнение:
+    \\ $\det (A - xE) = (10 + 5i - (a + bi)) \cdot (-10 - 10i - (a + bi)) - (4 + 3i) \cdot (-24 - 18i) = 0$
+    \\
+    \\ $((10 - a) + (5 - b)i) \cdot ((-10 - a) + (-10 - b)i) - (4 + 3i) \cdot (-24 - 18i) = 0$
+    \\
+    \\ $(-50 + a^2 - 5b - b^2) + (2ab - 150 + 5a)i = (4 + 3i) \cdot (-24 - 18i) = -42 - 144 i$
+    \\
+    \\ Получаем систему уравнений от неизвестных a, b:
+    \begin{equation*}
+        \begin{cases}
+            -50 + a^2 - 5b - b^2 = -42 \\
+            2ab - 150 + 5a = - 144 \\
+        \end{cases}
+    \end{equation*}
+    \\ Если $a = 0$, то система не имеет решений, так как во втором уравнении получаем $-150 = -144$, следовательно дальше будем работать с $a \neq 0$
+    \\ Выразим $b$ через $a$ из второго уравнения: $b = \frac{6 - 5a}{2a}$, подставим это в первое уравнение и решим его:
+    \\
+    \par $-50 + a^2 - \frac{30 - 25a}{2a} - \left(\frac{6 - 5a}{2a}\right)^2 = -42$
+    \\
+    \par $\frac{4a^4 - 60a + 50a^2 - 36 + 60a - 25a^2}{4a^2} = 8$
+    \\ 
+    \par $4a^4 + 25a^2 - 36 = 32a^2$
+    \par $4a^4 - 7a^2 - 36 = 0$
+    \par $(a - 2)(a + 2)(4a^2 + 9) = 0 \ \Rightarrow \ a = 2, a = -2$
+    \\
+    \\ При $a = 2, b = -1$, при $a = -2, b = -4$
+    \\
+    \\ \textbf{Ответ: } $x = 2 - i;\ \ \  x = -2 - 4i$
+    \\
+    \\
+    \\ \textbf{2.} Вычислите
+    \[
+        \sqrt[4]{-\frac{9}{2} + \frac{9\sqrt{3}}{2}i}
+    \]
+    \\ \textbf{Решение: }
+    \\
+    \par Пусть $z = -\frac{9}{2} + \frac{9\sqrt{3}}{2}i = 9\left(-\frac{1}{2} + \frac{\sqrt{3}}{2}i\right) = 9\left(\cos \frac{2\pi}{3} + \sin \frac{2\pi}{3} i\right) = |z|(\cos \phi + \sin \phi i)$
+    \\
+    \par Пусть $W = \{w \ | \ w^4 = z, w \in \mathbb{C}\}$
+    \\
+    \\ $w^4 = z \ \Rightarrow \ w = \sqrt[4]{z} = \sqrt[4]{|z|} \cdot \left(\cos \frac{\phi + 2\pi k}{4} + \sin \frac{\phi + 2\pi k}{4} i\right) = \sqrt[4]{9} \cdot \left(\cos \frac{\frac{2 \pi}{3} + 2\pi k}{4} + \sin \frac{\frac{2 \pi}{3} + 2\pi k}{4} i\right) \\ k \in \{0, 1, 2, 3\}$
+    \\
+    \\
+    \\ \textbf{Ответ: }
+    \par Подставляя $k \in \{0, 1, 2, 3\}$, получаем множество W: 
+    \\
+    \par При $k = 0$ имеем : $\sqrt[4]{z} = \sqrt{3} \cdot \left(\cos \frac{2 \pi}{12} + \sin \frac{2 \pi}{12} i\right);$
+    \\
+    \par При $k = 1$ имеем: $\sqrt[4]{z} = \sqrt{3} \cdot \left(\cos \frac{2 \pi}{3} + \sin \frac{2 \pi}{3} i\right);$
+    \\
+    \par При $k = 2$ имеем: $\sqrt[4]{z} = \sqrt{3} \cdot \left(\cos \frac{7 \pi}{6} + \sin \frac{7 \pi}{6} i\right);$
+    \\
+    \par При $k = 3$ имеем: $\sqrt[4]{z} = \sqrt{3} \cdot \left(\cos \frac{5 \pi}{3} + \sin \frac{5 \pi}{3} i\right);$
+    \\
+    \\ \textbf{3.} Докажите, что векторы
+    \[
+        v_1 = \begin{pmatrix}-10\\-6\\6\\1\\-1\end{pmatrix}, \ \ v_2 = \begin{pmatrix}-90\\-52\\56\\14\\-13\end{pmatrix}, \ \ v_3 = \begin{pmatrix}180\\114\\-102\\a\\\frac{7}{2}\end{pmatrix} 
+    \]
+    \\ линейно независимы при всех значениях параметра $a$, и для каждого значения $a$ дополните эти векторы до базиса
+    всего пространства $\mathbb{R}^5$.
+    \\
+    \\ \textbf{Решение: } Чтобы эти векторы были линейно независыми при любых $a$, нам необходимо доказать, что единственным решением уравнения $x_1 \cdot v_1 + x_2 \cdot v_2 + x_3 \cdot v_3 = 0$ были иксы: $x_1 = x_2 = x_3 = 0$.
+    \\
+    \\ Если записать эти иксы в столбец, то по сути получится ОСЛУ: $\begin{pmatrix}u_1 & u_2 & u_3\end{pmatrix} \cdot \begin{pmatrix}x_1 \\ x_2 \\ x_3\end{pmatrix} = \begin{pmatrix}0 \\ 0 \\ 0 \\ 0 \\ 0\end{pmatrix}$
+    \\
+    \\ Запишем эту систему в виде расширенной матрицы и приведем ее к улучшенному ступенчатому виду при помощи элементарных преобразований:
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            -10 & -90 & 180 & 0 & \\
+            -6 & -52 & 114 & 0 & \\
+            6 & 56 & -102 & 0 & \\
+            1 & 14 & a & 0 & \\
+            -1 & -13 & \frac{7}{2} & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 14 & a & 0 & \\
+            -10 & -90 & 180 & 0 & +10(1)\\
+            -6 & -52 & 114 & 0 & +6(1)\\
+            6 & 56 & -102 & 0 & -6(1)\\
+            -1 & -13 & \frac{7}{2} & 0 & +(1)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 14 & a & 0 & \\
+            0 & 50 & 180 + 10a & 0 & \\
+            0 & 32 & 114 + 6a & 0 & \\
+            0 & -28 & -102 - 6a & 0 & \\
+            0 & 1 & \frac{7}{2} + a & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 14 & a & 0 & \\
+            0 & 1 & \frac{7}{2} + a & 0 & \\
+            0 & 50 & 180 + 10a & 0 & -50(2)\\
+            0 & 32 & 114 + 6a & 0 & -32(2)\\
+            0 & -28 & -102 - 6a & 0 & +28(2)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 14 & a & 0 & \\
+            0 & 1 & \frac{7}{2} + a & 0 & \\
+            0 & 0 & 5 - 40a & 0 & :5\\
+            0 & 0 & 2 - 26 a & 0 & :2\\
+            0 & 0 & 22 a - 4 & 0 & :2\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 14 & a & 0 & \\
+            0 & 1 & \frac{7}{2} + a & 0 & \\
+            0 & 0 & 1 - 9a & 0 & \\
+            0 & 0 & 1 - 13 a & 0 & \\
+            0 & 0 & 11a - 2 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\ Чтобы векторы были линейно зависимыми, данная система должна иметь ненулевое решение, для этого необходимо, чтобы в расширенной матрице были свободные переменные. Чтобы они были, нам необходимо, чтобы все три последние строки были нулевыми (1я и 2я строки нулевыми быть уже не смогут). То есть нам необходимо, чтобы выполнялись следующие условия: 
+    \begin{equation*}
+        \begin{cases}
+            1 - 9a = 0 \\
+            1 - 13a = 0 \\
+            11a - 2 = 0 \\ 
+        \end{cases}
+    \end{equation*}
+    \\ Но тогда $a$ должно будет одновременно равняться трем числам $\frac{1}{9}, \frac{1}{13}, \frac{2}{11}$, а это невозможно, следовательно наша система векторов линейно независима при любых $a$.
+    \\
+    \\ Запишем наши векторы в матрицу $\begin{pmatrix}u_1^T\\u_2^T\\u_3^T\end{pmatrix}$ и приведем ее элементарными преобразованиями строк к ступенчатому виду, при этом заметим, что линейная оболочка данной системы векторов сохранится:
+    \[
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            -10 & -6 & 6 & 1 & -1 & \\
+            -90 & -52 & 56 & 14 & -13 & -9(1)\\
+            180 & 114 & -102 & a & \frac{7}{2} & +18(1)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            -10 & -6 & 6 & 1 & -1 & :(-10)\\
+            0 & 2 & 2 & 5 & -4 & \\
+            0 & 6 & 6 & a + 18 & -\frac{29}{2} & -3(2)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & \\
+            0 & 2 & 2 & 5 & -4 & :2\\
+            0 & 0 & 0 & a + 3 & -\frac{5}{2} & \\
+        \end{pNiceArray}
+    \]
+    \\ Транспонируем матрицу, чтобы наши векторы стали столбцами:
+    \[
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & \\
+            0 & 2 & 2 & 5 & -4 &\\
+            0 & 0 & 0 & a + 3 & -\frac{5}{2} & \\
+        \end{pNiceArray}^T 
+        \to
+        \begin{pmatrix}1 & 0 & 0 \\ \frac{3}{5} & 2 & 0 \\ -\frac{3}{5} & 2 & 0 \\ -\frac{1}{10} & 5 & a + 3 \\ \frac{1}{10} & -4 & -\frac{5}{2}\end{pmatrix}
+    \]
+    \\ 1). Пусть $a \neq 3$. Дополним нашу систему векторами $e_3, e_5$ из стандартного базиса $\mathbb{R}^5$ и проверим ее на линейную зависимость. Для этого нужно понять, найдутся ли такие 5 коэффициентов, где хотя бы один не нулевой, что линейная комбинация векторов с этими коэффициентами равна 0. То есть достаточно решить СЛУ, где в расширенной матрице вместо строк будут наши 5 векторов:
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & 0 & -\frac{1}{10}(5)\\
+            0 & 2 & 2 & 5 & -4 & 0 & +4(5)\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & a + 3 & -\frac{5}{2} & 0 & +\frac{5}{2}(5)\\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & 0 & 0 & +\frac{3}{5}(3)\\
+            0 & 2 & 2 & 5 & 0 & 0 & -2(3)\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & a + 3 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & 0 & -\frac{1}{10} & 0 & 0 & \\
+            0 & 2 & 0 & 5 & 0 & 0 & :2\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & a + 3 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & 0 & -\frac{1}{10} & 0 & 0 & -\frac{3}{5}(2)\\
+            0 & 1 & 0 & \frac{5}{2} & 0 & 0 & \\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & a + 3 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & 0 & 0 & -\frac{8}{5} & 0 & 0 & \\
+            0 & 1 & 0 & \frac{5}{2} & 0 & 0 & \\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & a + 3 & 0 & 0 & :(a + 3)\\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & 0 & 0 & -\frac{8}{5} & 0 & 0 & +\frac{8}{5}\\
+            0 & 1 & 0 & \frac{5}{2} & 0 & 0 & -\frac{5}{2}\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & :\\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & 0 & 0 & 0 & 0 & 0 & \\
+            0 & 1 & 0 & 0 & 0 & 0 & \\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}    
+    \]
+    \\ Получаем улучшенный ступенчатый вид, при котором матрица превращается в единичную, следовательно единственное ее решение нулевое (все это при $a \neq 3$).
+    \\
+    \\ 2). При $a = 3$ мы дополним нашу систему векторов $u_1 u_2 u_3$ векторами $e_3, e_4$ из стандартного базиса $\mathbb{R}^5$. Так же проверим, что эта система линейно независима:
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & 0 &\\
+            0 & 2 & 2 & 5 & -4 & 0 & +4(5)\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & -\frac{5}{2} & 0 & \times (-\frac{5}{2})\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & 0 &\\
+            0 & 2 & 2 & 5 & -4 & 0 & +4(5) - 5(4) - 2(3)\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & 0 &\\
+            0 & 2 & 0 & 0 & 0 & 0 & :2\\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & \frac{3}{5} & -\frac{3}{5} & -\frac{1}{10} & \frac{1}{10} & 0 & - \frac{3}{5}(2) + \frac{3}{5}(3) + \frac{1}{10}(4) - \frac{1}{10}(5)\\
+            0 & 1 & 0 & 0 & 0 & 0 & \\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+        \to 
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & 0 & 0 & 0 & 0 & 0 & \\
+            0 & 1 & 0 & 0 & 0 & 0 & \\
+            0 & 0 & 1 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & 1 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\ Матрица опять единичная, следовательно опять только нулевое ршеение. Ура, в зависимости от $a$ мы дополнили нашу систему векторов до базиса!
+    \\
+    \\ \textbf{Ответ: } 
+    \par 1). При $a \neq 3$ дополним нашу систему из векторов $u_1 u_2 u_3$ до базиса $\mathbb{R}^5$ векторами $e_3 e_5$ из стандартного базиса $\mathbb{R}^5$. 
+    \par 2). При $a = 3$ дополним нашу систему из векторов $u_1 u_2 u_3$ до базиса $\mathbb{R}^5$ векторами $e_3 e_4$ из стандартного базиса $\mathbb{R}^5$.
+    \\
+    \\
+    \\ \textbf{4.} Подпространство $U \subseteq \mathbb{R}^5$ задано как линейная оболочка векторов
+    \[
+        v_1 = \begin{pmatrix}13 \\ 11 \\ 9 \\ 6 \\ 6\end{pmatrix}, \ v_2 = \begin{pmatrix}26 \\ 17 \\ 9 \\ 15 \\ 20\end{pmatrix}, \ v_3 = \begin{pmatrix}5 \\ 5 \\ 9 \\ 6 \\ -1\end{pmatrix}, \ v_4 = \begin{pmatrix}-12 \\ -9 \\ -1 \\ -1 \\ -10\end{pmatrix}   
+    \]
+    \\ (а) Выберите среди данных векторов базис подпространства $U$.
+    \\ (б) Среди векторов
+    \[
+        v_1 = \begin{pmatrix}-5 \\ 0 \\ 0\\ -9 \\ -7\end{pmatrix}, \ v_2 = \begin{pmatrix}-10 \\ -6 \\ -4 \\ -7 \\ -7\end{pmatrix}    
+    \]
+    \\ выберите те, которые лежат в $U$, и найдите их выражение через найденный в пункте (a) базис.
+    \\
+    \\ (а) \textbf{Решение: } из любого конечного набора векторов можно выбрать базис его линейной оболочки, сделаем это.
+    \\
+    \\ 1). Первым вектором в базисе будет $v_1$ (он не нулевой, а следовательно линейно независим), проверим, будет ли система векторов $v_1, v_2$ линейно независимой. Пусть найдутся $\alpha_1, \alpha_2$, где $\alpha_1 \neq 0$ или $\alpha_2 \neq 0$ и $\alpha_1 \cdot v_1 + \alpha_2 \cdot v_2 = 0$, тогда такая система должна иметь ненулевое решение:
+    \begin{equation*}
+        \begin{cases}
+            13\alpha_1 + 26\alpha_2 = 0 \\
+            11\alpha_1 + 17\alpha_2 = 0 \\
+            9\alpha_1 + 9\alpha_2 = 0 \\
+            6\alpha_1 + 15\alpha_2 = 0 \\
+            6\alpha_1 + 20\alpha_2 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Из трейтьей строки следует, что $\alpha_1 = -\alpha_2$, но подставив это в первую строку мы поулчаем уравнение $13\alpha_2 = 0 \ \Rightarrow \ \alpha_2 = 0 \ \Rightarrow \ \alpha_1 = 0$.
+    \\ Получается, что единственным решением данной системы уравнений может быть нулевое решение. \par \textbf{Следовательно векторы $v_1, v_2$ линейно независимы}
+    \\
+    \\ 2). Добавим в эту систему трией вектор и проверим, останется ли она линейно независимой. Если она будет линейно зависимой, то найдется набор скаляров $(\alpha_1, \alpha_2, \alpha_3)$, что $\alpha_1 v_1 + \alpha_2 v_2 \alpha_3 v_3 = 0$ и $\exists \alpha_i \neq 0, i \in \{1, 2, 3\}$.
+    \\
+    \\ Решим данную систему:
+    \begin{equation*}
+        \begin{cases}
+            13\alpha_1 + 26\alpha_2 + 5\alpha_3 = 0 \\
+            11\alpha_1 + 17\alpha_2 + 5\alpha_3 = 0 \\
+            9\alpha_1 + 9\alpha_2 + 9\alpha_3 = 0 \\
+            6\alpha_1 + 15\alpha_2 + 6\alpha_3 = 0 \\
+            6\alpha_1 + 20\alpha_2 -\alpha_3 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Перепишем это в виде расширенной матрицы и приведем ее к УСВ элементарными преобразованиями:
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            13 & 26 &  5 & 0 & \\
+            11 & 17 & 5 & 0 & \\
+            9 &  9 &  9 &  0 & \\
+            6 &  15 &  6 & 0 & \\
+            6 & 20 &  -1 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            9 &  9 &  9 &  0 & :9 \\
+            13 & 26 &  5 & 0 & \\
+            11 & 17 & 5 & 0 & \\
+            6 &  15 &  6 & 0 & \\
+            6 & 20 &  -1 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 &  1 &  1 &  0 &  \\
+            13 & 26 &  5 & 0 & -13(1)\\
+            11 & 17 & 5 & 0 & -11(1)\\
+            6 &  15 &  6 & 0 & -6(1)\\
+            6 & 20 &  -1 & 0 & -6(1)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 &  1 &  1 &  0 &  \\
+            0 & 13 &  -8 & 0 & \\
+            0 & 6 & -6 & 0 & \times(-\frac{1}{6})\\
+            0 &  9 &  0 & 0 & :9\\
+            0 & 14 &  -7 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 &  1 &  1 &  0 &  \\
+            0 & 13 &  -8 & 0 & \\
+            0 & -1 & 1 & 0 & +1(4)\\
+            0 &  1 &  0 & 0 & \\
+            0 & 14 &  -7 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 &  1 &  1 &  0 &  \\
+            0 & 13 &  -8 & 0 & \\
+            0 & 0 & 1 & 0 & \\
+            0 &  1 &  0 & 0 & \\
+            0 & 14 &  -7 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 &  1 &  1 &  0 &  -1(2) - 1(3)\\
+            0 &  1 &  0 & 0 & \\
+            0 & 0 & 1 & 0 & \\
+            0 & 13 &  -8 & 0 & -13(2) + 8(3)\\
+            0 & 14 &  -7 & 0 & -14(2) + 7(3)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 &  0 &  0 &  0 &  \\
+            0 &  1 &  0 & 0 & \\
+            0 & 0 & 1 & 0 & \\
+            0 & 0 &  0 & 0 & \\
+            0 & 0 &  0 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\ Получаем, что единственным решением данной системы будет нулевое решение. Следовательно векторы $v_1, v_2, v_3$ линейно независимы.
+    \\
+    \\ 3). Теперь добавим к нашей системе последние вектор $v_4$, проверим, будет ли эта система линейно независима, решив данную систему уравнений (пусть опять набором скаляров будет $(\alpha_1, \alpha_2, \alpha_3, \alpha_4)$ при соответствующих векторах):
+    \begin{equation*}
+        \begin{cases}
+            13\alpha_1 + 26\alpha_2 + 5\alpha_3 - 12\alpha_4 = 0 \\
+            11\alpha_1 + 17\alpha_2 + 5\alpha_3 - 9\alpha_4 = 0 \\
+            9\alpha_1 + 9\alpha_2 + 9\alpha_3 - \alpha_4 = 0 \\
+            6\alpha_1 + 15\alpha_2 + 6\alpha_3 - \alpha_4 = 0 \\
+            6\alpha_1 + 20\alpha_2 -\alpha_3 - 10\alpha_4 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\
+    \\ Перепишем это в виде расширенной матрицы и приведем ее к УСВ элементарными преобразованиями:
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            13 & 26 &  5 & -12 & 0 & \\
+            11 & 17 & 5 & -9 & 0 & \\
+            9 &  9 &  9 & -1 & 0 & :9\\
+            6 &  15 &  6 & -1 & 0 & \\
+            6 & 20 &  -1 & -10 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & \\
+            13 & 26 &  5 & -12 & 0 & -13(1)\\
+            11 & 17 & 5 & -9 & 0 & -11(1)\\
+            6 &  15 &  6 & -1 & 0 & -6(1)\\
+            6 & 20 &  -1 & -10 & 0 & -6(1)\\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & \\\\
+            0 & 13 &  -8 & -\frac{95}{9} & 0 & \\\\
+            0 & 6 & -6 & -\frac{70}{9} & 0 & :6\\\\
+            0 &  9 &  0 & -\frac{1}{3} & 0 & \\\\
+            0 & 14 &  -7 & -\frac{28}{3}& 0 & \\
+        \end{pNiceArray}
+        \to 
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & \\\\
+            0 & 1 & -1 & -\frac{70}{54} & 0 & \\\\
+            0 & 13 &  -8 & -\frac{95}{9} & 0 & -13(2)\\\\
+            0 &  9 &  0 & -\frac{1}{3} & 0 & -9(2)\\\\
+            0 & 14 &  -7 & -\frac{28}{3}& 0 & -14(2)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & \\\\
+            0 & 1 & -1 & -\frac{70}{54} & 0 & \\\\
+            0 & 0 &  5 & \frac{170}{27} & 0 & :5\\\\
+            0 &  0 &  9 & \frac{34}{3} & 0 & \\\\
+            0 & 0 &  7 & \frac{238}{27} & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & \\\\
+            0 & 1 & -1 & -\frac{70}{54} & 0 & \\\\
+            0 & 0 &  1 & \frac{34}{27} & 0 & \\\\
+            0 &  0 &  9 & \frac{34}{3} & 0 & -9(3)\\\\
+            0 & 0 &  7 & \frac{238}{27} & 0 & -7(3)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & \\\\
+            0 & 1 & -1 & -\frac{70}{54} & 0 & +1(3)\\\\
+            0 & 0 &  1 & \frac{34}{27} & 0 & \\\\
+            0 &  0 &  0 & 0 & 0 & \\\\
+            0 & 0 &  0 & 0 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  1 &  1 & -\frac{1}{9} & 0 & -1(2) - 1(3)\\\\
+            0 & 1 & 0 & -\frac{1}{27} & 0 & \\\\
+            0 & 0 &  1 & \frac{34}{27} & 0 & \\\\
+            0 &  0 &  0 & 0 & 0 & \\\\
+            0 & 0 &  0 & 0 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  0 &  0 & -\frac{4}{3} & 0 & \\\\
+            0 & 1 & 0 & -\frac{1}{27} & 0 & \\\\
+            0 & 0 &  1 & \frac{34}{27} & 0 & \\\\
+            0 &  0 &  0 & 0 & 0 & \\\\
+            0 & 0 &  0 & 0 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\
+    \\ Мы видим, что данная система имеет ненулевое решение, так как в ней есть свободные неизвестные, следовательно система векторов $(v_1, v_2, v_3, v_4)$ линейно зависимы. То есть $v_4$ лежит в линейной оболочке $(v_1, v_2, v_3)$.
+    \\
+    \\ Линейная оболочка векторов $v_1 v_2 v_3$ равна линейной оболочке тех же векторов вместе с вектором $v_4$, так как он выражается через них.
+    \\
+    \\ \textbf{Итак, мы нашли базис данной системы векторов. В него входят векторы $v_1, v_2, v_3$.}
+    \\
+    \\
+    \\ (б) Чтобы проверить, что вектор лежит в пространстве с некоторым базисом, достаточно понять, можно ли этот вектор выразить через линейную комбинацию векторов этого базиса. Проверим это для векторов $u_1, u_2$.
+    \\
+    \\ 1). Проверим, найдется ли такая линейная комбинация, что $\alpha_1 v_2 + \alpha_2 v_2 + \alpha_3 v_3 = u_1$, для этого решим следующую систему:
+    \begin{equation*}
+        \begin{cases}
+            13\alpha_1 + 26\alpha_2 + 5\alpha_3 = -5 \\
+            11\alpha_1 + 17\alpha_2 + 5\alpha_3 = 0 \\
+            9\alpha_1 + 9\alpha_2 + 9\alpha_3 = 0 \\
+            6\alpha_1 + 15\alpha_2 + 6\alpha_3 = -9 \\
+            6\alpha_1 + 20\alpha_2 -\alpha_3 = -7 \\
+        \end{cases}
+    \end{equation*}
+    \\ Запишем это в виде расширенной матрицы и приведем ее к УСВ при помощи ЭП:
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            13 & 26 & 5 & -5 & \\
+            11 & 17 & 5 & 0 & \\
+            9 & 9 & 9 & 0 & :9\\
+            6 & 15 & 6 & -9 & \\
+            6 & 20 & -1 & -7 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & 0 & \\
+            13 & 26 & 5 & -5 & -13(1)\\
+            11 & 17 & 5 & 0 & -11(1)\\
+            6 & 15 & 6 & -9 & -6(1)\\
+            6 & 20 & -1 & -7 & -6(1)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & 0 & \\
+            0 & 13 & -8 & -5 & \\
+            0 & 6 & -6 & 0 & \\
+            0 & 9 & 0 & -9 & :9\\
+            0 & 14 & -7 & -7 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & 0 & \\
+            0 & 1 & 0 & -1 & \\
+            0 & 13 & -8 & -5 & -13(2)\\
+            0 & 6 & -6 & 0 & -6(2)\\
+            0 & 14 & -7 & -7 & -14(2)\\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & 0 & \\
+            0 & 1 & 0 & -1 & \\
+            0 & 0 & -8 & 8 & \\
+            0 & 0 & -6 & 6 & :(-6)\\
+            0 & 0 & -7 & 7 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & 0 & \\
+            0 & 1 & 0 & -1 & \\
+            0 & 0 & 1 & -1 & \\
+            0 & 0 & -8 & 8 & +8(3)\\
+            0 & 0 & -7 & 7 & +7(3)\\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & 0 & -1(2) - 1(3)\\
+            0 & 1 & 0 & -1 & \\
+            0 & 0 & 1 & -1 & \\
+            0 & 0 & -8 & 8 & +8(3)\\
+            0 & 0 & -7 & 7 & +7(3)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 0 & 0 & 2 & \\
+            0 & 1 & 0 & -1 & \\
+            0 & 0 & 1 & -1 & \\
+            0 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\ Получаем коэффициенты $\alpha_1 = 2, \alpha_2 = -1, \alpha_3 = -1$ такие, что $\alpha_1 v_1 + \alpha_2 v_2 + \alpha_3 v_3 = u_1$. \par \textbf{Следовательно вектор $u_1 \in \langle v_1 v_2 v_3 \rangle$}
+    \\
+    \\ 2). Проверим, найдется ли такая линейная комбинация, что $\alpha_1 v_2 + \alpha_2 v_2 + \alpha_3 v_3 = u_2$, для этого решим следующую систему:
+    \\
+    \begin{equation*}
+        \begin{cases}
+            13\alpha_1 + 26\alpha_2 + 5\alpha_3 = -10 \\
+            11\alpha_1 + 17\alpha_2 + 5\alpha_3 = -6 \\
+            9\alpha_1 + 9\alpha_2 + 9\alpha_3 = -4 \\
+            6\alpha_1 + 15\alpha_2 + 6\alpha_3 = -7 \\
+            6\alpha_1 + 20\alpha_2 -\alpha_3 = -7 \\
+        \end{cases}
+    \end{equation*}
+    \\ Запишем это в виде расширенной матрицы и приведем ее к УСВ при помощи ЭП:
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            13 & 26 & 5 & -10 & \\
+            11 & 17 & 5 & -6 & \\
+            9 & 9 & 9 & -4 & :9\\
+            6 & 15 & 6 & -7 & \\
+            6 & 20 & -1 & -7 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & -\frac{4}{9} & \\
+            13 & 26 & 5 & -10 & -13(1)\\
+            11 & 17 & 5 & -6 & -11(1)\\
+            6 & 15 & 6 & -7 & -6(1)\\
+            6 & 20 & -1 & -7 & -6(1)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & -\frac{4}{9} & \\\\
+            0 & 13 & -8 & -\frac{38}{9} & \\\\
+            0 & 6 & -6 & - \frac{10}{9} & :6\\\\
+            0 & 9 & 0 & -\frac{13}{3} & \\\\
+            0 & 14 & -7 & -\frac{13}{3} & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & -\frac{4}{9} & \\\\
+            0 & 1 & -1 & - \frac{10}{54} & \\\\
+            0 & 13 & -8 & -\frac{38}{9} & -13(2)\\\\
+            0 & 9 & 0 & -\frac{13}{3} & -9(2)\\\\
+            0 & 14 & -7 & -\frac{13}{3} & -14(2)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & -\frac{4}{9} & \\\\
+            0 & 1 & -1 & - \frac{10}{54} & \\\\
+            0 & 0 & 5 & -\frac{49}{27} & :5\\\\
+            0 & 0 & -9 & -\frac{8}{3} & \\\\
+            0 & 0 & 7 & -\frac{47}{27} & \\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & -\frac{4}{9} & \\\\
+            0 & 1 & -1 & - \frac{10}{54} & \\\\
+            0 & 0 & 1 & -\frac{49}{135} & \\\\
+            0 & 0 & -9 & -\frac{8}{3} & +9(3)\\\\
+            0 & 0 & 7 & -\frac{47}{27} & -7(3)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccc|c}[last-col,margin]
+            1 & 1 & 1 & -\frac{4}{9} & \\\\
+            0 & 1 & -1 & - \frac{10}{54} & \\\\
+            0 & 0 & 1 & -\frac{49}{135} & \\\\
+            0 & 0 & 0 & -\frac{89}{15} & \\\\
+            0 & 0 & 0 & \frac{4}{5} & \\
+        \end{pNiceArray}
+    \]
+    \\ Справа в матрице в последних двух строках не нули, а слева все элементы нулевые, следовательно у данной системы нет решений, следовательно нельзя найти линейную комбинацию векторов $v_1 v_2 v_3$ такую, что она равна вектору $u_2$. \textbf{То есть он не лежит в их линейной оболочке.}
+    \\
+    \\
+    \\
+    \\ \textbf{5.} Найдите базис и размерность подпространства $U \subseteq \mathbb{R}^5$, являющегося множеством решений системы
+    \begin{equation*}
+        \begin{cases}
+            x_1 - 12x_2 + 15x_3 + 7x_4 + 27x_5 = 0 \\
+            -7x_1 - 5x_2 + 9x_3 + 5x_4 + 11x_5 = 0 \\
+            -4x_1 - 5x_2 + 6x_3 + 2x_4 + 20x_5 = 0 \\
+            6x_1 - 8x_2 + 7x_3 + 2x_4 + 23x_5 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ \textbf{Решение: } решим эту систему, записав ее расширенную матрицу и приведя ее элементарными преобразованиями строк к улечшенному ступенчатому виду:
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            -7 & -5 & 9 & 5 & 11 & 0 & +7(1)\\
+            -4 & -5 & 6 & 2 & 20 & 0 & +4(1)\\
+            6 & -8 & 7 & 2 & 23 & 0 & -6(1)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            0 & -89 & 114 & 54 & 200 & 0 & :(-89)\\
+            0 & -53 & 66 & 30 & 128 & 0 & \\
+            0 & 64 & -83 & -40 & -139 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\\\
+            0 & 1 & -\frac{114}{89} & -\frac{54}{98} & -\frac{200}{89} & 0 & \\\\
+            0 & -53 & 66 & 30 & 128 & 0 & +53(2)\\\\1
+            0 & 64 & -83 & -40 & -139 & 0 & -64(2)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            \\
+            0 & 1 & -\frac{114}{89} & -\frac{54}{98} & -\frac{200}{89} & 0 & \\
+            \\
+            0 & 0 & -\frac{168}{89} & -\frac{192}{89} & \frac{792}{89} & 0 & \\
+            \\
+            0 & 0 & -\frac{91}{89} & -\frac{104}{89} & \frac{429}{89} & 0 & \\
+        \end{pNiceArray}
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            \\
+            0 & 1 & -\frac{114}{89} & -\frac{54}{98} & -\frac{200}{89} & 0 & \\
+            \\
+            0 & 0 & -\frac{168}{89} & -\frac{192}{89} & \frac{792}{89} & 0 & \\
+            \\
+            0 & 0 & -\frac{91}{89} & -\frac{104}{89} & \frac{429}{89} & 0 & -\frac{13}{24}(3)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            \\
+            0 & 1 & -\frac{114}{89} & -\frac{54}{98} & -\frac{200}{89} & 0 & \\
+            \\
+            0 & 0 & -\frac{168}{89} & -\frac{192}{89} & \frac{792}{89} & 0 & \\
+            \\
+            0 & 0 & 0 & 0 & 0 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            \\
+            0 & 1 & -\frac{114}{89} & -\frac{54}{98} & -\frac{200}{89} & 0 & \\
+            \\
+            0 & 0 & -\frac{168}{89} & -\frac{192}{89} & \frac{792}{89} & 0 & \times (-\frac{89}{168})\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{ccccc|c}[last-col,margin]
+            1 & -12 & 15 & 7 & 27 & 0 & \\
+            \\
+            0 & 1 & -\frac{114}{89} & -\frac{54}{89} & -\frac{200}{89} & 0 & \\
+            \\
+            0 & 0 & 1 & \frac{8}{7}& - \frac{33}{7} & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \\ Пулучаем три главные переменные $x_1, x_2, x_3$ и две свободные переменные $x_4, x_5$. Выразим через них все остальные переменные (я не стал доводить матрицу до УСВ, потому что там получались ужасные цифры и я не очень понял почему).
+    \\
+    \\ $x_3 = -\frac{8}{7}x_4 + \frac{33}{7}x_5$
+    \\
+    \\ $x_2 = \frac{114}{89}x_3 + \frac{54}{89}x_4 + \frac{200}{89}x_5 = \frac{114}{89} \cdot (-\frac{8}{7}x_4 + \frac{33}{7}x_5) + \frac{54}{89}x_4 + \frac{200}{89}x_5 = - \frac{6 }{7}x_4 + \frac{58 }{7}x_5$
+    \\
+    \\ $x_1 = 12 \cdot x_2 - 15 \cdot x_3 - 7x_4 - 27x_5 = 12 \cdot (- \frac{6 }{7}x_4 + \frac{58 }{7}x_5) - 15 \cdot (-\frac{8}{7}x_4 + \frac{33}{7}x_5) - 7x_4 - 27x_5 = - \frac{1}{7}x_4 + \frac{12 }{7}x_5$
+    \\
+    \\ Получаем столбец решений: $u = \begin{pmatrix}- \frac{1}{7}x_4 + \frac{12 }{7}x_5 \\\\ - \frac{6 }{7}x_4 + \frac{58 }{7}x_5 \\\\ -\frac{8}{7}x_4 + \frac{33}{7}x_5 \\ x_4 \\ x_5\end{pmatrix}$
+    \\
+    \\ По методу построения фундаментальной системы решений мы получим следующую систему решений:
+    \\
+    \[ 
+        u_1 = \begin{pmatrix}-\frac{1}{7} \\\\ -\frac{6}{7} \\\\ -\frac{8}{7} \\ 1 \\ 0\end{pmatrix}, \ \ \ \ u_2 = \begin{pmatrix}\frac{12}{7} \\\\ \frac{58}{7} \\\\ \frac{33}{7} \\ 0 \\ 1\end{pmatrix}
+    \]
+    \\ Эта система векторов будет базисом множества решений данной ОСЛУ. В базисе находится 2 вектора, следовательно размерность подпространства $U \in \mathbb{R}^5$ равна 2.
+\end{document}

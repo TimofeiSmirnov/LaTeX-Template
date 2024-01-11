@@ -1,0 +1,515 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по линейной алгебре 10 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ \textbf{1. } Найти ФСР следующих однородных СЛУ.
+    \par \textbf{1.1}
+    \begin{equation*}
+        \begin{cases}
+            x_1  -2x_2 - x_3 + 2x_4 = 0 \\ 
+            -x_1 + 2x_2 + 2x_3 - 7x_4 = 0
+        \end{cases}
+    \end{equation*}
+    \\ Перепишем матрицу в виде расширенной и элементарными преобразованиями приведем ее к улучшенному ступенчатому виду.
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  -2 &  -1 & 2 & 0 & \\ 
+            -1 & 2 & 2 & -7 & 0 &  +1(1)\\
+        \end{pNiceArray}  
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  -2 &  -1 & 2 & 0 & + 1(2)\\ 
+            0 & 0 & 1 & -5 & 0 & \\
+        \end{pNiceArray}  
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 &  -2 &  0 & -3 & 0 & \\ 
+            0 & 0 & 1 & -5 & 0 & \\
+        \end{pNiceArray} 
+    \]
+    \\ Получаем выражение главных переменных через свободные:
+    \begin{equation*}
+        \begin{cases}
+            x_1 = 2x_2 + 3x_4 \\
+            x_3 = 5x_4 \\
+            x_2, x_4 \in \mathbb{R}
+        \end{cases}
+    \end{equation*}
+    \\ ФСР данной матрицы будет выглядеть так:
+    \[
+        u_1 = \begin{pmatrix}
+            2 \\
+            1 \\
+            0 \\
+            0 \\
+        \end{pmatrix}, u_2 =  
+        \begin{pmatrix}
+            3 \\
+            0 \\
+            5 \\
+            1 \\
+        \end{pmatrix}
+    \]
+    \\
+    \par \textbf{1.2}
+    \begin{equation*}
+        \begin{cases}
+            x_1 - 2x_2 + 4x_3 + 3x_4 + x_6 = 0 \\ 
+            3x_4 + 2x_5 + 17x_6 = 0 \\ 
+            2x_1 - 4x_2 + 8x_3 + 2x_5 - 5x_6 = 0 \\ 
+            3x_4- 2x_5 - x_6 = 0
+        \end{cases}
+    \end{equation*}
+    \\ Перепишем матрицу в виде расширенной и элементарными преобразованиями приведем ее к улучшенному ступенчатому виду.
+    \[
+         \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & \\ 
+            0 & 0 & 0 & 3 & 2 & 17 & 0 & \\ 
+            2 & - 4 & 8 & 0 & 2 & - 5 & 0 & -2(1)\\ 
+            0 & 0 & 0 & 3 & - 2 & -1 & 0 & \\
+        \end{pNiceArray}    
+        \to
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & \\ 
+            0 & 0 & 0 & 3 & 2 & 17 & 0 & \\ 
+            0 & 0 & 0 & -6 & 2 & -7 & 0 & +2(2)\\ 
+            0 & 0 & 0 & 3 & - 2 & -1 & 0 & -1(2)\\
+        \end{pNiceArray} 
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & \\ 
+            0 & 0 & 0 & 3 & 2 & 17 & 0 & \\ 
+            0 & 0 & 0 & 0 & 6 & 27 & 0 & \\ 
+            0 & 0 & 0 & 0 & - 4 & -18 & 0 & + \frac{2}{3}\\
+        \end{pNiceArray} 
+        \to
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & \\ 
+            0 & 0 & 0 & 3 & 2 & 17 & 0 & \\ 
+            0 & 0 & 0 & 0 & 6 & 27 & 0 & :3\\ 
+            0 & 0 & 0 & 0 & 0 & 0 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & \\ 
+            0 & 0 & 0 & 3 & 2 & 17 & 0 & -1(3)\\ 
+            0 & 0 & 0 & 0 & 2 & 9 & 0 & \\ 
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & \\ 
+            0 & 0 & 0 & 3 & 0 & 8 & 0 & :3\\ 
+            0 & 0 & 0 & 0 & 2 & 9 & 0 & :2\\ 
+        \end{pNiceArray} \to
+    \]
+    \[
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 3 & 0 & 1 & 0 & -3(2)\\ \\
+            0 & 0 & 0 & 1 & 0 & \frac{8}{3} & 0 & \\ \\
+            0 & 0 & 0 & 0 & 1 & \frac{9}{2} & 0 & \\ 
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{cccccc|c}[last-col,margin]
+            1 & - 2 & 4 & 0 & 0 & -7 & 0 & \\ \\
+            0 & 0 & 0 & 1 & 0 & \frac{8}{3} & 0 & \\ \\
+            0 & 0 & 0 & 0 & 1 & \frac{9}{2} & 0 & \\ 
+        \end{pNiceArray}
+    \]
+    \\ Получаем выражение главных переменных через свободные:
+    \begin{equation*}
+        \begin{cases}
+            x_1 = 2x_2 - 4x_3 + 7x_6 \\
+            x_4 = -\frac{8}{3}x_6 \\
+            x_5 = -\frac{9}{2}x_6\\
+            x_2, x_3, x_6 \in \mathbb{R}
+        \end{cases}
+    \end{equation*}
+    \\ ФСР данной матрицы будет выглядеть так:
+    \[
+        u_1 = \begin{pmatrix}2 \\ 1 \\ 0 \\ 0 \\ 0 \\ 0\end{pmatrix},
+        u_2 = \begin{pmatrix}-4 \\ 0 \\ 1 \\ 0 \\ 0 \\ 0\end{pmatrix},
+        u_3 = \begin{pmatrix}7 \\ 0 \\ 0 \\ -\frac{8}{3} \\ -\frac{9}{2} \\ 1\end{pmatrix}
+    \]
+    \\
+    \par \textbf{1.3}
+    \begin{equation*}
+        \begin{cases}
+            x_1 + 2x_2 + 3x_3 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Тут сразу можно выразить $x_1$ через $x_2$ и $x_3$:
+    \begin{equation*}
+        \begin{cases}
+            x_1 = -2x_2 - 3x_3 \\
+        \end{cases}
+    \end{equation*}
+    \\ ФСР данной матрицы выглядит так:
+    \[
+        u_1 = \begin{pmatrix}-2 \\ 1 \\ 0\end{pmatrix},
+        u_2 = \begin{pmatrix}-3 \\ 0 \\ 1\end{pmatrix}
+    \]
+    \par \textbf{1.4}
+    \begin{equation*}
+        \begin{cases}
+            x_2 + 5x_3 + 5x_4 = 0 \\
+            5x_3 + 2x_4 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Перепишем матрицу в виде расширенной и элементарными преобразованиями приведем ее к улучшенному ступенчатому виду.
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+             0 & 1 & 5 & 5 & 0 & -1(2)\\
+             0 & 0 & 5 & 2 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            0 & 1 & 0 & 3 & 0 & \\
+            0 & 0 & 5 & 2 & 0 & :5\\
+       \end{pNiceArray}
+       \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            0 & 1 & 0 & 3 & 0 & \\
+            0 & 0 & 1 & \frac{2}{5} & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\ Теперь выразим главные переменные через свободные:
+    \begin{equation*}
+        \begin{cases}
+            x_2 = -3x_4 \\
+            x_3 = -\frac{2}{5}x_4 \\
+            x_1, x_4 \in \mathbb{R}
+        \end{cases}
+    \end{equation*}
+    \\ ФСР данной матрицы будет выглядеть так:
+    \[
+        u_1 = \begin{pmatrix}1 \\ 0 \\ 0\\ 0\end{pmatrix},
+        u_2 = \begin{pmatrix}0 \\ -3 \\ -\frac{2}{5}\\ 1\end{pmatrix}
+    \]
+    \par \textbf{1.5}
+    \begin{equation*}
+        \begin{cases}
+            x_1 + 3x_2 = 0 \\
+            2x_1 + x_2 = 0 \\
+            x_1 - x_2 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ Перепишем матрицу в виде расширенной и элементарными преобразованиями приведем ее к улучшенному ступенчатому виду.
+    \[
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 3 & 0 & \\
+            2 & 1 & 0 & -2(1)\\
+            1 & -1 & 0 & -1(1)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 3 & 0 & \\
+            0 & -5 & 0 & -1(3)\\
+            0 & -4 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 3 & 0 & \\
+            0 & 1 & 0 & \\
+            0 & -4 & 0 & +4(2)\\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 3 & 0 & -3(2)\\
+            0 & 1 & 0 & \\
+            0 & 0 & 0 & \\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{cc|c}[last-col,margin]
+            1 & 0 & 0 & \\
+            0 & 1 & 0 & \\
+        \end{pNiceArray}    
+    \]
+    \\ Теперь выразим главные переменные через свободные:
+    \begin{equation*}
+        \begin{cases}
+            x_1 = 0 \\
+            x_2 = 0 \\
+        \end{cases}
+    \end{equation*}
+    \\ ФСР данной ОСЛУ пустое множество.
+    \\
+    \\ \textbf{2.} Найдите базис и размерность подпространства $\{f \in \mathbb{R}_{[x] \leq3} | f(1) = f'(1) = 0\}$ в пространстве $\mathbb{R}_{[x] < 3}$ многочленов степени не выше 3.
+    \\
+    \\ \textbf{Решение: } Пусть наше пространство многочленов задается множеством коэффициентов $a_0, a_1, a_2, a_3$, где каждый многочлен выглядит следующим образом: $a_3x^3 + a_2x^2 + a_1x + a_0$. При этом должно выпонляться условие равенства производной и функции в точке 1:
+    \begin{equation*}
+        \begin{cases}
+            f(1) = a_3 + a_2 + a_1 + a_0 = 0\\
+            f'(1) = 3a_3 + 2a_2 + a_1 = 0\\
+        \end{cases}
+    \end{equation*}
+    \\ Решим эту ОСЛУ и выпишем ее ФСР:
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & 1 & 1 & 1 & 0 & \\
+            3 & 2 & 1 & 0 & 0 & -3(1)\\
+        \end{pNiceArray} 
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & 1 & 1 & 1 & 0 & +1(2)\\
+            0 & -1 & -2 & -3 & 0 & \\
+        \end{pNiceArray}
+        \to
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & 0 & -1 & -2 & 0 & \\
+            0 & -1 & -2 & -3 & 0 & \times (-1)\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{cccc|c}[last-col,margin]
+            1 & 0 & -1 & -2 & 0 & \\
+            0 & 1 & 2 & 3 & 0 & \\
+        \end{pNiceArray}
+    \]
+    \\ Теперь выразим главные переменные через свободные:
+    \begin{equation*}
+        \begin{cases}
+            a_0 = a_2 + 2a_3 \\
+            a_1 = -2a_2 - 3a_3 \\
+            a_2, a_3 \in \mathbb{R}
+        \end{cases}
+    \end{equation*}
+    \\ ФСР данной ОСЛУ выглядит так:
+    \[
+        u_1 = \begin{pmatrix}1 \\ -2 \\ 1\\ 0\end{pmatrix},
+        u_2 = \begin{pmatrix}2 \\ -3 \\ 0\\ 1\end{pmatrix}
+    \]
+    \\ Каждый многочлен степени не выше 4х задается вектором из $\mathbb{R}^4$, причем каждому вектору из $\mathbb{R}^4$ соответствует единственный многочлен. ФСР решенной выше СЛУ будет базисом подпространства из $\mathbb{R}^4$, удовлетворяющего условиям задачи. Следовательно эта система будет необходимым базисом.
+    \\
+    \\ В виде многочленов это выглядит так:
+    \begin{equation*}
+        \begin{cases}
+            f_1(x) = x^3 - 2x^2 + x \\
+            f_2(x) = 2x^3 - 3x^2 + 1
+        \end{cases}
+    \end{equation*}
+    \\
+    \\ \textbf{Ответ: } базисом такого подпространства будет множество $\{f_1(x), f_2(x)\}$
+    \\ \textbf{3. } Найдите какой-нибудь базис в пространстве $U = \langle v_1, v_2, v_3, v_4\rangle \subseteq \mathbb{R}^5$, где $v_1 = (1, 0, 0, -1, 0)^T$, $v_2 = (2, 1, 1, 0, 1)^T$, $v_3=(1, 1, 1, 1, 1)^T$, $v_4=(0, 1, 1, 3, 4)^T$.
+    \\
+    \\ \textbf{Решение: } чтобы найти базис, нам необходимо выбрать систему линейно независимых векторов $u_1, u_2, u_3. u_4$. Для этого запишем векторы в матрицу в виде строк и элементарными \\ преобразованиями строк приеведем матрицу к улучшенному ступенчатому виду.
+    \[
+        \begin{pNiceArray}{c}[last-col,margin]
+            v_1 & \\
+            v_2 & \\
+            v_3 & \\
+            v_4 & \\
+        \end{pNiceArray} =  
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            1 & 0 & 0 & -1 & 0 & \\
+            2 & 1 & 1 & 0 & 1  & -2(1)\\ 
+            1 & 1 & 1 & 1 & 1 & -1(1)\\
+            0 & 1 & 1 & 3 & 4  & \\
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            1 & 0 & 0 & -1 & 0 & \\
+            0 & 1 & 1 & 2 & 1  & \\ 
+            0 & 1 & 1 & 2 & 1 & -1(2)\\
+            0 & 1 & 1 & 3 & 4  & -1(2)\\
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            1 & 0 & 0 & -1 & 0 & \\
+            0 & 1 & 1 & 2 & 1 & \\ 
+            0 & 0 & 0 & 0 & 0 & \\
+            0 & 0 & 0 & 1 & 3 & \\
+        \end{pNiceArray}
+    \]
+    \\ Мы привели матрицу к ступенчатому виду, при этом обнулилась 3я строка, следовательно вектор $u_3$ лежит в линейной оболочке векторов $u_1, u_2, u_4$, а эти вектора линейно независимы.
+    \\
+    \\ \textbf{Ответ: } базисом будут вектора $u_1, u_2, u_4$.
+    \\
+    \\
+    \\
+    \\ \textbf{4.} Пусть $U = \langle v_1, v_2, v_3, v_4, v_5\rangle \subseteq \mathbb{R}^3$, где $v_1 = (1, 0, -1)^T$, $v_2 = (1, 1, 1)^T$, $v_3 = (0, -1, -2)^T$, $v_4=(3, 3, 3)^T$, $v_5=(5,2,-1)^T$. Выберите из системы векторов $v_1, v_2, v_3, v_4, v_5$ базис $U$ и найдите линейные выражения остальных векторов системы через этот базис.
+    \\
+    \\ \textbf{Решение: } запишем этим веторы вместо в строк в матрицу и проведем с ними серию элементарных преобразований строк, приведя матрицу к УСВ. После этого линейная оболочка этих векторов не поменяется, а мы найдем векторы, выражающиеся через остальные.
+    \[
+        \begin{pNiceArray}{c}[last-col,margin]
+            v_1 & \\
+            v_2 & \\
+            v_3 & \\
+            v_4 & \\
+            v_5 & \\
+        \end{pNiceArray} =
+        \begin{pNiceArray}{ccc}[last-col,margin]
+            1 & 0 & -1 & \\
+            1 & 1 & 1 & \\ 
+            0 & -1 & -2 & \\
+            3 & 3 & 3 &-3(2)\\
+            5 & 2 & -1 & \\
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{ccc}[last-col,margin]
+            1 & 0 & -1 & \\
+            1 & 1 & 1 & -1(1)\\ 
+            0 & -1 & -2 & \\
+            0 & 0 & 0 & \\
+            5 & 2 & -1 & -5(1)\\
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{ccc}[last-col,margin]
+            1 & 0 & -1 & \\
+            0 & 1 & 2 & \\ 
+            0 & -1 & -2 & +1(2)\\
+            0 & 0 & 0 & \\
+            0 & 2 & 4 & -2(2)\\
+        \end{pNiceArray} \to
+    \]
+    \[
+        \begin{pNiceArray}{ccc}[last-col,margin]
+            1 & 0 & -1 & \\
+            0 & 1 & 2 & \\ 
+            0 & 0 & 0 & \\
+            0 & 0 & 0 & \\
+            0 & 0 & 0 & \\
+        \end{pNiceArray}    
+    \]
+    \\ Мы получили, что векторы $v_3, v_4, v_5$ выражаются через линейную комбинацию векторов $v_1, v_2$.
+    \\ Теперь уже без всяких уравнений легко уидеть, как они выражаются:
+    \par \textbf{Ответ: }
+    \begin{equation*}
+        \begin{cases}
+            v_3 = v_1 - v_2 \\
+            v_4 = 3v_2 \\
+            v_5 = 3v_1 + 2v_2 \\
+        \end{cases}
+    \end{equation*}
+    \\
+    \\ \textbf{5.} Пусть $v_1 = (-2,1,-3,2,3)^T$, $v_2 = (-2,3,-5,7,4)^T$, $v_3 = (2,1,1,3,-2)^T$, $v_4 = (9,-2,4,-3,-8)^T$ --- векторы в $\mathbb{R}^5$. Выберите линейно независимую систему из векторов $v_1, v_2, v_3, v_4$ и дополните её до базиса $\mathbb{R}^5$.
+    \\
+    \\ \textbf{Решение: } запишем векторы в качестве строк в матрицу и приведем ее к ступенчатому виду:
+    \[
+        \begin{pNiceArray}{c}[last-col,margin]
+            v_1 & \\
+            v_2 & \\
+            v_3 & \\
+            v_4 & \\
+        \end{pNiceArray} = 
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            -2 & 1 & -3 & 2 & 3 & \\
+            -2 & 3 & -5 & 7 & 4 & -1(1)\\ 
+            2 & 1 & 1 & 3 & -2 & +1(1)\\
+            9 & -2 & 4 & -3 & -8 & +\frac{9}{2}\\
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            -2 & 1 & -3 & 2 & 3 & \\
+            0 & 2 & -2 & 5 & 1 & \\ 
+            0 & 2 & -2 & 5 & 1 & \\
+            0 & \frac{5}{2}& -\frac{19}{2} & 6 & \frac{11}{2} & \times 2\\
+        \end{pNiceArray}
+        \to
+    \]
+    \[
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            -2 & 1 & -3 & 2 & 3 & \\
+            0 & 2 & -2 & 5 & 1 & \\ 
+            0 & 2 & -2 & 5 & 1 & -1(2)\\
+            0 & 5 & -19 & 12 & 11 & -\frac{5}{2}\\
+        \end{pNiceArray} \to
+        \begin{pNiceArray}{ccccc}[last-col,margin]
+            -2 & 1 & -3 & 2 & 3 & \\
+            0 & 2 & -2 & 5 & 1 & \\ 
+            0 & 0 & 0 & 0 & 0 & \\
+            0 & 0 & -14 & -\frac{1}{2} & \frac{17}{2} & \\
+        \end{pNiceArray}  \to
+    \]
+    \\ Мы выяснили, что векторы $v_1, v_2, v_4$ линейно независимы, чтобы дополнить  их до базиса, необходимо добавить к ним векторы из стандартного базиса, которые дополнят свободные столбцы, эти векторы будут $e_4, e_5$.
+    \\ \textbf{Ответ: } базис будет иметь вид $v_1, v_2, v_4, e_4, e_5$.
+\end{document}

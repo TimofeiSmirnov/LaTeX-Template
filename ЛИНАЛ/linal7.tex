@@ -1,0 +1,153 @@
+ % Всякое, чтобы работало - все библиотеки
+ \documentclass[a4paper, 12pt]{article}
+ 
+ \usepackage[T2A]{fontenc}
+ \usepackage[russian, english]{babel}
+ \usepackage[utf8]{inputenc}
+ \usepackage{subfiles}
+ \usepackage{ucs}
+ \usepackage{textcomp}
+ \usepackage{array}
+ \usepackage{indentfirst}
+ \usepackage{amsmath}
+ \usepackage{amssymb}
+ \usepackage{enumerate}
+ \usepackage[margin=1.5cm]{geometry}
+ \usepackage{authblk}
+ \usepackage{tikz}
+ \usepackage{icomma}
+ \usepackage{gensymb}
+ \usepackage{nicematrix, tikz}
+  
+ % Всякие мат штуки дополнительные
+  
+ \newcommand{\F}{\mathbb{F}}
+ \newcommand{\di}{\frac}
+ \renewcommand{\C}{\mathbb{C}}
+ \newcommand{\N} {\mathbb{N}}
+ \newcommand{\Z} {\mathbb{Z}}
+ \newcommand{\R} {\mathbb{R}}
+ \newcommand{\Q}{\mathbb{Q}}
+ \newcommand{\ord} {\mathop{\rm ord}}
+ \newcommand{\Ima}{\mathop{\rm Im}}
+ \newcommand{\Rea}{\mathop{\rm Re}}
+ \newcommand{\rk}{\mathop{\rm rk}}
+ \newcommand{\arccosh}{\mathop{\rm arccosh}}
+ \newcommand{\lker}{\mathop{\rm lker}}
+ \newcommand{\rker}{\mathop{\rm rker}}
+ \newcommand{\tr}{\mathop{\rm tr}}
+ \newcommand{\St}{\mathop{\rm St}}
+ \newcommand{\Mat}{\mathop{\rm Mat}}
+ \newcommand{\grad}{\mathop{\rm grad}}
+ \DeclareMathOperator{\spec}{spec}
+ \renewcommand{\baselinestretch}{1.5}
+ \everymath{\displaystyle}
+  
+ % Всякое для ускорения
+ \renewcommand{\r}{\right}
+ \renewcommand{\l}{\left}
+ \newcommand{\Lra}{\Leftrightarrow}
+ \newcommand{\ra}{\rightarrow}
+ \newcommand{\la}{\leftarrow}
+ \newcommand{\sm}{\setminus}
+ \newcommand{\lm}{\lambda}
+ \newcommand{\Sum}[2]{\overset{#2}{\underset{#1}{\sum}}}
+ \newcommand{\Lim}[2]{\lim\limits_{#1 \rightarrow #2}}
+ \newcommand{\p}[2]{\frac{\partial #1}{\partial #2}}
+  
+ % Заголовки
+ \newcommand{\task}[1] {\noindent \textbf{Задача #1.} \hfill}
+ \newcommand{\note}[1] {\noindent \textbf{Примечание #1.} \hfill}
+  
+ % Пространтсва для задач
+ \newenvironment{proof}[1][Доказательство]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+     $ \hfill\blacksquare $
+ \end{trivlist}
+ \hfill\break
+ }
+ \newenvironment{solution}[1][Решение]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}]
+     \item \hspace{15pt}
+     }{
+ \end{trivlist}
+ }
+  
+ \newenvironment{answer}[1][Ответ]{%
+ \begin{trivlist}
+     \item[\hskip \labelsep {\bfseries #1:}] \hskip \labelsep
+     }{
+ \end{trivlist}
+ \hfill
+ }
+ \title{Дз по линейной алгебре 2 Смирнов Тимофей 236 ПМИ}
+ \author{Тимофей Смирнов}
+ \date{September 2023}
+ 
+ \begin{document}
+    {\center \bf \large ДЗ по линейной алгебре 8 Смирнов Тимофей 236 ПМИ}
+    \\
+    \\ 1. Пусть V - векторное пространство функций $\mathbb{R} \to \mathbb{R}$.
+    \par 1.1 Представима ли функция $x^{10}$ в виде линейной комбинации фукнций
+    \[
+        1, x - 1, (x - 1)^2, ..., (x - 1)^{10}    
+    \]
+    \\
+    \par \textbf{Решение: } да, представима. Для получения $x^{10}$ нам необходимо взять $(x - 1)^{10}$ с коэффициентом 1, затем при его раскрытии нам нужно взять $(x - 1)^{9}$ с коэффициентом 2, затем мы сложим кожффициента при $x^8$ из этих двух многочленов и возьмем $(x - 1)^{8}$ с противоположным знаком.
+    \\ Такую последовательность действий мы будем предпринимать до того, пока все иксы не сократятся, а затем оставшиеся единицы сократим нашей 1 с некоторым коэффициентом. Так как нашем многочлене никогда не встретится ничего, кроме 1 и $x^n, n < 11, n \in \mathbb{N}$ с знаком + или -, то все иксы мы сможем сократить.
+    \\
+    \par 1.2 Лежит ли функция $x$ в линейной оболочке функций 
+    \[ 
+        1, \sin x, \cos x, \sin 2x, \cos 2x.
+    \]
+    \par \textbf{Решение: } функции синуса и косинуса являются периодичекими и нелинейными функциями, следовательно их линейные комбинации тоже являются периодическими и нелинайными функцими. Функция 1 же, при умножении ее на любой коэффициент, только однимет или опустит нашу линейную комбинацию по оси $y$. 
+    Следовательно линейную функцию $x$ нельзя представить в виде линейной комбинации данных функций. 
+    \\
+    \\ 2. Пусть столбцы $a_1, ..., a_k$ линейно независимы, а столбцы $a_1, a_k, b$ линейно зависимы. Докажите, что столбец $b$ представляется в виде линейной комбинации столбцов $a_1, ..., a_k$.
+    \\
+    \par \textbf{Решение: } если столбцы $a_1, ... a_k, b$ линейно независимые, следовательно найдется такой набор ненулевых скаляров $\alpha_1, ..., \alpha_k, \beta$, что $\alpha_1a_1 + ... + \alpha_ka_k + \beta b = 0$. При это заметим, что $\beta \neq 0$, так как, если бы она равнялась 0, то мы бы имели равенство $\alpha_1a_1 + ... + \alpha_ka_k = 0$, что невозможно, так как $a_1, ..., a_k$ линейно независимы и $\alpha_1, ..., \alpha_k$ не могут равняться 0 (иначе это была бы тривиальная комбинация векторов).
+    \\
+    \\ Теперь, зная, что $\beta \neq 0$, мы можем выразить $b = -\frac{\alpha_1}{\beta}a_1 -\frac{\alpha_2}{\beta}a_2 - ... -\frac{\alpha_k}{\beta}a_k$. ЧТД.
+    \\
+    \\ 3. Пусть векторы $a_1, a_2, a_3, a_4$ линейно независимы. Являются ли линейно независимыми векторы $b_1 = 3a_1 + 2a_2 + a_3 + a_4, b_2 = 2a_1 + 5a_2 + 3a_3 + 2a_4, b_3 = 3a_1 + 4a_2 + 2a_3 + 3a_4$
+    \\
+    \par \textbf{Решение: } Пусть существует такая линейная комбинация $\beta_1, \beta_2, \beta_3$, где хотя бы один элемент не равен 0, что $\beta_1 b_1 + \beta_2 b_2 + \beta_3 b_3 = 0$.
+    \\
+    \\ $\beta_1 b_1 + \beta_2 b_2 + \beta_3 b_3 = 
+    \\ = \beta_1 (3a_1 + 2a_2 + a_3 + a_4) + \beta_2 (2a_1 + 5a_2 + 3a_3 + 2a_4) + \beta_3 (3a_1 + 4a_2 + 2a_3 + 3a_4) = 
+    \\ = (3 \beta_1 + 2 \beta_2 + 3\beta_3)a_1 + (2 \beta_1 + 5 \beta_2 + 4 \beta_3) a_2 + (\beta_1 + 3 \beta_2 + 2\beta_3)a_3 + (\beta_1 + 2 \beta_2 + 3 \beta_3)a_4 = 0$
+    \\
+    \\ Но мы знаем, что $a_1, a_2, a_3, a_4$ линейно независимы, и что хотя бы один из множителей $\beta_1, \beta_2, \beta_3, \beta_4$ не равен 0. Мы получаем противоречие: $a_1, a_2, a_3, a_4$ линейно независимы и можно найти их линейную комбинацию, равную 0 с ненулевыми коэффициентами. Следовательно $b_1, b_2, b_3$ линейно независимы.
+    \\
+    \\ 4. Докажите линейную независимость следующих систем функций:
+    \\
+    \par 4.1$\circ \ \ \ \sin 2x, \cos x, \sin x$
+    \\
+    \\ Если система линейно зависима, то для любых $x$ найдется набор скаляров $\alpha_1, \alpha_2, \alpha_3$ (где как минимум один не нулевой), что $\alpha_1 \sin 2x + \alpha_2 \cos x + \alpha_3 \sin x = 0$.
+    \\
+    \\ Подставим в это выражение $x = 0, x = \frac{\pi}{2}, x = \frac{\pi}{4}$ и получим систему:
+    \begin{equation*}
+        \begin{cases}
+            \alpha_2 \cdot 1 = 0 \ \ (x = 0) \\
+            \alpha_3 \cdot 1 = 0 \ \ (x = \frac{\pi}{2}) \\ 
+            \alpha_1 + \alpha_2 \cdot \frac{\sqrt{2}}{2} + \alpha_3 \cdot \frac{\sqrt{2}}{2} = 0 \ \ (x = \frac{pi}{4}) \\ 
+        \end{cases}
+    \end{equation*}
+    \\ Из этой системы следует, что $\alpha_1 = \alpha_2 = \alpha_3 = 0$.
+    \\ Следовательно данная система функций линейно независима.
+    \\
+    \\ 5. Какие из следующих векторов являются базисом векторного пространства $V = \mathbb{R}[x]_{\leq 2}$ многочленов не выше 2?
+    \\
+    \par 5.1 
+    \\ $\bullet$ Система векторов $1, x, x^2$ является базисом $\mathbb{R}[x]_{\leq 2}$, так как она линейно независима (через 1 и $x^2$ нельзя выразить $x$, через 1 и $x$ нельзя выразить $x^2$ и через $x^2, x$ нельзя выразить 1). Так же этими тремя функциями можно однозначно задать необходимый многочлен степени меньше 2.
+    \\ $\bullet$ Данная система векторов не является базисом пространства $\mathbb{R}[x]_{\leq 2}$, так как через их линейную комбинацию нельзя выразить 1.
+    \\ $\bullet$ Данный вектор не является базисом, так как $1 + x + x^2$ является линейной комбинацией $1, x, x^2$, следовательно данная система векторов линейно зависима.
+    \\
+    \par 5.2
+    \\ $\bullet$ Данная система векторов являтеся линейной комбинацией, так как она линейно независима (так как по сути она похожа на систему векторов из первого пункта 5.1), а так же через ее линейную комбинацию можно выразить любой многочлен степени 2, так как у нас имеется $x^2, x$ и 1, остальные "ненужные коэффициенты" можно легко убрать, умножив 1 на соответствующий коэффициент с минусом.
+    \\ $\bullet$ Из данной системы векторов невозможно получить $x^2$, умножая их просто на скаляры, следовательно эта система не является базсом.
+\end{document}
