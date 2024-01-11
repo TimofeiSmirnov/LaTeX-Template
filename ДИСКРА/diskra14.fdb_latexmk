@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1704884042 "/Users/timofejsmirnev/Desktop/Латех/LaTeX Template/ДИСКРА/diskra14.tex" "diskra14.pdf" "diskra14" 1704884043 0
-  "/Users/timofejsmirnev/Desktop/Латех/LaTeX Template/ДИСКРА/diskra14.tex" 1704884042 12354 fee90d198eecc2521d33651f795f8fa3 ""
+["pdflatex"] 1704976543 "/Users/timofejsmirnev/Desktop/Латех/LaTeX Template/ДИСКРА/diskra14.tex" "diskra14.pdf" "diskra14" 1704976544 0
+  "/Users/timofejsmirnev/Desktop/Латех/LaTeX Template/ДИСКРА/diskra14.tex" 1704976542 12352 a4adf965802f8a1c8ad08f15fb587c44 ""
   "/Users/timofejsmirnev/Library/texlive/2023/texmf-var/fonts/tfm/lh/lh-t2a/labx1200.tfm" 1695313412 3308 eee81981029f67083258db36df06e523 ""
   "/Users/timofejsmirnev/Library/texlive/2023/texmf-var/fonts/tfm/lh/lh-t2a/labx1440.tfm" 1695313842 3304 6a543c07045572737981351171e0505e ""
   "/Users/timofejsmirnev/Library/texlive/2023/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm" 1695313404 3240 c2435f2b5cd66d4930bc29b8df87967e ""
@@ -152,8 +152,8 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1695313063 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1695313012 7883453 af4ba01b0faf53dc65dd8ba084a585fa ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "diskra14.aux" 1704884043 132 4d62efcb91dfce7dbcd1408b11a08fcd "pdflatex"
-  "diskra14.tex" 1704884042 12354 fee90d198eecc2521d33651f795f8fa3 ""
+  "diskra14.aux" 1704976543 132 4d62efcb91dfce7dbcd1408b11a08fcd "pdflatex"
+  "diskra14.tex" 1704976542 12352 a4adf965802f8a1c8ad08f15fb587c44 ""
   (generated)
   "diskra14.aux"
   "diskra14.log"
